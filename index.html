@@ -846,7 +846,7 @@
   </div>
 
   <div class="hero-actions">
-    <a class="btn-primary" href="docs/resume-en.pdf" download>
+    <a class="btn-primary" href="docs/resume-en.pdf" id="btnResume" download>
       <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M16 8l-4 4-4-4"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg>
       <span data-i18n="btn-resume">Resume</span>
     </a>
@@ -1493,6 +1493,9 @@ function switchLang(lang) {
   document.querySelectorAll('[data-i18n="hero-intro"]').forEach(el => {
     el.style.display = lang === 'zh' ? 'none' : 'block';
   });
+  // Update resume download link
+  const resumeBtn = document.getElementById('btnResume');
+  if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/resume-cn.pdf' : 'docs/resume-en.pdf';
 }
 
 // ===== Initialize English =====
