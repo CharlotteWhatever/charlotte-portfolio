@@ -19,7 +19,8 @@
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  img { max-width: 100%; height: auto; display: block; }
+  img { max-width: 100%; display: block; }
+  .fill-img { width: 100%; height: 100%; object-fit: cover; }
 
   /* ===== Design Tokens ===== */
   :root {
@@ -150,25 +151,23 @@
   /* ——— Hamburger (mobile nav toggle) ——— */
   .hamburger {
     display: none;
-    background: var(--bg);
+    background: transparent;
     border: none;
     cursor: pointer;
-    width: 40px; height: 40px;
-    border-radius: 12px;
-    align-items: center; justify-content: center;
-    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+    width: 36px; height: 36px;
     padding: 0;
-    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    align-items: center; justify-content: center;
+    position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    z-index: 10;
   }
-  .hamburger:hover { box-shadow: 3px 3px 7px var(--shadow-dark-heavy), -3px -3px 7px rgba(255,255,255,0.6); }
   .hamburger span {
-    display: block; width: 20px; height: 2px;
+    display: block; width: 22px; height: 2.5px;
     background: var(--text-muted); border-radius: 2px;
-    margin: 4px auto; transition: 0.3s;
+    margin: 5px auto; transition: 0.3s;
   }
-  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   /* ===== Hero — Storytelling Center Layout ===== */
   .hero {
@@ -847,10 +846,15 @@
     .glass-blob-2, .glass-blob-3 { display: none; }
   }
   @media (max-width: 600px) {
-    nav { position: relative; }
+    nav { padding: 10px 16px; position: relative; }
     nav > a { display: none; }
-    nav.open > a { display: block; width: 100%; text-align: center; padding: 10px 14px; font-size: 10px; }
-    nav.open { padding-bottom: 8px; }
+    nav.open > a {
+      display: block; width: 100%; text-align: center;
+      padding: 8px 10px; margin: 2px 0;
+      font-size: 11px; letter-spacing: 1px;
+      box-shadow: none;
+    }
+    nav.open > a.active { box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light); }
     .hamburger { display: flex; }
     .hero { padding: 32px 20px 40px; }
     .hero h1 { font-size: 40px; }
