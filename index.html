@@ -19,6 +19,7 @@
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  img { max-width: 100%; height: auto; display: block; }
 
   /* ===== Design Tokens ===== */
   :root {
@@ -145,6 +146,29 @@
     box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
     transform: none;
   }
+
+  /* ——— Hamburger (mobile nav toggle) ——— */
+  .hamburger {
+    display: none;
+    background: var(--bg);
+    border: none;
+    cursor: pointer;
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    align-items: center; justify-content: center;
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+    padding: 0;
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  }
+  .hamburger:hover { box-shadow: 3px 3px 7px var(--shadow-dark-heavy), -3px -3px 7px rgba(255,255,255,0.6); }
+  .hamburger span {
+    display: block; width: 20px; height: 2px;
+    background: var(--text-muted); border-radius: 2px;
+    margin: 4px auto; transition: 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   /* ===== Hero — Storytelling Center Layout ===== */
   .hero {
@@ -810,22 +834,92 @@
     .ai-scroll .ai-card { min-width: calc(50% - 12px); }
     .ai-visual { height: 130px; }
   }
-  @media (max-width: 480px) {
-    .container { padding: 0 20px; }
-    nav { padding: 8px 12px; gap: 3px; justify-content: center; }
-    nav a { padding: 5px 10px; font-size: 9px; }
-    .hero { padding: 36px 20px 48px; }
-    .hero h1 { font-size: 38px; }
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 46px; }
+    .hero-intro { font-size: 14px; letter-spacing: 4px; }
+    .hero-sub { font-size: 18px; }
+    .case-kpi { gap: 24px; justify-content: center; }
+    .case-kpi .num { font-size: 28px; }
+    .rec-quote-open { font-size: 100px; top: -30px; }
+    .rec-quote-close { font-size: 80px; bottom: -34px; }
+    section { padding: 56px 0; }
+    .glass-blob-1 { opacity: 0.25; }
+    .glass-blob-2, .glass-blob-3 { display: none; }
+  }
+  @media (max-width: 600px) {
+    nav { position: relative; }
+    nav > a { display: none; }
+    nav.open > a { display: block; width: 100%; text-align: center; padding: 10px 14px; font-size: 10px; }
+    nav.open { padding-bottom: 8px; }
+    .hamburger { display: flex; }
+    .hero { padding: 32px 20px 40px; }
+    .hero h1 { font-size: 40px; }
+    .hero-intro { font-size: 12px; letter-spacing: 3px; }
+    .hero-sub { font-size: 16px; }
+    .hero-tagline { font-size: 13px; max-width: 100%; }
     .hero-actions { gap: 8px; }
     .btn-primary, .btn-secondary { padding: 10px 18px; font-size: 10px; }
     .hero-contact { gap: 14px; }
     .hero-contact a, .hero-contact span { font-size: 12px; }
-    .section-title { font-size: 26px; }
-    .rec-quote-open { font-size: 72px; top: -20px; left: 8px; }
-    .rec-quote-close { font-size: 56px; bottom: -24px; right: 12px; }
-    .port-hero-visual { height: 140px; }
+    .section-title { font-size: 28px; margin-bottom: 32px; }
+    .timeline { padding-left: 24px; }
+    .timeline::before { left: 12px; }
+    .tl-item { padding-left: 20px; margin-bottom: 32px; }
+    .tl-item::before { left: -12px; width: 12px; height: 12px; top: 24px; }
+    .tl-content { padding: 20px 16px; }
+    .tl-node { gap: 10px; }
+    .tl-node .date-badge { width: 52px; height: 52px; }
+    .tl-node .date-badge .year { font-size: 14px; }
+    .tl-node .date-badge .month, .tl-node .date-badge .range { display: none; }
+    .tl-node .company-short { font-size: 12px; }
+    .tl-content .exp-company { font-size: 12px; }
+    .tl-content .exp-role { font-size: 11px; }
+    .tl-content .exp-desc ul li { font-size: 11.5px; }
+    .case-wrap { padding: 28px 18px; }
+    .case-kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .case-kpi > div { text-align: center; }
+    .case-kpi .num { font-size: 26px; }
+    .case-card { padding: 18px; }
+    .rec-card { padding: 24px 18px; }
+    .rec-text { font-size: 13px; }
+    .rec-quote-open { font-size: 72px; top: -22px; left: 4px; }
+    .rec-quote-close { font-size: 56px; bottom: -24px; right: 10px; }
+    .dl-grid { grid-template-columns: 1fr; gap: 4px; }
+    .dl-section { padding: 24px 16px; }
+    .dl-item { padding: 8px 10px; }
+    .port-hero-visual { height: 160px; }
+    .port-hero-body { padding: 20px 20px 24px; }
+    .port-hero-body h3 { font-size: 17px; }
+    .port-sm-visual { width: 80px; min-height: 80px; }
+    .port-sm-visual .sm-well { width: 48px; height: 48px; }
+    .port-sm-body { padding: 12px 14px; }
+    .ai-scroll { gap: 16px; }
     .ai-scroll .ai-card { min-width: calc(100% - 12px); }
-    .ai-visual { height: 100px; }
+    .ai-visual { height: 120px; }
+    .ai-body { padding: 18px 20px 22px; }
+    .ai-card h3 { font-size: 14px; }
+    .ai-card p { font-size: 12px; }
+    .dl-contact { gap: 12px; }
+    .dl-contact a, .dl-contact span { font-size: 11px; }
+    .glass-blob { display: none; }
+    footer { padding: 24px 20px; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 0 16px; }
+    .hero h1 { font-size: 34px; }
+    .hero-intro { font-size: 10px; letter-spacing: 2px; }
+    .hero { padding: 28px 16px 40px; }
+    .section-title { font-size: 24px; margin-bottom: 24px; }
+    .rec-quote-open { font-size: 56px; top: -16px; left: 4px; }
+    .rec-quote-close { font-size: 44px; bottom: -18px; right: 8px; }
+    .port-hero-visual { height: 120px; }
+    .ai-visual { height: 90px; }
+    .tl-node .company-short { font-size: 11px; }
+    .tl-node .company-industry { font-size: 10px; }
+    .case-card h3 { font-size: 13px; }
+    .case-kpi .num { font-size: 22px; }
+    footer .footer-contact a, footer .footer-contact span { font-size: 11px; }
+    .dl-section .section-title { font-size: 22px; }
   }
 </style>
 </head>
@@ -874,6 +968,9 @@
 
 <!-- ===== Nav — Sticky Tabs ===== -->
 <nav>
+  <button class="hamburger" onclick="toggleNav(event)" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#experience" data-i18n="nav-experience">Experience</a>
   <a href="#case-study" data-i18n="nav-case-study">Case Study</a>
   <a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a>
@@ -1018,10 +1115,10 @@
 
       <div class="case-showcase">
         <div class="case-img-placeholder">
-          <img src="images/came-website-1.png" alt="CAME Website Screenshot">
+          <img loading="lazy" src="images/came-website-1.png" alt="CAME Website Screenshot">
         </div>
         <div class="case-img-placeholder">
-          <img src="images/sem-dashboard.png" alt="SEM SEO Dashboard">
+          <img loading="lazy" src="images/sem-dashboard.png" alt="SEM SEO Dashboard">
         </div>
       </div>
 
@@ -1069,7 +1166,7 @@
       <!-- Hero card — Face-to-Face With Engineers -->
       <div class="port-hero-card">
         <div class="port-hero-visual">
-          <img src="images/engineer-story-matrix.png" alt="Engineer Story Matrix" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-inner);">
+          <img loading="lazy" src="images/engineer-story-matrix.png" alt="Engineer Story Matrix" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-inner);">
         </div>
         <div class="port-hero-body">
           <div class="tag" data-i18n="port-hero-tag">Content Matrix · Flagship</div>
@@ -1165,7 +1262,7 @@
       <div class="ai-card">
         <div class="ai-visual">
           <div class="img-well">
-            <img class="fill" src="images/translator-q.png" alt="Translator Q">
+            <img loading="lazy" class="fill" src="images/translator-q.png" alt="Translator Q">
           </div>
         </div>
         <div class="ai-body">
@@ -1179,7 +1276,7 @@
       <div class="ai-card">
         <div class="ai-visual">
           <div class="img-well">
-            <img class="fill" src="images/wechat-auto-cn.png" alt="微信推文自动化">
+            <img loading="lazy" class="fill" src="images/wechat-auto-cn.png" alt="微信推文自动化">
           </div>
         </div>
         <div class="ai-body">
@@ -1193,7 +1290,7 @@
       <div class="ai-card">
         <div class="ai-visual">
           <div class="img-well">
-            <img class="fill" src="images/floating-todo.png" alt="Floating Todo">
+            <img loading="lazy" class="fill" src="images/floating-todo.png" alt="Floating Todo">
           </div>
         </div>
         <div class="ai-body">
@@ -1207,7 +1304,7 @@
       <div class="ai-card">
         <div class="ai-visual">
           <div class="img-well">
-            <img class="fill" src="images/portfolio-builder-cn.png" alt="作品集搭建SOP">
+            <img loading="lazy" class="fill" src="images/portfolio-builder-cn.png" alt="作品集搭建SOP">
           </div>
         </div>
         <div class="ai-body">
@@ -1500,6 +1597,26 @@ function switchLang(lang) {
 
 // ===== Initialize English =====
 switchLang('en');
+
+// ===== Hamburger nav toggle =====
+function toggleNav(e) {
+  if (e) e.stopPropagation();
+  const nav = document.querySelector('nav');
+  const ham = document.querySelector('.hamburger');
+  nav.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+// Close nav when a link is clicked
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 600) {
+        document.querySelector('nav').classList.remove('open');
+        document.querySelector('.hamburger').classList.remove('open');
+      }
+    });
+  });
+});
 
 // ===== Active nav highlight on scroll =====
 const sections = document.querySelectorAll('section[id]');
