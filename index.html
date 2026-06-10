@@ -146,27 +146,6 @@
     transform: none;
   }
 
-  /* ——— Hamburger (mobile nav toggle) ——— */
-  .hamburger {
-    display: none;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    width: 36px; height: 36px;
-    padding: 0;
-    align-items: center; justify-content: center;
-    position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
-    z-index: 10;
-  }
-  .hamburger span {
-    display: block; width: 22px; height: 2.5px;
-    background: var(--text-muted); border-radius: 2px;
-    margin: 5px auto; transition: 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
   /* ===== Hero — Storytelling Center Layout ===== */
   .hero {
     padding: 40px 64px 56px;
@@ -629,10 +608,9 @@
     border-radius: var(--radius-inner);
     box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
     background: var(--bg);
-    display: flex; align-items: center; justify-content: center;
     overflow: hidden;
   }
-  .ai-visual .img-well img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; }
+  .ai-visual .img-well img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; min-height: 0; }
   .ai-visual .img-well svg { max-width: 100%; max-height: 100%; display: block; }
   .ai-visual .banner-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   .ai-visual .banner-img img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: var(--radius-inner); }
@@ -844,17 +822,8 @@
     .glass-blob-2, .glass-blob-3 { display: none; }
   }
   @media (max-width: 600px) {
-    nav { padding: 6px 44px 6px 16px; background: transparent; backdrop-filter: none; box-shadow: none; min-height: 0; }
-    nav.open { background: rgba(228,233,242,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 4px 20px rgba(163,177,198,0.12); padding-bottom: 8px; }
-    nav > a { display: none; }
-    nav.open > a {
-      display: block; width: 100%; text-align: center;
-      padding: 8px 10px; margin: 2px 0;
-      font-size: 11px; letter-spacing: 1px;
-      box-shadow: none;
-    }
-    nav.open > a.active { box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light); }
-    .hamburger { display: flex; }
+    nav { padding: 10px 16px; gap: 4px; justify-content: center; }
+    nav a { padding: 6px 10px; font-size: 9px; letter-spacing: 0.3px; }
     .hero { padding: 32px 20px 40px; }
     .hero h1 { font-size: 40px; }
     .hero-intro { font-size: 12px; letter-spacing: 3px; }
@@ -971,9 +940,6 @@
 
 <!-- ===== Nav — Sticky Tabs ===== -->
 <nav>
-  <button class="hamburger" onclick="toggleNav(event)" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
   <a href="#experience" data-i18n="nav-experience">Experience</a>
   <a href="#case-study" data-i18n="nav-case-study">Case Study</a>
   <a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a>
@@ -1600,26 +1566,6 @@ function switchLang(lang) {
 
 // ===== Initialize English =====
 switchLang('en');
-
-// ===== Hamburger nav toggle =====
-function toggleNav(e) {
-  if (e) e.stopPropagation();
-  const nav = document.querySelector('nav');
-  const ham = document.querySelector('.hamburger');
-  nav.classList.toggle('open');
-  ham.classList.toggle('open');
-}
-// Close nav when a link is clicked
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('nav a').forEach(a => {
-    a.addEventListener('click', function() {
-      if (window.innerWidth <= 600) {
-        document.querySelector('nav').classList.remove('open');
-        document.querySelector('.hamburger').classList.remove('open');
-      }
-    });
-  });
-});
 
 // ===== Active nav highlight on scroll =====
 const sections = document.querySelectorAll('section[id]');
