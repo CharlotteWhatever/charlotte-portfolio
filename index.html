@@ -596,7 +596,7 @@
     transform: translateY(-2px);
   }
   .ai-visual {
-    height: 170px;
+    aspect-ratio: 3 / 1;
     display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 -6px 10px rgba(163,177,198,0.15);
     background: var(--bg-alt);
@@ -610,7 +610,7 @@
     background: var(--bg);
     overflow: hidden;
   }
-  .ai-visual .img-well img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; min-height: 0; }
+  .ai-visual .img-well img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: inherit; min-height: 0; }
   .ai-visual .img-well svg { max-width: 100%; max-height: 100%; display: block; }
   .ai-visual .banner-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   .ai-visual .banner-img img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: var(--radius-inner); }
@@ -807,7 +807,7 @@
     .rec-card { padding: 28px 24px; }
     .port-hero-body { padding: 20px 24px 24px; }
     .ai-scroll .ai-card { min-width: calc(50% - 12px); }
-    .ai-visual { height: 130px; }
+    
   }
   @media (max-width: 768px) {
     .hero h1 { font-size: 46px; }
@@ -867,7 +867,7 @@
     .port-sm-body { padding: 12px 14px; }
     .ai-scroll { gap: 16px; }
     .ai-scroll .ai-card { min-width: calc(100% - 12px); }
-    .ai-visual { height: 120px; }
+    
     .ai-body { padding: 18px 20px 22px; }
     .ai-card h3 { font-size: 14px; }
     .ai-card p { font-size: 12px; }
@@ -885,7 +885,6 @@
     .rec-quote-open { font-size: 56px; top: -16px; left: 4px; }
     .rec-quote-close { font-size: 44px; bottom: -18px; right: 8px; }
     .port-hero-visual { height: 120px; }
-    .ai-visual { height: 90px; }
     .tl-node .company-short { font-size: 11px; }
     .tl-node .company-industry { font-size: 10px; }
     .case-card h3 { font-size: 13px; }
