@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAME · 策略+执行 · 10个月从零到一</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --bg:#E4E9F2;--card-bg:#ffffff;--text:#2D3748;--text2:#5A6B7C;--text3:#8899aa;
+  --accent:#1a5a9c;--accent-l:#4a8fc7;--warm:#D4905B;
+  --sh-l:rgba(255,255,255,0.55);--sh-d:rgb(163,177,198,0.6);
+  --sh-page:9px 9px 16px var(--sh-d),-9px -9px 16px var(--sh-l);
+  --sh-float:6px 6px 12px var(--sh-d),-6px -6px 12px var(--sh-l);
+  --sh-card:4px 4px 8px var(--sh-d),-4px -4px 8px var(--sh-l);
+  --sh-in:inset 3px 3px 6px var(--sh-d),inset -3px -3px 6px var(--sh-l);
+  --r-pg:24px;--r-cd:16px;--r-in:12px;
+  --f-d:'Plus Jakarta Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --f-b:'DM Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --a-sub:rgba(26,90,156,0.06);--a-bd:rgba(26,90,156,0.12);--line:#e0e5ee;
+}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.w{max-width:1050px;margin:0 auto;padding:24px;position:relative;z-index:1}
+.page{background:var(--card-bg);border-radius:var(--r-pg);box-shadow:var(--sh-page);margin-bottom:24px;padding:36px 48px;page-break-after:always;position:relative;aspect-ratio:16/9}
+@media print{.page{background:#fff;box-shadow:none;border-radius:0;margin:0;padding:40px 44px}@page{margin:0.8cm 1cm}}
+.pn{position:absolute;bottom:18px;right:24px;font-size:9px;color:var(--text3);letter-spacing:3px;font-weight:500;font-family:var(--f-b)}
+.conclusion{font-family:var(--f-d);font-size:26px;font-weight:800;line-height:1.25;margin-bottom:4px;color:var(--text);letter-spacing:-0.3px}
+.conclusion .hl{color:var(--accent)}
+.conclusion-sub{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.4}
+.conclusion-divider{width:30px;height:3px;background:var(--warm);border:none;margin:0 0 18px;border-radius:2px}
+.strategy{padding:16px 18px;border-radius:var(--r-in);background:var(--card-bg);box-shadow:var(--sh-in);font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:16px}
+.strategy strong{color:var(--text)}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dual-box{padding:18px;border-radius:var(--r-cd);background:var(--card-bg)!important;border:none!important}
+.dual-box.left{box-shadow:var(--sh-in)}
+.dual-box.right{box-shadow:var(--sh-card);background:linear-gradient(135deg,var(--card-bg)0%,rgba(212,144,91,0.04)100%)!important}
+.dual-box h4{font-family:var(--f-d);font-size:11px;letter-spacing:3px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(163,177,198,0.2)!important;color:var(--text3)}
+.dual-box.right h4{color:var(--warm)}
+.dual-box ul{list-style:none}
+.dual-box li{font-size:14px;color:var(--text2);line-height:1.9;padding-left:18px;position:relative}
+.dual-box.left li::before{content:'✕';position:absolute;left:0;color:var(--text3);font-size:11px}
+.dual-box.right li::before{content:'✓';position:absolute;left:0;color:var(--warm);font-size:12px;font-weight:700}
+.tl{padding-left:28px;position:relative}
+.tl::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--accent-l),rgba(163,177,198,0.2));border-radius:1px}
+.tl-item{position:relative;padding:0 0 16px 18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--card-bg),0 0 0 5px rgba(26,90,156,0.12)}
+.tl-item h4{font-family:var(--f-d);font-size:14px;font-weight:600}
+.tl-item p{font-size:13px;color:var(--text2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gi{padding:14px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-card);border:none!important}
+.gi h4{font-family:var(--f-d);font-size:13px;font-weight:600;margin-bottom:3px}.gi p{font-size:12px;color:var(--text2);line-height:1.4}
+.dc{text-align:center;padding:22px 12px 18px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-float);position:relative;overflow:hidden;border:none!important}
+.dc::after{content:'';position:absolute;top:0;left:12px;right:12px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-l))}
+.dc .n{font-family:var(--f-d);font-size:38px;font-weight:800;color:var(--accent);line-height:1}
+.dc .n .s{font-size:15px;color:var(--text3);font-weight:400}
+.dc .l{font-size:12px;color:var(--text2);margin-top:5px}
+.dc .note{font-size:10px;color:var(--text3);margin-top:3px;letter-spacing:0.3px}
+.ch-card{padding:14px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-card);text-align:center;position:relative;border:none!important}
+.ch-card::before{content:'';position:absolute;top:0;left:12px;right:12px;height:3px;border-radius:2px;background:var(--bar,linear-gradient(90deg,var(--accent),var(--accent-l)))}
+.ch-card h4{font-family:var(--f-d);font-size:12px;font-weight:700;margin-bottom:2px;letter-spacing:1px}
+.ch-card .ctr{font-size:11px;color:var(--text2);margin-bottom:6px}
+.ch-card .num{font-family:var(--f-d);font-size:24px;font-weight:800;line-height:1;color:var(--bar,var(--accent))}
+.ch-card .num-label{font-size:10px;color:var(--text3);margin-top:2px}
+.ps-item{font-size:12px;color:var(--text2);line-height:1.5;padding:4px 0;display:flex;gap:6px}
+.ps-item .q{color:var(--text);font-weight:500;flex-shrink:0;word-break:break-word}
+.section-label{font-family:var(--f-d);font-size:11px;font-weight:700;letter-spacing:3px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid rgba(163,177,198,0.15)!important;color:var(--text)}
+[style*="f4f6fa"]{background:var(--card-bg)!important;box-shadow:var(--sh-card)!important}
+[style*="accent-subtle"]{background:var(--card-bg)!important;box-shadow:var(--sh-in)!important}
+[style*="warm-subtle"]{background:var(--card-bg)!important;box-shadow:var(--sh-in)!important}
+@media(max-width:700px){.page{padding:28px 20px}.dual,.g2{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body><div class="w">
+
+<div class="page" style="display:flex;flex-direction:column;justify-content:center;">
+  <div style="font-size:12px;color:var(--text3);letter-spacing:4px;margin-bottom:14px;font-family:var(--f-d);font-weight:600;">PROJECT REVIEW · 2024.8 – 2026.5</div>
+  <div style="font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.1;margin-bottom:10px;font-family:var(--f-d);letter-spacing:-0.03em;">从零开始<span style="display:block;font-size:clamp(18px,2.2vw,28px);font-weight:400;color:var(--text2);margin-top:14px;">策略 + 执行 · 10个月搭建品牌数字生态</span></div>
+  <hr style="border:none;border-top:3px solid var(--warm);width:50px;margin:20px 0;border-radius:2px;">
+  <div style="display:flex;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--text3);margin-bottom:20px;">
+    <span><strong style="color:var(--text);font-weight:600;">品牌</strong> CAME 喀美 · 意大利门控自动化</span>
+    <span><strong style="color:var(--text);font-weight:600;">角色</strong> 项目负责人</span>
+    <span><strong style="color:var(--text);font-weight:600;">范围</strong> 建站 · 搜索 · 投放 · 社媒 · 内容</span>
+  </div>
+  <div style="font-size:14px;color:var(--text2);max-width:560px;line-height:1.6;">1个人，1个AI工具，2家服务商，4条汇报线。</div>
+  <div class="pn">01/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">10个月，线上从<span class="hl">近乎空白</span>到<span class="hl">完整体系</span></div>
+  <div class="conclusion-sub">B2B传统制造业品牌进入中国2年，80%精力放在线下。</div><hr class="conclusion-divider">
+  <div class="strategy">【策略思考】品牌处于冷启动后期，线上基础薄弱。策略不是全面铺开，而是「先建承载再引流」——先有站，再做搜索，最后扩社媒。每一步的前置条件没满足前，不进入下一步。</div>
+  <div class="dual">
+    <div class="dual-box left"><h4 style="color:var(--text3);">BEFORE · 2024.8</h4><ul><li>官网仅1页展示页 + 表单收集</li><li>SEO 零部署、零收录</li><li>SEM 未上线</li><li>公众号月更，视频号零散</li><li>无内容体系、无数据维度</li></ul></div>
+    <div class="dual-box right"><h4 style="color:var(--warm);">AFTER · 2026.5</h4><ul><li>中文官网功能型 + 英文官网展示型</li><li>SEO 收录 + 矩阵覆盖，品牌曝光 20,000+</li><li>SEM 百度/Bing/Google 全渠道，线索 100+</li><li>社媒矩阵：公众号+视频号+B站+抖音</li><li>内容营销四维矩阵落地</li></ul></div>
+  </div>
+  <div style="display:flex;gap:20px;margin-top:18px;padding:14px;background:#f4f6fa;border-radius:12px;justify-content:space-around;">
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">3</span><br><span style="font-size:10px;color:var(--text3);">产品线</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">1</span><br><span style="font-size:10px;color:var(--text3);">人团队</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">10</span><br><span style="font-size:10px;color:var(--text3);">个月</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">20K+</span><br><span style="font-size:10px;color:var(--text3);">品牌曝光</span></div>
+  </div>
+  <div class="pn">02/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">10个月 · <span class="hl">从零到一</span> 的完整交付</div>
+  <div class="conclusion-sub">一个人 + 一个品牌 + 10个月 = 从展示页到完整数字营销体系的闭环</div><hr class="conclusion-divider">
+  <div class="g4">
+    <div class="dc"><div class="n">6,000<span class="s">+</span></div><div class="l">月均官网访问</div><div class="note">官网重建</div></div>
+    <div class="dc"><div class="n">20,000<span class="s">+</span></div><div class="l">品牌曝光</div><div class="note">SEO + 矩阵</div></div>
+    <div class="dc"><div class="n">100<span class="s">+</span></div><div class="l">SEM 有效线索</div><div class="note">多渠道投放</div></div>
+    <div class="dc"><div class="n">20<span class="s">+</span></div><div class="l">品牌端直接线索</div><div class="note">搜索入口</div></div>
+  </div>
+  <div style="margin-top:24px;padding:20px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <div style="display:flex;gap:16px;"><span style="font-size:12px;font-weight:600;color:var(--accent);font-family:var(--f-d);">● 建站</span><span style="font-size:12px;color:var(--text2);">● SEO</span><span style="font-size:12px;color:var(--text2);">● SEM</span><span style="font-size:12px;color:var(--text2);">● 社媒</span><span style="font-size:12px;color:var(--text2);">● 内容</span></div>
+      <span style="font-size:11px;color:var(--text3);letter-spacing:2px;">2024.8 ———————————— 2026.5</span>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6;text-align:center;">建站承载 → SEO 引流入口 → SEM 精准获客 → 社媒扩大触达 → 内容沉淀信任，形成完整闭环</div>
+  </div>
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div style="padding:16px;border-radius:12px;background:var(--accent-subtle);border:1px solid var(--accent-bd);"><div style="font-size:12px;font-weight:700;color:var(--accent);font-family:var(--f-d);">关键能力</div><div style="font-size:12px;color:var(--text2);margin-top:6px;line-height:1.6;">策略规划 · 项目管理 · 跨部门沟通 · 相关方管理 · 数据驱动决策</div></div>
+    <div style="padding:16px;border-radius:12px;background:#f4f6fa;border:1px solid var(--line);"><div style="font-size:12px;font-weight:700;font-family:var(--f-d);">项目资源</div><div style="font-size:12px;color:var(--text2);margin-top:6px;">1人 · 1个AI工具 · 2家服务商 · 4条汇报线</div></div>
+  </div>
+  <div class="pn">03/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">官网重建 · 月均访问 <span class="hl">6,000+</span></div>
+  <div class="conclusion-sub">拆掉原有单页「空壳」，分别针对国内和亚太市场上线功能型中文官网和展示型英文网站。</div><hr class="conclusion-divider">
+  <div class="strategy">【策略思考】官网是数字营销的「土地」，没有土地就没法种东西。所以第一步不是投广告，而是把官网从「展示页」升级为「功能型承载平台」——产品选型、经销商查询、培训物料、搜索承接，全部集成到一个站上。</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+    <div><div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--accent);font-family:var(--f-d);">搭建流程</div><div class="tl">
+      <div class="tl-item"><h4>站架结构设计</h4><p>产品选型流程 + 信息架构规划</p></div>
+      <div class="tl-item"><h4>页面逻辑与交互文档</h4><p>原型图 + 需求文档输出</p></div>
+      <div class="tl-item"><h4>相关方管理与技术对接</h4><p>三维度评估：交付能力 &gt; 响应速度 &gt; 价格</p></div>
+      <div class="tl-item"><h4>数据埋点 + 搜索承接部署</h4><p>SEM/SEO 流量链路打通</p></div>
+    </div></div>
+    <div><div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--accent);font-family:var(--f-d);">功能矩阵</div><div class="g2" style="gap:8px;">
+      <div class="gi"><h4>产品在线选型</h4><p>参数筛选 + 型号匹配</p></div>
+      <div class="gi"><h4>经销商查询</h4><p>区域信息检索</p></div>
+      <div class="gi"><h4>技术培训物料</h4><p>在线观看 + 资料下载</p></div>
+      <div class="gi"><h4>搜索流量承接</h4><p>SEM/SEO 落地页优化</p></div>
+    </div>
+    <div style="margin-top:14px;padding:18px;background:var(--accent-subtle);border-radius:var(--r-in);text-align:center;border:1px solid var(--accent-bd);"><span style="font-family:var(--f-d);font-size:40px;font-weight:800;color:var(--accent);">6,000+</span><span style="font-size:13px;color:var(--text2);margin-left:6px;">月均访问量</span><div style="font-size:11px;color:var(--text3);margin-top:2px;">中文官网 · 功能型 ｜ 英文官网 · 展示型</div></div></div>
+  </div>
+  <div class="pn">04/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">搜索全渠道覆盖 · 曝光 <span class="hl">20,000+</span> · 线索 <span class="hl">100+</span></div>
+  <div class="conclusion-sub">站内技术部署 + 站外矩阵构建 + 多渠道 SEM 投放。先有站后有搜索，流量闭环打通。</div><hr class="conclusion-divider">
+<div class="section-label">SEO · 长尾覆盖与品牌资产沉淀</div>
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="gi"><h4>站内部署</h4><p>技术 SEO · 站点结构 · sitemap · 关键词策略 · 内容布局</p></div>
+    <div class="gi"><h4>站外矩阵</h4><p>自媒体（知乎/搜狐/百家号）+ 百度系 + 社媒矩阵覆盖</p></div>
+  </div>
+  <div class="g3" style="margin-bottom:20px;">
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">1,000+</span><br><span style="font-size:11px;color:var(--text2);">月均自然流量</span><br><span style="font-size:9px;color:var(--text3);">百度+Bing 为主要来源</span></div>
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">20,000+</span><br><span style="font-size:11px;color:var(--text2);">品牌曝光</span><br><span style="font-size:9px;color:var(--text3);">SEO + 矩阵覆盖</span></div>
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">20+</span><br><span style="font-size:11px;color:var(--text2);">品牌端线索</span><br><span style="font-size:9px;color:var(--text3);">搜索入口</span></div>
+  </div>
+  <div class="section-label" style="margin-top:4px;">SEM · 多渠道精准获客与短期转化</div>
+  <div class="g4">
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>百度 Baidu</h4><div class="ctr">CTR 2.97%</div><div class="num">210,000+</div><div class="num-label">展示次数</div></div>
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>必应 Bing</h4><div class="ctr">CTR 3.47%</div><div class="num">43,000+</div><div class="num-label">展示次数</div></div>
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>Google</h4><div class="ctr">CTR 4.81%</div><div class="num">28,000+</div><div class="num-label">展示次数</div></div>
+    <div class="ch-card" style="--bar:#D4905B;"><h4>1688</h4><div class="ctr">CTR 1.87%</div><div class="num" style="color:var(--warm);">112,000+</div><div class="num-label">展示次数</div></div>
+  </div>
+  <div class="pn">05/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">内容营销矩阵落地 · <span class="hl">四维内容</span>覆盖用户全旅程</div>
+  <div class="conclusion-sub">以微信公众号为核心，视频号、Bilibili、抖音环绕，围绕品牌、产品、服务、经销商四大维度构建内容体系。</div><hr class="conclusion-divider">
+  <div class="strategy">【策略思考】B2B工业品类的内容营销决策周期长、参与角色多。内容策略按「认知→考虑→决策→售后」用户旅程设计：品牌内容做认知、产品内容做考虑、服务内容做决策、经销商内容做渠道覆盖。</div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:var(--accent-subtle);border:1px solid var(--accent-bd);"><div style="font-size:15px;font-weight:700;color:var(--accent);font-family:var(--f-d);">◆ 微信公众号 · 核心阵地</div><div style="font-size:13px;color:var(--text2);margin-top:4px;">月更 → 体系化运营</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-size:14px;font-weight:600;font-family:var(--f-d);">微信视频号</div><div style="font-size:12px;color:var(--text2);margin-top:2px;">活动花絮 · 经销商采访</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-size:14px;font-weight:600;font-family:var(--f-d);">Bilibili · 抖音</div><div style="font-size:12px;color:var(--text2);margin-top:2px;">技术内容分发</div></div>
+  </div>
+  <div class="section-label">内容四维矩阵</div>
+  <div class="g4">
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">品牌</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">品牌故事 · 意大利基因</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">认知</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">产品</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">选型指南 · 技术参数</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">辅助决策</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">服务</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">安装 · 售后 · 培训</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">增强信任</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">经销商</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">案例 · 采访 · 支持</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">渠道赋能</div></div>
+  </div>
+  <div class="pn">06/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">项目核心挑战 <span class="hl">&amp;</span> 解法</div><hr class="conclusion-divider" style="margin-top:12px;margin-bottom:18px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--accent);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--accent);margin-bottom:8px;font-family:var(--f-d);">逻辑框架</div>
+      <div class="ps-item"><span class="q">① 竞品都没做好/没做怎么办？</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ 跨界标杆拆解 + 用户需求倒推</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">② 供应商筛选优先级怎么判定？</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ 三维度评估法：交付能力 &gt; 响应速度 &gt; 价格，案例先行验证</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--warm);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--warm);margin-bottom:8px;font-family:var(--f-d);">沟通对齐</div>
+      <div class="ps-item"><span class="q">③ 内部需求不明确/冲突怎么办？</span></div><div class="ps-item" style="padding-left:0;">→ 利益相关方群体会议 + 需求优先级投票</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">④ 需求/功能/设计怎么讲清楚？</span></div><div class="ps-item" style="padding-left:0;">→ 示意草图+文字说明+口述视频三合一交付，降低跨角色沟通摩擦</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--accent-l);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--accent-l);margin-bottom:8px;font-family:var(--f-d);">项目管控</div>
+      <div class="ps-item"><span class="q">⑤ 乙方项目经理配合度低，交付进度持续滞后怎么办？</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ 明确关键交付节点与验收标准 + 制定项目周期表并通过周例会同步进度 + 内部设定较实际提前3-5个工作日的交付期限预留缓冲</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">⑥ 多项目并行周期长，时间跨度管理困难怎么办？</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ 模块化拆分并划定优先级 + 建立TODO清单跟踪机制 + 每周进度汇报与动态调整</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--text3);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--text3);margin-bottom:8px;font-family:var(--f-d);">AI 提效</div>
+      <div class="ps-item"><span class="q">⑦ 纯商科出身，技术侧需求如何判定、对接、审核？</span></div><div class="ps-item" style="padding-left:0;color:var(--text3);">→ AI 辅助技术方案解读 + 标准化需求模板 + 同行交叉验证</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">⑧ 信息资产分析、数据迭代怎么做到？</span></div><div class="ps-item" style="padding-left:0;color:var(--text3);">→ 数据看板 + AI 自动化报表 + 定期回顾迭代机制</div>
+    </div>
+  </div>
+  <div class="pn">07/07</div>
+</div>
+
+</div></body>
+</html>

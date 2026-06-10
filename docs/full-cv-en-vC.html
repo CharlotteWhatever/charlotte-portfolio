@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Chi · Full CV · Version C</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:    #0f1a2e;
+    --navy-l:  #1a2a4a;
+    --gold:    #c8922b;
+    --gold-l:  #dba44a;
+    --gold-dim:#c8922b30;
+    --bg:      #f5f4f0;
+    --card:    #ffffff;
+    --t:       #2d3436;
+    --t2:      #636e72;
+    --t3:      #b2bec3;
+    --tag-bg:  #f0eee8;
+    --tag-dark:#0f1a2e;
+    --line:    #e0ddd5;
+    --ff-sans: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --ff-display: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: var(--ff-sans);
+    background: #e8e6e1;
+    color: var(--t);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--card);
+    margin: 0 auto 30px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-content {
+    padding: 16mm 16mm 12mm 16mm;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== Cover page ===== */
+  .page-cover .page-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cover-tag {
+    font-family: var(--ff-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-family: var(--ff-display);
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -2.5px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cover-title .gold { color: var(--gold); }
+
+  .cover-sub {
+    font-size: 15px;
+    color: var(--t2);
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cover-pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 520px;
+    text-align: left;
+  }
+  .cover-pillar {
+    padding: 0;
+  }
+  .cover-pillar .p-num {
+    font-family: var(--ff-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold-dim);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .cover-pillar .p-label {
+    font-family: var(--ff-display);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .cover-pillar .p-desc {
+    font-size: 9px;
+    color: var(--t2);
+    line-height: 1.5;
+  }
+
+  .cover-contact {
+    font-size: 9px;
+    color: var(--t3);
+    margin-top: 36px;
+  }
+  .cover-contact span { color: var(--t2); margin: 0 8px; }
+
+  /* ===== Tab Bar ===== */
+  .tab-bar {
+    display: flex;
+    background: var(--navy);
+    padding: 0;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  .tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    position: relative;
+    transition: 0.2s;
+  }
+  .tab.active {
+    color: var(--navy);
+    background: var(--card);
+  }
+  .tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  /* ===== Job Header ===== */
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .job-header-left { flex: 1; }
+  .job-title-lg {
+    font-family: var(--ff-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.2px;
+    margin-bottom: 3px;
+  }
+  .job-company-lg {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 1px;
+  }
+  .job-period-lg {
+    font-size: 9.5px;
+    color: var(--t2);
+  }
+
+  /* ===== Donut Chart ===== */
+  .donut-wrap {
+    flex-shrink: 0;
+    width: 110px;
+    text-align: center;
+    margin-left: 12px;
+  }
+  .donut {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 4px;
+  }
+  .donut-hole {
+    position: absolute;
+    top: 15px; left: 15px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .donut-hole .pct {
+    font-family: var(--ff-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .donut-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px 5px;
+  }
+  .donut-legend-item {
+    font-size: 6.5px;
+    color: var(--t2);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .donut-legend-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dg1 { background: conic-gradient(var(--donut-c1) 0deg var(--donut-a1), var(--donut-c2) var(--donut-a1) var(--donut-a2), var(--donut-c3) var(--donut-a2) var(--donut-a3), var(--donut-c4) var(--donut-a3) 360deg); }
+  .dg2 { background: conic-gradient(var(--donut-c1) 0deg var(--donut-a1), var(--donut-c2) var(--donut-a1) var(--donut-a2), var(--donut-c3) var(--donut-a2) 360deg); }
+
+  /* ===== Body ===== */
+  .body-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .resp-cat {
+    flex: 1;
+  }
+  .resp-cat-title {
+    font-family: var(--ff-display);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.1px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .resp-cat-title::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .resp-cat ul {
+    list-style: none;
+    padding: 0;
+  }
+  .resp-cat li {
+    font-size: 8.5pt;
+    line-height: 1.55;
+    color: var(--t);
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+  .resp-cat li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--navy);
+    opacity: 0.35;
+  }
+  .resp-cat li strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .resp-cat li .challenge-inline {
+    color: var(--t2);
+    font-style: italic;
+    font-size: 8pt;
+  }
+
+  /* ===== Bottom strip ===== */
+  .bottom-strip {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .bottom-strip .kw-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    flex: 1;
+  }
+  .bottom-strip .kw-inline span {
+    font-size: 6.5pt;
+    padding: 1px 6px;
+    border-radius: 2px;
+    background: var(--tag-bg);
+    color: var(--t);
+    white-space: nowrap;
+  }
+  .bottom-strip .kw-inline .hl {
+    background: var(--gold);
+    color: #fff;
+  }
+  .bottom-strip .kw-inline .ai {
+    background: var(--tag-dark);
+    color: #fff;
+  }
+  .bottom-strip .quote-mini {
+    font-size: 7.5pt;
+    color: var(--t2);
+    font-style: italic;
+    line-height: 1.4;
+    flex-shrink: 0;
+    max-width: 35%;
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 10px;
+  }
+  .bottom-strip .quote-mini .attr {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 6.5pt;
+    margin-top: 1px;
+  }
+
+  .page-footer {
+    text-align: center;
+    font-size: 6pt;
+    color: var(--t3);
+    padding: 6px 0 0;
+    margin-top: 8px;
+  }
+
+  @media print {
+    body { padding: 0; background: #fff; }
+    .page { box-shadow: none; margin: 0; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 0: COVER ==================== -->
+<div class="page page-cover">
+  <div class="tab-bar">
+    <div class="tab" style="color:rgba(255,255,255,0.5);font-weight:500;">Charlotte Chi</div>
+    <div class="tab" style="color:rgba(255,255,255,0.5);font-weight:500;">Full CV</div>
+    <div class="tab" style="color:rgba(255,255,255,0.5);font-weight:500;">2026</div>
+    <div class="tab" style="color:rgba(255,255,255,0.5);font-weight:500;">English</div>
+  </div>
+  <div class="page-content">
+    <div class="cover-tag">The Knowledge of</div>
+    <div class="cover-title">CHARLOTTE <span class="gold">CHI</span></div>
+    <div class="cover-sub">AI-Enabled Full-Stack Marketer · B2B &amp; International Marketing</div>
+    <div class="cover-line"></div>
+
+    <div class="cover-pillar-grid">
+      <div class="cover-pillar">
+        <div class="p-num">01</div>
+        <div class="p-label">Content Architect</div>
+        <div class="p-desc">Multi-format storytelling — whitepapers, video, social — across industries and languages</div>
+      </div>
+      <div class="cover-pillar">
+        <div class="p-num">02</div>
+        <div class="p-label">Digital Builder</div>
+        <div class="p-desc">Websites, SEM, SEO, analytics — from zero to measurable growth</div>
+      </div>
+      <div class="cover-pillar">
+        <div class="p-num">03</div>
+        <div class="p-label">AI Pioneer</div>
+        <div class="p-desc">First to adopt, fastest to scale — AI tools embedded in daily workflow since 2024</div>
+      </div>
+    </div>
+
+    <div class="cover-contact">
+      <span>cong.chi@foxmail.com</span> · <span>Shanghai, China</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 1: CAME ==================== -->
+<div class="page">
+  <div class="tab-bar">
+    <div class="tab active">CAME</div>
+    <div class="tab">TEKNOS</div>
+    <div class="tab">ALTEN</div>
+    <div class="tab">YIZHONG+SHENGSHI</div>
+  </div>
+  <div class="page-content">
+    <div class="job-header">
+      <div class="job-header-left">
+        <div class="job-title-lg">Digital Marketing Lead</div>
+        <div class="job-company-lg">CAME Automation Systems</div>
+        <div class="job-period-lg">Jul 2025 – May 2026 · Industrial Automation (Italy)</div>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut dg1" style="--donut-c1:#c8922b;--donut-a1:115deg;--donut-c2:#0f1a2e;--donut-a2:220deg;--donut-c3:#636e72;--donut-a3:310deg;--donut-c4:#dfe6e9;--donut-a4:360deg;">
+          <div class="donut-hole"><span class="pct">9</span><span class="lbl">Months</span></div>
+        </div>
+        <div class="donut-legend">
+          <span class="donut-legend-item"><span class="dot" style="background:#c8922b"></span>Website+SEM 35%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#0f1a2e"></span>SEO+GEO 30%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#636e72"></span>Content+Social 25%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#dfe6e9"></span>Events 10%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-main">
+      <div class="resp-cat" style="flex:2;">
+        <div class="resp-cat-title">Digital Infrastructure — Websites &amp; SEM</div>
+        <ul>
+          <li>Delivered <strong>2 websites</strong> (CN+EN) from zero in <strong>4 months</strong> — full-cycle ownership from requirements to launch, managing vendors, server selection, and cross-department coordination <span class="challenge-inline">(built from scratch with no prior infrastructure)</span></li>
+          <li>Built multi-channel SEM on <strong>Baidu, Bing, Google</strong> — independent operation for overseas Google channel, vendor management for CN channels; budget planning, keyword expansion, MQL/SDR tracking, monthly iteration</li>
+        </ul>
+      </div>
+      <div class="resp-cat" style="flex:2;">
+        <div class="resp-cat-title">Organic Growth — SEO, Content &amp; Events</div>
+        <ul>
+          <li><strong>SEO+GEO dual engine</strong>: on-page technicals (robots.txt, sitemap, TDK, H1, internal linking) + off-page ecosystem across press, self-media, forums, video; deployed <strong>GA4, Baidu Analytics, Bing Clarity</strong></li>
+          <li>Owned full content lifecycle across <strong>WeChat OA/Video Account, Douyin, Bilibili</strong> — articles, graphic design, video, covering success stories, product updates, events</li>
+          <li>Provided end-to-end <strong>offline event support</strong> (10–100+ attendees) — from questionnaires and vendor coordination to on-site execution and post-event wrap-up</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <div class="kw-inline">
+        <span class="hl">Digital Marketing 0→1</span>
+        <span>Industrial Automation</span>
+        <span>Website PM</span>
+        <span>Baidu/Bing/Google SEM</span>
+        <span>SEO+GEO</span>
+        <span>GA4</span>
+        <span class="ai">AI-Enabled</span>
+        <span>Offline Events</span>
+      </div>
+      <div class="quote-mini">
+        She built an entire digital ecosystem in 9 months — websites, SEM, SEO, content, events. Learns fast, works independently, uses AI to accelerate everything.
+        <div class="attr">— Bogza &amp; 殷亚卿, CAME China</div>
+      </div>
+    </div>
+    <div class="page-footer">Charlotte Chi · AI-Enabled Full-Stack Marketer · cong.chi@foxmail.com</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: TEKNOS ==================== -->
+<div class="page">
+  <div class="tab-bar">
+    <div class="tab">CAME</div>
+    <div class="tab active">TEKNOS</div>
+    <div class="tab">ALTEN</div>
+    <div class="tab">YIZHONG+SHENGSHI</div>
+  </div>
+  <div class="page-content">
+    <div class="job-header">
+      <div class="job-header-left">
+        <div class="job-title-lg">Group Marketing Executive</div>
+        <div class="job-company-lg">TEKNOS Group · Industrial Coatings MNC (Finland)</div>
+        <div class="job-period-lg">Mar 2024 – Aug 2024 · 100% English environment</div>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut dg1" style="--donut-c1:#c8922b;--donut-a1:126deg;--donut-c2:#0f1a2e;--donut-a2:234deg;--donut-c3:#636e72;--donut-a3:306deg;--donut-c4:#dfe6e9;--donut-a4:360deg;">
+          <div class="donut-hole"><span class="pct">35</span><span class="lbl">Content</span></div>
+        </div>
+        <div class="donut-legend">
+          <span class="donut-legend-item"><span class="dot" style="background:#c8922b"></span>Content Production 35%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#0f1a2e"></span>AI Localization 20%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#636e72"></span>Campaigns 25%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#dfe6e9"></span>Stakeholder Mgmt 20%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-main">
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">Global Content &amp; Localization</div>
+        <ul>
+          <li>Developed digital/print assets for global campaigns — from concept alignment, filming, video production to social copy and brochure design <span class="challenge-inline">(mastered Canva animation and InDesign brochure design within one week to meet deadlines)</span></li>
+          <li>Scaled video localization across <strong>5 EU markets</strong> using AI tools — <strong>35% faster turnaround</strong> vs. manual processes; deployed AI-generated imagery, automated subtitling/dubbing across marketing ops</li>
+        </ul>
+      </div>
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">Channel Growth &amp; Cross-Border Execution</div>
+        <ul>
+          <li>Built <strong>TikTok channel 0→1</strong>: strategy, audience/persona analysis, content direction for a B2B industrial brand entering short-video</li>
+          <li>Executed <strong>8+ campaigns</strong> across LinkedIn/YouTube/IG/FB (EN→CN/FR/DE) — achieved <strong>90% brand compliance</strong> across 3 languages and 4 cultures</li>
+          <li>Bridged EU Marcom × China market: bilingual meeting facilitation, simultaneous interpretation, campaign reporting <span class="challenge-inline">(delivered 3 global campaigns on time as the sole China-based IC reporting across 3 time zones)</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <div class="kw-inline">
+        <span class="hl">Multicultural Collaboration</span>
+        <span>English-only</span>
+        <span class="ai">AI Video Localization</span>
+        <span>Adobe Creative Suite</span>
+        <span>TikTok Strategy</span>
+        <span>Campaign Execution</span>
+        <span>Industrial Marketing</span>
+      </div>
+      <div class="quote-mini">
+        I warmly recommend Charlotte for similar and more demanding Marketing tasks. She was great at presenting core messages to complex markets.
+        <div class="attr">— Suzie Upson, Head of Marketing, TEKNOS Group</div>
+      </div>
+    </div>
+    <div class="page-footer">Charlotte Chi · AI-Enabled Full-Stack Marketer · cong.chi@foxmail.com</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: ALTEN ==================== -->
+<div class="page">
+  <div class="tab-bar">
+    <div class="tab">CAME</div>
+    <div class="tab">TEKNOS</div>
+    <div class="tab active">ALTEN</div>
+    <div class="tab">YIZHONG+SHENGSHI</div>
+  </div>
+  <div class="page-content">
+    <div class="job-header">
+      <div class="job-header-left">
+        <div class="job-title-lg">Sr. Content Marketing Specialist</div>
+        <div class="job-company-lg">ALTEN China · Engineering &amp; IT Consulting (French MNC)</div>
+        <div class="job-period-lg">Aug 2021 – Feb 2024 · Managed 2–3 Interns</div>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut dg2" style="--donut-c1:#c8922b;--donut-a1:144deg;--donut-c2:#0f1a2e;--donut-a2:270deg;--donut-c3:#636e72;--donut-a3:360deg;">
+          <div class="donut-hole"><span class="pct">40</span><span class="lbl">Content</span></div>
+        </div>
+        <div class="donut-legend">
+          <span class="donut-legend-item"><span class="dot" style="background:#c8922b"></span>Content Strategy 40%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#0f1a2e"></span>Digital Growth 35%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#636e72"></span>Brand Localization 25%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-main">
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">Content Strategy &amp; Production</div>
+        <ul>
+          <li>Built strategic content structure: annual/quarterly matrices + monthly calendars aligned with business direction; owned full lifecycle from planning to archiving</li>
+          <li>Produced <strong>20+ content formats</strong> across video, infographic, social, podcast, livestream, PR; delivered <strong>30+ whitepapers/case studies</strong> and <strong>50+ engineering stories</strong></li>
+          <li>Led <strong>10+ cross-departmental/regional campaigns</strong> — partnering with Sales, Engineering, Leadership, and HR on interviews, events, and video production</li>
+        </ul>
+      </div>
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">Digital Growth, Analytics &amp; Brand Localization</div>
+        <ul>
+          <li>Drove <strong>186% YoY engagement</strong> (<strong>74% follower growth</strong>) via platform-specific optimization across WeChat, RED, Zhihu, Bilibili, LinkedIn — trained 5 interns</li>
+          <li>Led bilingual website 2.0 relaunch: <strong>3 vendors</strong>, <strong>18 stakeholders</strong> → <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% budget savings</strong> <span class="challenge-inline">(resolved unexpected technical issues mid-project without delaying launch)</span></li>
+          <li>Generated <strong>100+ sales leads</strong> + <strong>500+ recruitment leads</strong>; built data benchmarks and ROI frameworks for ALTEN China</li>
+          <li>Led brand positioning refresh: workshop for <strong>30+ stakeholders</strong>; localized <strong>3 global campaigns</strong> with <strong>90% message consistency</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <div class="kw-inline">
+        <span class="hl">Content Marketing</span>
+        <span class="hl">B2B Marketing</span>
+        <span>Website 2.0 Relaunch</span>
+        <span>SEO Strategy</span>
+        <span>Social Media Growth</span>
+        <span>Team Mentorship</span>
+        <span>Brand Workshop</span>
+        <span>Stakeholder Mgmt</span>
+      </div>
+      <div class="quote-mini">
+        Charlotte drove content and digital marketing excellence with high OKRs. I trusted her to lead projects independently.
+        <div class="attr">— Jessica Lu, (Former) Marketing Director, ALTEN China</div>
+      </div>
+    </div>
+    <div class="page-footer">Charlotte Chi · AI-Enabled Full-Stack Marketer · cong.chi@foxmail.com</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: YIZHONG + SHENGSHI ==================== -->
+<div class="page">
+  <div class="tab-bar">
+    <div class="tab">CAME</div>
+    <div class="tab">TEKNOS</div>
+    <div class="tab">ALTEN</div>
+    <div class="tab active">YIZHONG+SHENGSHI</div>
+  </div>
+  <div class="page-content">
+    <div class="job-header">
+      <div class="job-header-left">
+        <div class="job-title-lg">Brand &amp; Content Operations → Copywriter</div>
+        <div class="job-company-lg">Yizhong Technology / GMA (Digital Agency)</div>
+        <div class="job-period-lg">2019 – Jul 2021 · SaaS / Digital Agency</div>
+      </div>
+      <div class="donut-wrap">
+        <div class="donut dg1" style="--donut-c1:#c8922b;--donut-a1:126deg;--donut-c2:#0f1a2e;--donut-a2:234deg;--donut-c3:#636e72;--donut-a3:324deg;--donut-c4:#dfe6e9;--donut-a4:360deg;">
+          <div class="donut-hole"><span class="pct">3</span><span class="lbl">Roles</span></div>
+        </div>
+        <div class="donut-legend">
+          <span class="donut-legend-item"><span class="dot" style="background:#c8922b"></span>Brand Strategy 25%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#0f1a2e"></span>Content Ops 35%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#636e72"></span>Creative 25%</span>
+          <span class="donut-legend-item"><span class="dot" style="background:#dfe6e9"></span>Campaigns 15%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="body-main">
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">Yizhong — Brand Strategy &amp; Content Ops</div>
+        <ul>
+          <li>Built B2C freelancer platform <strong>"甜薪工场" brand 0→1</strong>: interviewed founders, defined positioning, created Visual Guidelines; architected SEO keywords + content matrix across 6 platforms</li>
+          <li>Led website blog framework + dual-channel lead funnel (WeChat APP + Web); coordinated cross-functionally with UI/Product/R&D <span class="challenge-inline">(built WordPress blog from scratch in 3 weeks with no prior web dev experience)</span></li>
+          <li>Directed <strong>1–2 interns</strong> producing <strong>50+ monthly assets</strong> — exceeded OKRs; executed <strong>10+ KOL partnerships</strong> with <strong>95% on-time delivery</strong>; data-led optimization <strong>increased engagement 33%</strong></li>
+        </ul>
+      </div>
+      <div class="resp-cat" style="flex:1.5;">
+        <div class="resp-cat-title">GMA (Shengshi) — Agency Creative Lead</div>
+        <ul>
+          <li>Served diverse clients across <strong>FMCG (Lesieur), Fashion (Volley), Auto (Italdesign), Luxury (Jean Rousseau)</strong></li>
+          <li>Produced <strong>100+ monthly assets</strong> — articles, social posts, PR, infographics; EN→CN localization + graphic design, reducing external design costs by <strong>40%</strong></li>
+          <li>Translated from executional copywriter to strategic content planner — building workflows with design/project teams that laid groundwork for in-house marketing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-strip">
+      <div class="kw-inline">
+        <span class="hl">Brand 0→1</span>
+        <span class="hl">B2B SaaS</span>
+        <span>Startup</span>
+        <span>Agency</span>
+        <span>KOL Partnerships</span>
+        <span>WordPress</span>
+        <span>Copywriting</span>
+        <span>FMCG/Auto/Luxury</span>
+      </div>
+      <div class="quote-mini">
+        Working with Charlotte is always a pleasure. She knows what she wants and provides precise information you can rely on. A quick learner with strategic thinking.
+        <div class="attr">— Nina Cai, Sr. Marketing Specialist, Yizhong Technology</div>
+      </div>
+    </div>
+    <div class="page-footer">Charlotte Chi · AI-Enabled Full-Stack Marketer · cong.chi@foxmail.com</div>
+  </div>
+</div>
+
+</body>
+</html>

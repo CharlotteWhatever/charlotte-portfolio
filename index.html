@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Chi · B2B Content & Digital Marketing · AI-Enabled Portfolio</title>
+<meta name="description" content="Charlotte Chi — B2B Content & Digital Marketing Professional with AI expertise. Bilingual, data-driven, 6+ years across industrial, tech, and consulting MNCs.">
+<meta name="keywords" content="Charlotte Chi, B2B Marketing, Digital Marketing, Content Marketing, AI Marketing, Shanghai">
+<meta property="og:title" content="Charlotte Chi · B2B Content & Digital Marketing">
+<meta property="og:description" content="Bridging AI, Content, and Digital Marketing — bilingual, data-driven, and results-focused.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+   *  Neumorphism × Blue — v2
+   *  Storytelling hero · bold timeline · 1+3 portfolio · quote overflow
+   * ============================================================ */
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* ===== Design Tokens ===== */
+  :root {
+    --bg: #E4E9F2;
+    --bg-alt: #DDE3EC;
+    --text-primary: #2D3748;
+    --text-muted: #5A6B7C;
+    --accent: #1a5a9c;
+    --accent-light: #4a8fc7;
+    --accent-teal: #38B2AC;
+    --shadow-light: rgba(255,255,255,0.55);
+    --shadow-dark: rgb(163,177,198,0.6);
+    --shadow-dark-heavy: rgba(163,177,198,0.7);
+    --radius-container: 32px;
+    --radius-base: 16px;
+    --radius-inner: 12px;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --section-gap: 100px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* ——— Floating gradient blobs ——— */
+  .glass-blob {
+    position: fixed; border-radius: 50%; z-index: 0;
+    pointer-events: none;
+  }
+  .glass-blob-1 {
+    width: 550px; height: 550px;
+    background: radial-gradient(circle, rgba(74,143,199,0.35) 0%, rgba(74,143,199,0.08) 40%, transparent 65%);
+    top: -10%; right: -12%;
+    animation: floatBlob 20s ease-in-out infinite;
+  }
+  .glass-blob-2 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(26,90,156,0.30) 0%, rgba(26,90,156,0.06) 40%, transparent 65%);
+    bottom: 8%; left: -10%;
+    animation: floatBlob 25s ease-in-out infinite reverse;
+  }
+  .glass-blob-3 {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(74,143,199,0.20) 0%, rgba(74,143,199,0.04) 40%, transparent 60%);
+    top: 50%; left: 55%;
+    animation: floatBlob 22s ease-in-out infinite 4s;
+  }
+
+  @keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  /* ===== Typography ===== */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 8px;
+    font-family: var(--font-display);
+  }
+  .section-title {
+    font-size: 36px; font-weight: 700; letter-spacing: -0.03em;
+    margin-bottom: 44px; color: var(--text-primary);
+    font-family: var(--font-display);
+  }
+  .section-title em { color: var(--accent); font-style: normal; }
+
+  /* ===== Layout ===== */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
+  section { padding: var(--section-gap) 0; position: relative; }
+  .alt-bg {
+    background:
+      radial-gradient(ellipse at 75% 25%, rgba(26,90,156,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 25% 75%, rgba(74,143,199,0.04) 0%, transparent 45%),
+      var(--bg-alt);
+    position: relative;
+  }
+
+  /* ===== Nav ===== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(228, 233, 242, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 12px 64px;
+    max-width: 1280px; margin: 0 auto;
+    display: flex; align-items: center; gap: 6px;
+    flex-wrap: wrap;
+    border-radius: 0 0 var(--radius-base) var(--radius-base);
+    box-shadow: 0 4px 20px rgba(163,177,198,0.12);
+  }
+  nav a {
+    font-family: var(--font-display); font-size: 11px; font-weight: 600;
+    color: var(--text-muted); text-decoration: none;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 8px 20px; border-radius: 20px;
+    transition: 0.3s ease-out;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    background: var(--bg);
+  }
+  nav a:hover {
+    color: var(--accent);
+    box-shadow: 4px 4px 8px var(--shadow-dark-heavy), -4px -4px 8px rgba(255,255,255,0.6);
+    transform: translateY(-1px);
+  }
+  nav a.active {
+    color: var(--accent);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    transform: none;
+  }
+
+  /* ===== Hero — Storytelling Center Layout ===== */
+  .hero {
+    padding: 40px 64px 56px;
+    max-width: 1280px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 80vh;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Decorative background glow */
+  .hero::before {
+    content: ''; position: absolute; top: 20%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,90,156,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 10%; right: 15%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,90,156,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-intro {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    position: relative; z-index: 2;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 88px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    position: relative; z-index: 2;
+  }
+  .hero h1 .accent { color: var(--accent); }
+
+  .hero-sub {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-bottom: 12px;
+    position: relative; z-index: 2;
+    line-height: 1.5;
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 36px;
+    position: relative; z-index: 2;
+  }
+
+  /* Action bar: download buttons + language switch */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    position: relative; z-index: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-display); font-size: 12px; font-weight: 600;
+    padding: 14px 28px; border-radius: var(--radius-base);
+    border: none; cursor: pointer;
+    color: #fff; background: var(--accent);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+    transition: 0.3s ease-out;
+    box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 14px var(--shadow-dark-heavy), -6px -6px 14px rgba(255,255,255,0.6);
+  }
+  .btn-primary:active {
+    transform: translateY(0.5px);
+    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.1);
+  }
+  .btn-primary svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .hero-actions a svg + span { white-space: nowrap; }
+  .btn-primary, .btn-secondary { flex-shrink: 0; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-display); font-size: 12px; font-weight: 600;
+    padding: 14px 28px; border-radius: var(--radius-base);
+    border: none; cursor: pointer;
+    color: var(--text-primary); background: var(--bg);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+    transition: 0.3s ease-out;
+    box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  }
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 14px var(--shadow-dark-heavy), -6px -6px 14px rgba(255,255,255,0.6);
+  }
+  .btn-secondary:active {
+    transform: translateY(0.5px);
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  }
+
+  .hero-actions .lang-pill {
+    display: inline-flex; align-items: center; gap: 2px;
+    padding: 4px;
+    border-radius: 30px;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+    background: var(--bg);
+  }
+  .hero-actions .lang-pill button {
+    font-family: var(--font-display); font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; padding: 8px 16px; border-radius: 24px;
+    border: none; cursor: pointer; transition: 0.3s ease-out;
+    text-transform: uppercase; background: transparent; color: var(--text-muted);
+    min-height: 36px;
+  }
+  .hero-actions .lang-pill button.active {
+    background: var(--bg);
+    color: var(--accent);
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+  }
+  .hero-actions .lang-pill button:not(.active):hover { color: var(--accent); }
+
+  .hero-contact {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .hero-contact a, .hero-contact span {
+    font-size: 14px; color: var(--text-primary); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: 0.3s ease-out; font-weight: 500;
+  }
+  .hero-contact a:hover { color: var(--accent); }
+  .hero-contact svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
+
+  /* ===== Experience — Single-sided Bold Timeline ===== */
+  .exp-section-title { margin-bottom: 60px; }
+
+  .timeline {
+    position: relative; padding: 0 0 0 60px;
+  }
+  /* Thick vertical line — left side */
+  .timeline::before {
+    content: ''; position: absolute; left: 28px; top: 12px; bottom: 12px;
+    width: 4px;
+    background: linear-gradient(to bottom,
+      var(--accent-light) 0%,
+      var(--accent) 30%,
+      var(--accent) 70%,
+      var(--accent-light) 100%);
+    border-radius: 2px;
+    opacity: 0.3;
+  }
+
+  .tl-item {
+    position: relative; margin-bottom: 48px;
+    padding-left: 40px;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+
+  /* Node on the line */
+  .tl-item::before {
+    content: ''; position: absolute; left: -32px; top: 32px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 4px solid var(--accent);
+    z-index: 3;
+    box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+  }
+
+  .tl-node {
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .tl-node .date-badge {
+    display: inline-flex; flex-direction: column; align-items: center;
+    justify-content: center;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--bg);
+    box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+    flex-shrink: 0;
+  }
+  .tl-node .date-badge .month {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    color: var(--text-muted); letter-spacing: 0.5px; line-height: 1;
+  }
+  .tl-node .date-badge .year {
+    font-family: var(--font-display); font-size: 18px; font-weight: 800;
+    color: var(--accent); line-height: 1.1; margin-top: 1px;
+  }
+  .tl-node .date-badge .range {
+    font-family: var(--font-display); font-size: 7px;
+    color: var(--text-muted); margin-top: 1px;
+  }
+  .tl-node .company-short {
+    font-family: var(--font-display); font-size: 14px; font-weight: 600;
+    color: var(--text-primary); letter-spacing: 0.3px;
+  }
+  .tl-node .company-industry {
+    font-family: var(--font-body); font-size: 11px;
+    color: var(--text-muted); font-weight: 400;
+  }
+
+  .tl-content {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    padding: 28px 32px;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    transition: 0.3s ease-out;
+  }
+  .tl-content:hover {
+    box-shadow: 12px 12px 20px var(--shadow-dark-heavy), -12px -12px 20px rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+  .tl-content .exp-company {
+    font-family: var(--font-display); font-size: 14px; font-weight: 600;
+    color: var(--text-primary); margin-bottom: 2px;
+  }
+  .tl-content .exp-role {
+    font-size: 12px; color: var(--text-muted); margin-bottom: 10px; font-weight: 500;
+  }
+  .tl-content .exp-desc {
+    font-size: 13px; line-height: 1.7; color: var(--text-primary);
+  }
+  .tl-content .exp-desc strong { color: var(--accent); font-weight: 600; }
+  .tl-content .exp-desc ul {
+    list-style: none; padding: 0;
+  }
+  .tl-content .exp-desc ul li {
+    font-size: 12.5px; line-height: 1.6; color: var(--text-primary);
+    padding-left: 16px; position: relative; margin-bottom: 4px;
+  }
+  .tl-content .exp-desc ul li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: 0.35;
+  }
+
+  /* ===== Case Study ===== */
+  .case-wrap {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    padding: 56px 52px;
+    box-shadow: inset 10px 10px 24px rgba(163,177,198,0.5), inset -10px -10px 24px rgba(255,255,255,0.5);
+  }
+  .case-wrap .section-label { color: var(--text-muted); }
+  .case-wrap .section-title { color: var(--text-primary); margin-bottom: 24px; }
+  .case-brief {
+    font-size: 14px; color: var(--text-muted); line-height: 1.8;
+    max-width: 680px; margin-bottom: 28px;
+  }
+  .case-kpi {
+    display: flex; gap: 48px; margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .case-kpi > div { text-align: center; }
+  .case-kpi .num {
+    font-family: var(--font-display); font-size: 34px; font-weight: 800;
+    color: var(--accent); display: block; line-height: 1;
+  }
+  .case-kpi .lbl {
+    font-family: var(--font-display); font-size: 10px;
+    color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px;
+  }
+
+  /* Simple image placeholder — no phone frame */
+  .case-showcase {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px;
+  }
+  .case-img-placeholder {
+    background: var(--bg);
+    border-radius: var(--radius-base);
+    box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+    min-height: 200px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px;
+    transition: 0.3s ease-out;
+    cursor: pointer;
+    border: none;
+  }
+  .case-img-placeholder:hover {
+    box-shadow: inset 8px 8px 16px var(--shadow-dark-heavy), inset -8px -8px 16px rgba(255,255,255,0.6);
+  }
+  .case-img-placeholder img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-base);
+    display: block;
+  }
+
+  .case-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .case-card {
+    background: var(--bg); border-radius: var(--radius-base);
+    padding: 24px;
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    transition: 0.3s ease-out;
+  }
+  .case-card:hover {
+    box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+    transform: translateY(-1px);
+  }
+  .case-card .tag {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+  }
+  .case-card h3 { font-size: 15px; margin-bottom: 4px; }
+  .case-card p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+
+  /* ===== Portfolio — 1 Hero + 3 Grid ===== */
+  .port-hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  /* Left hero card — full height */
+  .port-hero-card {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    overflow: hidden;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    transition: 0.3s ease-out;
+    display: flex; flex-direction: column;
+  }
+  .port-hero-card:hover {
+    box-shadow: 12px 12px 24px var(--shadow-dark-heavy), -12px -12px 24px rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+  .port-hero-visual {
+    height: 240px;
+    overflow: hidden;
+    box-shadow: inset 0 -6px 10px rgba(163,177,198,0.15);
+    position: relative;
+    border-radius: var(--radius-base) var(--radius-base) 0 0;
+  }
+
+  .port-hero-body { padding: 28px 32px 32px; flex: 1; }
+  .port-hero-body .tag {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px;
+  }
+  .port-hero-body h3 { font-size: 20px; margin-bottom: 8px; }
+  .port-hero-body p { font-size: 13px; line-height: 1.7; color: var(--text-muted); margin-bottom: 12px; }
+  .port-hero-body .results { font-size: 11px; color: var(--accent); font-weight: 600; }
+
+  /* Right stack — fills same height */
+  .port-side-stack {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .port-sm-card {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    overflow: hidden;
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+    transition: 0.3s ease-out;
+    display: flex; flex: 1;
+  }
+  .port-sm-card:last-child { flex: 1; }
+  .port-sm-card:hover {
+    box-shadow: 8px 8px 16px var(--shadow-dark-heavy), -8px -8px 16px rgba(255,255,255,0.6);
+    transform: translateY(-1px);
+  }
+  .port-sm-visual {
+    width: 110px; min-height: 130px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset -6px 0 10px rgba(163,177,198,0.1);
+  }
+  .port-sm-visual .sm-well {
+    width: 70px; height: 70px; border-radius: 14px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .port-sm-body { padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; }
+  .port-sm-body .tag {
+    font-family: var(--font-display); font-size: 8px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px;
+  }
+  .port-sm-body h3 { font-size: 13px; margin-bottom: 4px; }
+  .port-sm-body p { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+  .port-sm-body .results { font-size: 10px; color: var(--accent); font-weight: 600; }
+
+  /* ===== AI Playground ===== */
+  .ai-header-row {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px;
+  }
+  .ai-intro {
+    font-size: 14px; color: var(--text-muted); max-width: 600px; margin: 0;
+  }
+  .ai-scroll-wrap {
+    position: relative;
+  }
+  .ai-scroll-arrows {
+    display: flex; gap: 8px;
+  }
+  .ai-scroll-arrows button {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: var(--bg); cursor: pointer;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s ease-out; flex-shrink: 0;
+  }
+  .ai-scroll-arrows button:hover {
+    box-shadow: 5px 5px 10px var(--shadow-dark-heavy), -5px -5px 10px rgba(255,255,255,0.6);
+    transform: scale(1.05);
+  }
+  .ai-scroll-arrows button svg { width: 18px; height: 18px; stroke: var(--text-muted); fill: none; stroke-width: 2; }
+  .ai-scroll-arrows button:hover svg { stroke: var(--accent); }
+  .ai-scroll {
+    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px 0 8px;
+  }
+  .ai-scroll::-webkit-scrollbar { display: none; }
+  .ai-scroll .ai-card {
+    min-width: calc(50% - 12px); scroll-snap-align: start; flex-shrink: 0;
+  }
+  .ai-grid { display: none; }
+  .ai-card {
+    background: var(--bg); border-radius: var(--radius-container);
+    overflow: hidden;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    transition: 0.3s ease-out;
+  }
+  .ai-card:hover {
+    box-shadow: 12px 12px 24px var(--shadow-dark-heavy), -12px -12px 24px rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+  .ai-visual {
+    height: 170px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 -6px 10px rgba(163,177,198,0.15);
+    background: var(--bg-alt);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+  }
+  .ai-visual .img-well {
+    width: 85%; height: 85%;
+    border-radius: var(--radius-inner);
+    box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .ai-visual .img-well img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; }
+  .ai-visual .img-well svg { max-width: 100%; max-height: 100%; display: block; }
+  .ai-visual .banner-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .ai-visual .banner-img img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: var(--radius-inner); }
+  .ai-body { padding: 24px 28px 28px; }
+  .ai-card h3 { font-size: 16px; margin-bottom: 6px; }
+  .ai-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 44ch; }
+  .ai-badge {
+    display: inline-block; font-family: var(--font-display); font-size: 9px;
+    font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 3px 12px; border-radius: 20px; color: var(--accent); margin-bottom: 10px;
+    box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+    background: var(--bg);
+  }
+  .ai-stack { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .ai-stack span {
+    font-family: var(--font-display); font-size: 9px; font-weight: 500;
+    padding: 3px 12px; border-radius: 20px;
+    background: var(--bg); color: var(--text-muted);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+  }
+  .ai-status { font-size: 11px; font-weight: 500; margin-top: 8px; }
+  .ai-status.done { color: var(--accent-teal); }
+  .ai-status.wip { color: var(--text-muted); }
+
+  /* ===== Recommendations — Overflow Quote ===== */
+  .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .rec-card {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    padding: 40px 36px;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    transition: 0.3s ease-out;
+    position: relative;
+  }
+  .rec-card:hover {
+    box-shadow: 12px 12px 24px var(--shadow-dark-heavy), -12px -12px 24px rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+  }
+
+  /* Quote overflow — breaks out of card boundary */
+  .rec-quote-open {
+    position: absolute;
+    top: -36px;
+    left: 12px;
+    font-family: var(--font-serif);
+    font-size: 140px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 5;
+    user-select: none;
+  }
+  .rec-quote-close {
+    position: absolute;
+    bottom: -40px;
+    right: 20px;
+    font-family: var(--font-serif);
+    font-size: 100px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 5;
+    user-select: none;
+  }
+
+  .rec-text {
+    font-size: 14px; line-height: 1.9; color: var(--text-primary); margin-bottom: 24px;
+    position: relative; z-index: 2;
+  }
+  .rec-author {
+    font-family: var(--font-display); font-size: 14px; font-weight: 600;
+    color: var(--text-primary); position: relative; z-index: 2;
+  }
+  .rec-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; position: relative; z-index: 2; }
+  .rec-inner-sep { margin-top: 12px; padding-top: 12px; position: relative; }
+  .rec-inner-sep::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 1px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 0 rgba(163,177,198,0.4);
+  }
+
+  /* ===== Downloads — Compact ===== */
+  .dl-section {
+    background: var(--bg);
+    border-radius: var(--radius-container);
+    padding: 36px 40px 32px;
+    box-shadow: inset 8px 8px 20px rgba(163,177,198,0.4), inset -8px -8px 20px rgba(255,255,255,0.4);
+  }
+  .dl-section .section-label { color: var(--text-muted); font-size: 10px; }
+  .dl-section .section-title { margin-bottom: 20px; font-size: 28px; }
+
+  .dl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .dl-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px; border-radius: var(--radius-inner);
+    background: var(--bg); text-decoration: none; transition: 0.3s ease-out;
+    box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+  }
+  .dl-item:hover {
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+    transform: translateY(-1px);
+  }
+  .dl-left { display: flex; align-items: center; gap: 10px; }
+  .dl-icon { width: 12px; height: 12px; stroke: var(--accent); fill: none; stroke-width: 1.5; flex-shrink: 0; }
+  .dl-name { font-family: var(--font-display); font-size: 11px; font-weight: 500; color: var(--text-primary); }
+  .dl-desc { font-family: var(--font-body); font-size: 9px; color: var(--text-muted); }
+  .dl-arrow { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+  .dl-item:hover .dl-arrow { stroke: var(--accent-light); transform: scale(1.2); }
+
+  .dl-contact {
+    margin-top: 20px; padding-top: 16px; position: relative;
+    display: flex; gap: 24px; flex-wrap: wrap; align-items: center; justify-content: center;
+  }
+  .dl-contact::before {
+    content: ''; position: absolute; top: 0; left: 5%; right: 5%;
+    height: 1px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 0 var(--shadow-dark);
+  }
+  .dl-contact a, .dl-contact span {
+    font-size: 12px; color: var(--text-muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px; transition: 0.3s ease-out;
+    font-weight: 500;
+  }
+  .dl-contact a:hover { color: var(--accent); }
+  .dl-contact svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+  /* ===== Footer ===== */
+  footer {
+    padding: 36px 64px 28px; max-width: 1280px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  footer .left { font-size: 11px; color: var(--text-muted); }
+  footer .left .name { font-family: var(--font-display); color: var(--accent); font-weight: 600; }
+  footer .footer-contact {
+    display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 6px;
+  }
+  footer .footer-contact a,
+  footer .footer-contact span {
+    font-size: 13px; color: var(--text-muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px; transition: 0.3s ease-out;
+    font-weight: 500;
+  }
+  footer .footer-contact a:hover { color: var(--accent); }
+  footer .footer-contact svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+  footer .right { display: flex; gap: 20px; }
+  footer .right a { color: var(--text-muted); text-decoration: none; font-size: 11px; transition: 0.3s ease-out; }
+  footer .right a:hover { color: var(--accent); }
+
+  button, a, .dl-item, .case-card, .port-hero-card, .port-sm-card, .ai-card, .rec-card, .tl-content {
+    cursor: pointer;
+  }
+  button { min-height: 44px; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .container { padding: 0 32px; }
+    nav { padding: 10px 16px; gap: 4px; flex-wrap: wrap; justify-content: center; }
+    nav a { padding: 6px 14px; font-size: 10px; }
+    .hero { padding: 40px 32px 48px; min-height: auto; }
+    .hero h1 { font-size: 56px; }
+    .hero-intro { font-size: 16px; }
+    .hero-sub { font-size: 17px; }
+
+    .timeline { padding: 0 0 0 32px; }
+    .timeline::before { left: 16px; }
+    .tl-item::before { left: -20px; }
+    .tl-node .date-badge { width: 60px; height: 60px; }
+    .tl-node .date-badge .year { font-size: 15px; }
+
+    .case-showcase { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .port-hero-grid { grid-template-columns: 1fr; }
+    .port-side-stack { gap: 12px; }
+    .port-sm-card { flex: none; }
+    .port-sm-card:last-child { flex: none; }
+    .port-sm-visual { width: 100%; min-height: 100px; }
+    .port-sm-visual .sm-well { width: 56px; height: 56px; }
+    .port-hero-visual { height: 180px; }
+    .ai-grid { grid-template-columns: 1fr; }
+    .rec-grid { grid-template-columns: 1fr; gap: 40px; }
+    .rec-quote-open { font-size: 90px; top: -26px; }
+    .rec-quote-close { font-size: 70px; bottom: -30px; }
+    .dl-grid { grid-template-columns: 1fr 1fr; }
+    .dl-item { max-width: 100%; }
+    .dl-contact { gap: 16px; justify-content: flex-start; }
+    footer { flex-direction: column; gap: 10px; align-items: flex-start; padding: 24px 32px; }
+    section { padding: 64px 0; }
+    .case-wrap { padding: 36px 28px; }
+    .dl-section { padding: 28px 24px; }
+    .rec-card { padding: 28px 24px; }
+    .port-hero-body { padding: 20px 24px 24px; }
+    .ai-scroll .ai-card { min-width: calc(50% - 12px); }
+    .ai-visual { height: 130px; }
+  }
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    nav { padding: 8px 12px; gap: 3px; justify-content: center; }
+    nav a { padding: 5px 10px; font-size: 9px; }
+    .hero { padding: 36px 20px 48px; }
+    .hero h1 { font-size: 38px; }
+    .hero-actions { gap: 8px; }
+    .btn-primary, .btn-secondary { padding: 10px 18px; font-size: 10px; }
+    .hero-contact { gap: 14px; }
+    .hero-contact a, .hero-contact span { font-size: 12px; }
+    .section-title { font-size: 26px; }
+    .rec-quote-open { font-size: 72px; top: -20px; left: 8px; }
+    .rec-quote-close { font-size: 56px; bottom: -24px; right: 12px; }
+    .port-hero-visual { height: 140px; }
+    .ai-scroll .ai-card { min-width: calc(100% - 12px); }
+    .ai-visual { height: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Floating Glass Blobs ===== -->
+<div class="glass-blob glass-blob-1"></div>
+<div class="glass-blob glass-blob-2"></div>
+<div class="glass-blob glass-blob-3"></div>
+
+<!-- ===== Hero — Storytelling Center ===== -->
+<div class="hero">
+  <div class="hero-intro" data-i18n="hero-intro">Explore the Story of</div>
+  <h1>CHARLOTTE <span class="accent">CHI</span></h1>
+  <div class="hero-sub" data-i18n="hero-sub">B2B Content &amp; Digital Marketing · AI-Enabled</div>
+  <div class="hero-tagline" data-i18n="hero-tagline">
+    Bridging AI, Content, and Digital Marketing — bilingual, data-driven, and results-focused. 6+ years across industrial, tech, and consulting MNCs.
+  </div>
+
+  <div class="hero-actions">
+    <a class="btn-primary" href="Charlotte-Chi-Resume.pdf" download>
+      <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M16 8l-4 4-4-4"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg>
+      <span data-i18n="btn-resume">Resume</span>
+    </a>
+    <a class="btn-secondary" href="#downloads">
+      <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M16 8l-4 4-4-4"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg>
+      <span data-i18n="btn-portfolio">Portfolio</span>
+    </a>
+    <div class="lang-pill">
+      <button onclick="switchLang('zh')">中文</button>
+      <button class="active" onclick="switchLang('en')">EN</button>
+    </div>
+  </div>
+
+  <div class="hero-contact">
+    <a href="mailto:cong.chi@foxmail.com">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      cong.chi@foxmail.com
+    </a>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+      WeChat: Ccccwhatever
+    </span>
+  </div>
+</div>
+
+<!-- ===== Nav — Sticky Tabs ===== -->
+<nav>
+  <a href="#experience" data-i18n="nav-experience">Experience</a>
+  <a href="#case-study" data-i18n="nav-case-study">Case Study</a>
+  <a href="#portfolio" data-i18n="nav-portfolio">Portfolio</a>
+  <a href="#ai" data-i18n="nav-ai">AI Playground</a>
+  <a href="#recommendations" data-i18n="nav-recommend">Recommendations</a>
+  <a href="#downloads" data-i18n="nav-downloads">Downloads</a>
+</nav>
+
+<!-- ===== Experience — Single-sided Timeline ===== -->
+<section id="experience">
+  <div class="container">
+    <div class="exp-section-title">
+      <div class="section-label" data-i18n="section-exp-label">Experience</div>
+      <h2 class="section-title" data-i18n="section-exp-title">Professional <em>Journey</em></h2>
+    </div>
+
+    <div class="timeline">
+      <!-- CAME -->
+      <div class="tl-item">
+        <div class="tl-node">
+          <div class="date-badge">
+            <span class="month">Jul</span>
+            <span class="year">2025</span>
+            <span class="range">→ May 26</span>
+          </div>
+          <div>
+            <div class="company-short" data-i18n="exp-came-company">CAME Automation Systems</div>
+            <div class="company-industry" data-i18n="exp-came-industry">· Industrial Automation (Italy)</div>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="exp-role" data-i18n="exp-came-role">Digital &amp; Content Project Owner</div>
+          <div class="exp-desc">
+            <ul>
+              <li data-i18n="exp-came-l1">Delivered <strong>2 websites</strong> (CN+EN) from zero in <strong>4 months</strong></li>
+              <li data-i18n="exp-came-l2">Built SEM across <strong>Baidu, Bing, Google</strong> — budget planning, keyword expansion, MQL tracking</li>
+              <li data-i18n="exp-came-l3">Implemented <strong>SEO + GEO</strong> dual-engine: on-page technicals + off-page ecosystem</li>
+              <li data-i18n="exp-came-l4">Owned brand content across WeChat, Douyin, Bilibili</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEKNOS -->
+      <div class="tl-item">
+        <div class="tl-node">
+          <div class="date-badge">
+            <span class="month">Mar</span>
+            <span class="year">2024</span>
+            <span class="range">→ Jun 25</span>
+          </div>
+          <div>
+            <div class="company-short" data-i18n="exp-teknos-company">TEKNOS Group</div>
+            <div class="company-industry" data-i18n="exp-teknos-industry">· Industrial Coatings MNC (Finland)</div>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="exp-role" data-i18n="exp-teknos-role">Global Marketing Executive</div>
+          <div class="exp-desc">
+            <ul>
+              <li data-i18n="exp-teknos-l1">AI-driven video localization across <strong>5 EU markets</strong> — <strong>35%</strong> faster turnaround</li>
+              <li data-i18n="exp-teknos-l2">Produced global campaigns across LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong></li>
+              <li data-i18n="exp-teknos-l3">Built <strong>TikTok channel 0→1</strong>: strategy, audience analysis, content direction</li>
+              <li data-i18n="exp-teknos-l4">Bridged EU Marcom × China market bilingually</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALTEN -->
+      <div class="tl-item">
+        <div class="tl-node">
+          <div class="date-badge">
+            <span class="month">Aug</span>
+            <span class="year">2021</span>
+            <span class="range">→ Feb 24</span>
+          </div>
+          <div>
+            <div class="company-short" data-i18n="exp-alten-company">ALTEN China</div>
+            <div class="company-industry" data-i18n="exp-alten-industry">· Engineering &amp; IT Consulting (French MNC)</div>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="exp-role" data-i18n="exp-alten-role">Sr. Content Marketing Specialist</div>
+          <div class="exp-desc">
+            <ul>
+              <li data-i18n="exp-alten-l1">Produced <strong>30+ white papers</strong>, <strong>50+ engineering stories</strong>, 20+ content formats</li>
+              <li data-i18n="exp-alten-l2">Delivered <strong>~3X omnichannel exposure</strong> &amp; <strong>58% follower growth</strong> (YoY)</li>
+              <li data-i18n="exp-alten-l3">Led bilingual website 2.0 relaunch: <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% cost savings</strong></li>
+              <li data-i18n="exp-alten-l4">Generated <strong>100+ sales leads</strong> &amp; <strong>500+ recruitment leads</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yizhong -->
+      <div class="tl-item">
+        <div class="tl-node">
+          <div class="date-badge">
+            <span class="month">2019</span>
+            <span class="year">Start</span>
+            <span class="range">→ Jul 21</span>
+          </div>
+          <div>
+            <div class="company-short" data-i18n="exp-yizhong-company">Yizhong Technology / Gentlemen Digital Marketing (GMA)</div>
+            <div class="company-industry" data-i18n="exp-yizhong-industry">· SaaS / Digital Agency</div>
+          </div>
+        </div>
+        <div class="tl-content">
+          <div class="exp-role" data-i18n="exp-yizhong-role">Brand &amp; Content Operations → Copywriter</div>
+          <div class="exp-desc">
+            <ul>
+              <li data-i18n="exp-yizhong-l1">Yizhong Technology — B2B SaaS content ops + B2C freelancer platform brand <strong>0→1</strong></li>
+              <li data-i18n="exp-yizhong-l2">Shengshi Marketing — Served FMCG/Auto/Luxury clients, <strong>100+ monthly assets</strong>, <strong>40% cost reduction</strong></li>
+              <li data-i18n="exp-yizhong-l3">Managed KOL partnerships, cross-platform content strategy, and brand positioning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Case Study ===== -->
+<section id="case-study" class="alt-bg">
+  <div class="container">
+    <div class="section-label" data-i18n="section-cs-label">Case Study</div>
+    <h2 class="section-title" data-i18n="section-cs-title">CAME · Digital Marketing <em>from 0 to 1</em></h2>
+
+    <div class="case-wrap">
+      <div class="section-label" data-i18n="cs-sub-label">Project Revel</div>
+      <div class="section-title" data-i18n="cs-sub-title">Building a Complete Digital Marketing Ecosystem</div>
+      <div class="case-brief" data-i18n="cs-brief">
+        CAME Automation Systems had zero digital marketing presence when Charlotte joined in July 2025. In 4+ months, she built from scratch a full-scale digital marketing system — websites, SEM, SEO, brand content, and offline events.
+      </div>
+      <div class="case-kpi">
+        <div><span class="num">2</span><span class="lbl" data-i18n="cs-kpi-1">Websites (CN+EN)</span></div>
+        <div><span class="num">4</span><span class="lbl" data-i18n="cs-kpi-2">Months Delivery</span></div>
+        <div><span class="num">3</span><span class="lbl" data-i18n="cs-kpi-3">SEM Platforms</span></div>
+        <div><span class="num">5</span><span class="lbl" data-i18n="cs-kpi-4">Content Dimensions</span></div>
+      </div>
+
+      <div class="case-showcase">
+        <div class="case-img-placeholder">
+          <img src="images/came-website-1.png" alt="CAME Website Screenshot">
+        </div>
+        <div class="case-img-placeholder">
+          <img src="images/sem-dashboard.png" alt="SEM SEO Dashboard">
+        </div>
+      </div>
+
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="tag" data-i18n="cs-card-1-tag">Website</div>
+          <h3 data-i18n="cs-card-1-title">Dual-Site from Zero</h3>
+          <p data-i18n="cs-card-1-desc">China customized + APAC English. Full-cycle project ownership from vendor selection to go-live.</p>
+        </div>
+        <div class="case-card">
+          <div class="tag" data-i18n="cs-card-2-tag">SEM</div>
+          <h3 data-i18n="cs-card-2-title">Triple-Engine SEM</h3>
+          <p data-i18n="cs-card-2-desc">Baidu, Bing, Google Ads from scratch — budget planning, keyword expansion, MQL/SDR pipeline.</p>
+        </div>
+        <div class="case-card">
+          <div class="tag" data-i18n="cs-card-3-tag">SEO</div>
+          <h3 data-i18n="cs-card-3-title">SEO + GEO Dual Engine</h3>
+          <p data-i18n="cs-card-3-desc">On-page technicals (robots.txt, sitemap, TDK) + off-page content ecosystem with monitoring.</p>
+        </div>
+        <div class="case-card">
+          <div class="tag" data-i18n="cs-card-4-tag">Content</div>
+          <h3 data-i18n="cs-card-4-title">Full Content Matrix</h3>
+          <p data-i18n="cs-card-4-desc">Brand content across WeChat, Douyin, Bilibili — articles, graphic design, video production.</p>
+        </div>
+      </div>
+
+      <!-- Case Study → Full Report button -->
+      <div style="text-align:center;margin-top:28px;">
+        <a class="btn-primary" href="docs/came-review-en.pdf" target="_blank" style="text-decoration:none;">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span data-i18n="cs-btn">View Full Project Report</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Portfolio — 1 Hero + 3 Stack ===== -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label" data-i18n="section-port-label">Portfolio</div>
+    <h2 class="section-title" data-i18n="section-port-title">Selected <em>Works</em></h2>
+
+    <div class="port-hero-grid">
+      <!-- Hero card — Face-to-Face With Engineers -->
+      <div class="port-hero-card">
+        <div class="port-hero-visual">
+          <img src="images/engineer-story-matrix.png" alt="Engineer Story Matrix" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-inner);">
+        </div>
+        <div class="port-hero-body">
+          <div class="tag" data-i18n="port-hero-tag">Content Matrix · Flagship</div>
+          <h3 data-i18n="port-hero-h3">Face-to-Face With Engineers</h3>
+          <p data-i18n="port-hero-p">ALTEN China — Built an engineer story content matrix covering B2B (client acquisition) and B2C (talent attraction). Five content dimensions: engineer interviews by industry/function/level/region/skills, industry knowledge sharing, community building, online-offline campaigns, annual awards.</p>
+          <div class="results" data-i18n="port-hero-results">30+ white papers · 50+ engineer stories · 3X omnichannel exposure</div>
+        </div>
+      </div>
+
+      <!-- 3 stacked small cards -->
+      <div class="port-side-stack">
+        <div class="port-sm-card">
+          <div class="port-sm-visual">
+            <div class="sm-well">
+              <svg viewBox="0 0 28 28" width="32" height="32" fill="none" stroke="#1a5a9c" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="24" height="16" rx="2" ry="2"/>
+                <line x1="2" y1="11" x2="26" y2="11"/>
+                <circle cx="14" cy="17" r="2"/>
+                <line x1="7" y1="23" x2="21" y2="23"/>
+              </svg>
+            </div>
+          </div>
+          <div class="port-sm-body">
+            <div class="tag" data-i18n="port-sm1-tag">Website Relaunch</div>
+            <h3 data-i18n="port-sm1-h3">Bilingual Website 2.0</h3>
+            <p data-i18n="port-sm1-p">ALTEN China — 3 vendors, 18 stakeholders. B2B+B2C dual-user journey.</p>
+            <div class="results" data-i18n="port-sm1-results">+65% SEO traffic · 2.1X dwell time</div>
+          </div>
+        </div>
+
+        <div class="port-sm-card">
+          <div class="port-sm-visual">
+            <div class="sm-well">
+              <svg viewBox="0 0 28 28" width="32" height="32" fill="none" stroke="#D4905B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="14,2 17.5,10.5 26,11 19.5,17 21.5,26 14,21 6.5,26 8.5,17 2,11 10.5,10.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="port-sm-body">
+            <div class="tag" data-i18n="port-sm3-tag">Brand Launch</div>
+            <h3 data-i18n="port-sm3-h3">Brand Launch 0→1</h3>
+            <p data-i18n="port-sm3-p">Yizhong — Content ecosystem for "甜薪工场" from scratch.</p>
+          </div>
+        </div>
+
+        <div class="port-sm-card">
+          <div class="port-sm-visual">
+            <div class="sm-well">
+              <svg viewBox="0 0 28 28" width="32" height="32" fill="none" stroke="#5B9A7A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 3C13 3 6 8 4 16c-1 4 0 8 2 10s6 3 10 2c8-2 13-9 13-17V3z"/>
+                <path d="M21 3C13 3 6 8 4 16c-1 4 0 8 2 10" opacity="0.3"/>
+              </svg>
+            </div>
+          </div>
+          <div class="port-sm-body">
+            <div class="tag" data-i18n="port-sm2-tag">Creative Campaign</div>
+            <h3 data-i18n="port-sm2-h3">French Flavor Meets Gen-Z</h3>
+            <p data-i18n="port-sm2-p">French edible oil brand targeting younger Chinese consumers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio → Full Works button -->
+      <div style="text-align:center;margin-top:28px;">
+        <a class="btn-secondary" href="docs/portfolio-history.pdf" target="_blank" style="text-decoration:none;">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span data-i18n="port-btn">View Full Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI Playground ===== -->
+<section id="ai" class="alt-bg">
+  <div class="container">
+    <div class="section-label" data-i18n="section-ai-label">AI Playground</div>
+    <h2 class="section-title" data-i18n="section-ai-title">Side Projects · <em>Built with AI</em></h2>
+    <div class="ai-header-row">
+      <div class="ai-intro" data-i18n="ai-intro">Ongoing exploration — new projects keep landing here. Each is a self-initiated build with Claude Code &amp; modern tooling.</div>
+      <div class="ai-scroll-arrows">
+        <button onclick="document.querySelector('.ai-scroll').scrollBy({left: -400, behavior: 'smooth'})">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button onclick="document.querySelector('.ai-scroll').scrollBy({left: 400, behavior: 'smooth'})">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="ai-scroll-wrap">
+      <div class="ai-scroll" id="aiScroll">
+      <div class="ai-card">
+        <div class="ai-visual">
+          <div class="img-well">
+            <img class="fill" src="images/translator-q.png" alt="Translator Q">
+          </div>
+        </div>
+        <div class="ai-body">
+          <div class="ai-badge" data-i18n="ai-badge">ONGOING</div>
+          <h3 data-i18n="ai-h3-1">Translator Q · Immersive Translation</h3>
+          <p data-i18n="ai-p-1">Bilingual immersive translation tool supporting PDF, Word, HTML with original layout preserved — read side-by-side in any language.</p>
+          <div class="ai-stack"><span>Python</span><span>Claude API</span></div>
+          <div class="ai-status done" data-i18n="ai-status-1">✅ Deployed &amp; in use</div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-visual">
+          <div class="img-well">
+            <img class="fill" src="images/wechat-auto-cn.png" alt="微信推文自动化">
+          </div>
+        </div>
+        <div class="ai-body">
+          <div class="ai-badge" data-i18n="ai-badge">ONGOING</div>
+          <h3 data-i18n="ai-h3-2">WeChat Auto-Publishing · Content Workflow</h3>
+          <p data-i18n="ai-p-2">Automated content publishing for WeChat Official Accounts with batch formatting and scheduled publishing via Python.</p>
+          <div class="ai-stack"><span>Python</span><span>Automation</span></div>
+          <div class="ai-status wip" data-i18n="ai-status-2">🚧 Iterating</div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-visual">
+          <div class="img-well">
+            <img class="fill" src="images/floating-todo.png" alt="Floating Todo">
+          </div>
+        </div>
+        <div class="ai-body">
+          <div class="ai-badge" data-i18n="ai-badge">ONGOING</div>
+          <h3 data-i18n="ai-h3-3">Floating Todo · Glassmorphism HUD</h3>
+          <p data-i18n="ai-p-3">Electron desktop todo app with signal-light priority, hierarchical tasks, drag-and-drop sorting, and inline editing.</p>
+          <div class="ai-stack"><span>Electron</span><span>HTML/CSS/JS</span></div>
+          <div class="ai-status done" data-i18n="ai-status-3">✅ Deployed &amp; in use</div>
+        </div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-visual">
+          <div class="img-well">
+            <img class="fill" src="images/portfolio-builder-cn.png" alt="作品集搭建SOP">
+          </div>
+        </div>
+        <div class="ai-body">
+          <div class="ai-badge" data-i18n="ai-badge">ONGOING</div>
+          <h3 data-i18n="ai-h3-4">Portfolio Builder · Build SOP</h3>
+          <p data-i18n="ai-p-4">End-to-end automation toolchain from content planning through HTML design and PDF export to PPTX generation.</p>
+          <div class="ai-stack"><span>Python</span><span>HTML/CSS</span></div>
+          <div class="ai-status done" data-i18n="ai-status-4">✅ SOP documented</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<section id="recommendations">
+  <div class="container">
+    <div class="section-label" data-i18n="section-rec-label">Recommendations</div>
+    <h2 class="section-title" data-i18n="section-rec-title">Words from <em>Colleagues</em></h2>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-quote-open">"</div>
+        <div class="rec-text" data-i18n="rec-quote-1">
+          I warmly recommend Charlotte for similar and more demanding Marketing tasks. I assess her skills related to this role as very good. She was keen to learn about the business, proactive in moving projects forward and was great at presenting core messages in an accessible way to complex markets.
+        </div>
+        <div class="rec-quote-close">"</div>
+        <div class="rec-author">Suzie Upson</div>
+        <div class="rec-role">Head of Marketing, TEKNOS Group</div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-quote-open">"</div>
+        <div class="rec-text" data-i18n="rec-quote-2">
+          In nine months, she built from scratch two corporate websites, SEM on Baidu/Bing/Google, a full SEO system, plus content creation and social media management. What stood out: she learns incredibly fast, is highly efficient, creative yet logical, works independently, and proactively uses AI tools to speed up everything.
+        </div>
+        <div class="rec-quote-close">"</div>
+        <div style="display:flex; gap:40px; position:relative; z-index:2; flex-wrap:wrap;">
+          <div style="flex:1;">
+            <div class="rec-author">Alexander Bogza</div>
+            <div class="rec-role">General Manager, CAME China</div>
+          </div>
+          <div style="flex:1;">
+            <div class="rec-author">殷亚卿</div>
+            <div class="rec-role">Marketing Manager, CAME China</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Downloads — Compact ===== -->
+<section id="downloads">
+  <div class="container">
+    <div class="dl-section">
+      <div class="section-label" data-i18n="section-dl-label">Downloads</div>
+      <h2 class="section-title" data-i18n="section-dl-title">Documents &amp; Resources</h2>
+
+      <div class="dl-grid">
+        <a class="dl-item" href="docs/resume-en.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-1">Resume EN (One-Page)</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/resume-cn.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-2">简历中文 (一页精简版)</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/experience-en.pdf" style="display:none">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-3">Full CV EN</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/experience-cn.pdf" style="display:none">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-4">中文履历（完整版）</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/portfolio-history.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-5">Portfolio (History)</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/came-review-cn.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-6">CAME Project Review CN</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/came-review-en.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-9">CAME Project Review EN</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/ref-letter-CAME.pdf">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-7">Reference Letter - CAME</div><div class="dl-desc">PDF</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+        <a class="dl-item" href="docs/ref-letter-Teknos.docx">
+          <div class="dl-left">
+            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><div class="dl-name" data-i18n="dl-8">Reference Letter - TEKNOS</div><div class="dl-desc">DOCX</div></div>
+          </div>
+          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="left">
+    <span data-i18n="footer-name">Charlotte Chi · B2B Content &amp; Digital Marketing · AI-Enabled</span>
+    <div class="footer-contact">
+      <a href="mailto:cong.chi@foxmail.com">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cong.chi@foxmail.com
+      </a>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
+        WeChat: Ccccwhatever
+      </span>
+    </div>
+  </div>
+  <div class="right">
+    <a href="#">GitHub</a>
+  </div>
+</footer>
+
+<script>
+// ===== i18n Translations =====
+const i18n = {
+  'hero-intro':        { en: 'Explore the Story of', zh: '' },
+  'hero-sub':          { en: 'B2B Content &amp; Digital Marketing · AI-Enabled', zh: 'AI赋能全栈营销人 · B2B 内容&amp;数字营销' },
+  'hero-tagline':      { en: 'Bridging AI, Content, and Digital Marketing — bilingual, data-driven, and results-focused. 6+ years across industrial, tech, and consulting MNCs.', zh: '融合AI、内容与数字营销 — 双语环境，数据驱动，结果导向。6年以上工业、科技与咨询跨国营销经验，擅长从0到1搭建数字营销体系。' },
+  'btn-resume':        { en: 'Resume', zh: '下载简历' },
+  'btn-portfolio':     { en: 'Portfolio', zh: '作品集' },
+  'nav-experience':    { en: 'Experience', zh: '工作经历' },
+  'nav-case-study':    { en: 'Case Study', zh: '项目案例' },
+  'nav-portfolio':     { en: 'Portfolio', zh: '精选作品' },
+  'nav-ai':            { en: 'AI Playground', zh: 'AI项目' },
+  'nav-recommend':     { en: 'Recommendations', zh: '推荐评价' },
+  'nav-downloads':     { en: 'Downloads', zh: '资料下载' },
+  'section-exp-label': { en: 'Experience', zh: '工作经历' },
+  'section-exp-title': { en: 'Professional <em>Journey</em>', zh: '职业 <em>旅程</em>' },
+  'exp-came-company':  { en: 'CAME Automation Systems', zh: '喀美自动化系统（上海）有限公司' },
+  'exp-came-industry': { en: '· Industrial Automation (Italy)', zh: '· 工业自动化（意大利）' },
+  'exp-came-role':     { en: 'Digital &amp; Content Project Owner', zh: '数字与内容项目负责人' },
+  'exp-came-l1':       { en: 'Delivered <strong>2 websites</strong> (CN+EN) from zero in <strong>4 months</strong>', zh: '<strong>4个月</strong>内从零交付<strong>2个官网</strong>（中英文）' },
+  'exp-came-l2':       { en: 'Built SEM across <strong>Baidu, Bing, Google</strong> — budget planning, keyword expansion, MQL tracking', zh: '搭建<strong>百度、必应、谷歌</strong>三引擎SEM体系' },
+  'exp-came-l3':       { en: 'Implemented <strong>SEO + GEO</strong> dual-engine: on-page technicals + off-page ecosystem', zh: '实施<strong>SEO + GEO</strong>双引擎策略：站内技术+站外内容生态' },
+  'exp-came-l4':       { en: 'Drove <strong>content strategy</strong> across WeChat, Douyin, Bilibili — articles, graphic design, video', zh: '制定<strong>内容策略</strong>并统筹微信、抖音、B站品牌内容矩阵——文章、设计、视频全品类' },
+  'exp-teknos-company':{ en: 'TEKNOS Group', zh: '泰克诺斯坚弗（上海）涂料有限公司' },
+  'exp-teknos-industry':{ en: '· Industrial Coatings MNC (Finland)', zh: '· 工业涂料（芬兰，总部HC）' },
+  'exp-teknos-role':   { en: 'Global Marketing Executive', zh: '全球营销专员' },
+  'exp-teknos-l1':     { en: 'AI-driven video localization across <strong>5 EU markets</strong> — <strong>35%</strong> faster turnaround', zh: 'AI驱动视频本地化覆盖<strong>5个欧盟市场</strong> — 周期缩短<strong>35%</strong>' },
+  'exp-teknos-l2':     { en: 'Produced global campaigns across LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong>', zh: '产出LinkedIn/YouTube/IG/FB全球活动，品牌合规率<strong>90%</strong>' },
+  'exp-teknos-l3':     { en: 'Built <strong>TikTok channel 0→1</strong>: strategy, audience analysis, content direction', zh: '从零搭建<strong>TikTok频道0→1</strong>' },
+  'exp-teknos-l4':     { en: 'Bridged EU Marcom × China market bilingually', zh: '跨国双向沟通：欧盟团队 × 中国市场' },
+  'exp-alten-company': { en: 'ALTEN China', zh: '欧立腾中国' },
+  'exp-alten-industry':{ en: '· Engineering &amp; IT Consulting (French MNC)', zh: '· 工程技术咨询（法资）' },
+  'exp-alten-role':    { en: 'Sr. Content Marketing Specialist', zh: '高级内容营销专员' },
+  'exp-alten-l1':      { en: 'Led <strong>content strategy</strong> — produced <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>, 20+ content formats', zh: '主导<strong>内容策略</strong>——产出<strong>30+白皮书</strong>、<strong>50+工程师故事</strong>、20+内容形式' },
+  'exp-alten-l2':      { en: 'Delivered <strong>~3X omnichannel exposure</strong> &amp; <strong>58% follower growth</strong> (YoY)', zh: '全渠道曝光增长<strong>近3倍</strong>，粉丝增长<strong>58%</strong>（同比）' },
+  'exp-alten-l3':      { en: 'Led bilingual website 2.0 relaunch: <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% cost savings</strong>', zh: '主导官网2.0改版：<strong>SEO流量+65%</strong>、停留时间<strong>2.1倍</strong>' },
+  'exp-alten-l4':      { en: 'Generated <strong>100+ sales leads</strong> &amp; <strong>500+ recruitment leads</strong>', zh: '获得<strong>100+销售线索</strong>与<strong>500+招聘线索</strong>' },
+  'exp-yizhong-company':{ en: 'Yizhong Technology / Gentlemen Digital Marketing (GMA)', zh: '蚁众科技 / 胜仕营销（GMA）' },
+  'exp-yizhong-industry':{ en: '· SaaS / Digital Agency', zh: '· SaaS / 数字广告' },
+  'exp-yizhong-role':  { en: 'Brand &amp; Content Operations → Copywriter', zh: '品牌运营 → 文案策划' },
+  'exp-yizhong-l1':    { en: 'Yizhong Technology — B2B SaaS content ops + B2C freelancer platform brand <strong>0→1</strong>', zh: '蚁众科技 — B2B SaaS内容运营 + B2C自由职业者平台品牌<strong>从0到1</strong>' },
+  'exp-yizhong-l2':    { en: 'Shengshi Marketing — Served FMCG/Auto/Luxury clients, <strong>100+ monthly assets</strong>, <strong>40% cost reduction</strong>', zh: '胜仕营销 — 服务快消/汽车/奢侈品客户，<strong>月产100+物料</strong>，设计成本降低<strong>40%</strong>' },
+  'exp-yizhong-l3':    { en: 'Managed KOL partnerships, cross-platform content strategy, and brand positioning', zh: '负责KOL合作、跨平台内容策略与品牌定位' },
+  'section-cs-label':  { en: 'Case Study', zh: '项目案例' },
+  'section-cs-title':  { en: 'CAME · Digital Marketing <em>from 0 to 1</em>', zh: 'CAME · 数字营销<em>从0到1</em>' },
+  'cs-sub-label':      { en: 'Project Revel', zh: 'Project Revel' },
+  'cs-sub-title':      { en: 'Building a Complete Digital Marketing Ecosystem', zh: '从零搭建完整数字营销体系' },
+  'cs-brief':          { en: 'CAME Automation Systems had zero digital marketing presence when Charlotte joined in July 2025. In 4+ months, she built from scratch a full-scale digital marketing system — websites, SEM, SEO, brand content, and offline events.', zh: 'Charlotte于2025年7月加入CAME时，企业数字营销基础为零。在4个多月内，她从无到有搭建了全套数字营销体系——官网、SEM、SEO、品牌内容与线下活动。' },
+  'cs-kpi-1':          { en: 'Websites (CN+EN)', zh: '官网（中英文）' },
+  'cs-kpi-2':          { en: 'Months Delivery', zh: '个月交付' },
+  'cs-kpi-3':          { en: 'SEM Platforms', zh: 'SEM平台' },
+  'cs-kpi-4':          { en: 'Content Dimensions', zh: '内容维度' },
+  'cs-btn':            { en: 'View Full Project Report', zh: '查看完整项目报告' },
+  'cs-card-1-tag':     { en: 'Website', zh: '网站建设' },
+  'cs-card-1-title':   { en: 'Dual-Site from Zero', zh: '中英文双站从零搭建' },
+  'cs-card-1-desc':    { en: 'China customized + APAC English. Full-cycle project ownership from vendor selection to go-live.', zh: '中国定制版 + 亚太英文版双站并行，从供应商筛选到上线全流程把控。' },
+  'cs-card-2-tag':     { en: 'SEM', zh: '搜索广告' },
+  'cs-card-2-title':   { en: 'Triple-Channel SEM', zh: '三渠道搜索广告' },
+  'cs-card-2-desc':    { en: 'Baidu, Bing, Google Ads from scratch — budget planning, keyword expansion, MQL/SDR pipeline.', zh: '百度、必应、谷歌三大搜索广告从零搭建，涵盖预算规划、关键词拓展、线索追踪全链路。' },
+  'cs-card-3-tag':     { en: 'SEO', zh: '搜索引擎优化' },
+  'cs-card-3-title':   { en: 'SEO + GEO Dual Engine', zh: 'SEO + GEO 双引擎' },
+  'cs-card-3-desc':    { en: 'On-page technicals (robots.txt, sitemap, TDK) + off-page content ecosystem with monitoring.', zh: '站内技术改造结合站外内容生态建设，多维度监测搜索排名与流量表现。' },
+  'cs-card-4-tag':     { en: 'Content', zh: '内容策略' },
+  'cs-card-4-title':   { en: 'Full Content Matrix', zh: '全品类内容矩阵' },
+  'cs-card-4-desc':    { en: 'Brand content across WeChat, Douyin, Bilibili — articles, graphic design, video production.', zh: '微信、抖音、B站全平台品牌内容产出——文章撰写、平面设计、视频制作全覆盖。' },
+  'section-port-label':{ en: 'Portfolio', zh: '作品集锦' },
+  'section-port-title':{ en: 'Selected <em>Works</em>', zh: '往期<em>项目</em>' },
+  'port-hero-tag':     { en: 'Content Matrix · Flagship', zh: '内容矩阵 · 旗舰项目' },
+  'port-hero-h3':      { en: 'Face-to-Face With Engineers', zh: '与工程师面对面' },
+  'port-hero-p':       { en: 'ALTEN China — Built an engineer story content matrix covering B2B (client acquisition) and B2C (talent attraction). Five content dimensions: engineer interviews by industry/function/level/region/skills, industry knowledge sharing, community building, online-offline campaigns, annual awards.', zh: '为工程技术咨询公司ALTEN搭建工程师故事内容矩阵，通过真实人物故事双向触达B2B客户与潜在人才。内容涵盖工程师访谈、行业知识分享、社区运营、线上线下活动与年度评选五大维度。' },
+  'port-hero-results': { en: '30+ white papers · 50+ engineer stories · 3X omnichannel exposure', zh: '30余份白皮书 · 50多个工程师故事 · 全渠道曝光增长3倍' },
+  'port-sm1-tag':      { en: 'Website Relaunch', zh: '网站改版' },
+  'port-sm1-h3':       { en: 'Bilingual Website 2.0', zh: '中英双语官网2.0' },
+  'port-sm1-p':        { en: 'ALTEN China — 3 vendors, 18 stakeholders. B2B+B2C dual-user journey.', zh: '独立负责ALTEN中国官网从规划到上线的全流程翻新，管理3家供应商、协调18个项目相关者。' },
+  'port-sm1-results':  { en: '+65% SEO traffic · 2.1X dwell time', zh: '搜索流量提升65% · 页面停留时间增至2.1倍' },
+  'port-sm2-tag':      { en: 'Creative Campaign', zh: '创意营销' },
+  'port-sm2-h3':       { en: 'French Flavor Meets Gen-Z', zh: '法式风味遇上Z世代' },
+  'port-sm2-p':        { en: 'French edible oil brand Lesieur targeting younger Chinese consumers through localized content.', zh: '为法国食用油品牌乐禧瑞打造年轻化内容营销，通过文化适配与本土化传播打入中国新生代市场。' },
+  'port-sm3-tag':      { en: 'Brand Launch', zh: '品牌启动' },
+  'port-sm3-h3':       { en: 'Brand Launch 0→1', zh: '品牌从0到1' },
+  'port-sm3-p':        { en: 'Yizhong — Built a content ecosystem for "甜薪工场" freelancer platform from scratch.', zh: '为自由职业者平台"甜薪工场"从零搭建品牌定位、内容策略与官网框架，完成市场冷启动。' },
+  'port-btn':          { en: 'View Full Portfolio', zh: '查看完整作品集' },
+  'section-ai-label':  { en: 'AI Playground', zh: 'AI实验室' },
+  'section-ai-title':  { en: 'Side Projects · <em>Built with AI</em>', zh: '用AI搭建的<em>小作品</em>' },
+  'ai-intro':          { en: 'Ongoing exploration — new projects keep landing here. Each is a self-initiated build with Claude Code &amp; modern tooling.', zh: '持续探索中——新作品不断落地，每一个都是利用AI工具独立完成的实战项目。' },
+  'ai-badge':          { en: 'ONGOING', zh: '进行中' },
+  'ai-h3-1':           { en: 'Translator Q · Immersive Translation', zh: '翻译器Q · 沉浸式翻译' },
+  'ai-p-1':            { en: 'Bilingual immersive translation tool supporting PDF, Word, HTML with original layout preserved — read side-by-side in any language.', zh: '双语沉浸式翻译工具，支持PDF、Word、HTML等多格式文档，保留原文排版，中英对照阅读。' },
+  'ai-status-1':       { en: '✅ Deployed &amp; in use', zh: '✅ 已部署使用' },
+  'ai-h3-2':           { en: 'WeChat Auto-Publishing · Content Workflow', zh: '微信推文自动化 · 内容工作流' },
+  'ai-p-2':            { en: 'Automated content publishing for WeChat Official Accounts with batch formatting and scheduled publishing via Python.', zh: '微信公众号内容自动化发布工具，支持Markdown批量排版与定时推送。' },
+  'ai-status-2':       { en: '🚧 Iterating', zh: '🚧 持续迭代中' },
+  'ai-h3-3':           { en: 'Floating Todo · Glassmorphism HUD', zh: '悬浮待办 · 玻璃态HUD' },
+  'ai-p-3':            { en: 'Electron desktop todo app with signal-light priority, hierarchical tasks, drag-and-drop sorting, and inline editing.', zh: '基于Electron的桌面待办应用，信号灯优先级标注、任务层级管理、支持拖拽排序，毛玻璃视觉风格。' },
+  'ai-status-3':       { en: '✅ Deployed &amp; in use', zh: '✅ 已部署使用' },
+  'ai-h3-4':           { en: 'Portfolio Builder · Build SOP', zh: '作品集搭建 · SOP工作流' },
+  'ai-p-4':            { en: 'End-to-end automation toolchain from content planning through HTML design and PDF export to PPTX generation.', zh: '端到端自动化工具链：从内容梳理到HTML设计、PDF导出、PPTX生成的完整流程。' },
+  'ai-status-4':       { en: '✅ SOP documented', zh: '✅ 已完成流程文档' },
+  'section-rec-label': { en: 'Recommendations', zh: '推荐评价' },
+  'section-rec-title': { en: 'Words from <em>Colleagues</em>', zh: '他们眼中的<em>我</em>' },
+  'rec-quote-1':      { en: 'I warmly recommend Charlotte for similar and more demanding Marketing tasks. I assess her skills related to this role as very good. She was keen to learn about the business, proactive in moving projects forward and was great at presenting core messages in an accessible way to complex markets.', zh: '我衷心推荐Charlotte担任类似或要求更高的营销职位。她学习意愿强，积极主动，擅长用易懂的方式向复杂市场传达核心信息。' },
+  'rec-quote-2':      { en: 'In nine months, she built from scratch two corporate websites, SEM on Baidu/Bing/Google, a full SEO system, plus content creation and social media management. What stood out: she learns incredibly fast, is highly efficient, creative yet logical, works independently, and proactively uses AI tools to speed up everything.', zh: '九个月内，她从零搭建了两个企业官网、百度/必应/谷歌SEM体系、完整SEO系统，以及内容创作和社媒管理。最突出的：她学习极快、高效、有创意且逻辑清晰，并主动使用AI工具提升效率。' },
+  'section-dl-label':  { en: 'Downloads', zh: '资料下载' },
+  'section-dl-title':  { en: 'Documents &amp; Resources', zh: '文档与<em>资源</em>' },
+  'dl-1':              { en: 'Resume EN (One-Page)', zh: '英文简历（一页版）' },
+  'dl-2':              { en: '简历中文 (一页精简版)', zh: '中文简历（一页版）' },
+  'dl-3':              { en: 'Full CV EN', zh: '英文履历（完整版）' },
+  'dl-4':              { en: 'Full CV CN', zh: '中文履历（完整版）' },
+  'dl-5':              { en: 'Portfolio (History)', zh: '历史作品集' },
+  'dl-6':              { en: 'CAME Project Review CN', zh: 'CAME项目复盘（中）' },
+  'dl-7':              { en: 'Reference Letter - CAME', zh: '推荐信 - CAME' },
+  'dl-7-desc':         { en: 'General Manager', zh: '总经理推荐' },
+  'dl-8':              { en: 'Reference Letter - TEKNOS', zh: '推荐信 - TEKNOS' },
+  'dl-8-desc':         { en: 'Head of Marketing', zh: '市场总监推荐' },
+  'dl-9':              { en: 'CAME Project Review EN', zh: 'CAME项目复盘（英）' },
+  'dl-9-desc':         { en: 'Project Review', zh: '项目复盘' },
+  'footer-name':       { en: 'Charlotte Chi · B2B Content &amp; Digital Marketing · AI-Enabled', zh: 'Charlotte Chi · AI赋能 · 全栈数字营销人' },
+};
+
+let currentLang = 'en';
+
+function switchLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[key] && i18n[key][lang] !== undefined) {
+      el.innerHTML = i18n[key][lang];
+    }
+  });
+  // Update lang pill buttons
+  document.querySelectorAll('.lang-pill button').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'en' ? 'EN' : '中文'));
+  });
+  // Special: hide hero-intro in Chinese
+  document.querySelectorAll('[data-i18n="hero-intro"]').forEach(el => {
+    el.style.display = lang === 'zh' ? 'none' : 'block';
+  });
+}
+
+// ===== Initialize English =====
+switchLang('en');
+
+// ===== Active nav highlight on scroll =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-100px 0px 0px 0px' });
+
+sections.forEach(section => navObserver.observe(section));
+</script>
+
+</body>
+</html>

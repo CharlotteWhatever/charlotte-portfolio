@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAME · From Zero to One · Strategy & Execution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --bg:#E4E9F2;--card-bg:#ffffff;--text:#2D3748;--text2:#5A6B7C;--text3:#8899aa;
+  --accent:#1a5a9c;--accent-l:#4a8fc7;--warm:#D4905B;
+  --sh-l:rgba(255,255,255,0.55);--sh-d:rgb(163,177,198,0.6);
+  --sh-page:9px 9px 16px var(--sh-d),-9px -9px 16px var(--sh-l);
+  --sh-float:6px 6px 12px var(--sh-d),-6px -6px 12px var(--sh-l);
+  --sh-card:4px 4px 8px var(--sh-d),-4px -4px 8px var(--sh-l);
+  --sh-in:inset 3px 3px 6px var(--sh-d),inset -3px -3px 6px var(--sh-l);
+  --r-pg:24px;--r-cd:16px;--r-in:12px;
+  --f-d:'Plus Jakarta Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --f-b:'DM Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --a-sub:rgba(26,90,156,0.06);--a-bd:rgba(26,90,156,0.12);--line:#e0e5ee;
+}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;min-height:100vh;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.w{max-width:1050px;margin:0 auto;padding:24px;position:relative;z-index:1}
+.page{background:var(--card-bg);border-radius:var(--r-pg);box-shadow:var(--sh-page);margin-bottom:24px;padding:36px 48px;page-break-after:always;position:relative;aspect-ratio:16/9}
+@media print{.page{background:#fff;box-shadow:none;border-radius:0;margin:0;padding:40px 44px}@page{margin:0.8cm 1cm}}
+.pn{position:absolute;bottom:18px;right:24px;font-size:9px;color:var(--text3);letter-spacing:3px;font-weight:500;font-family:var(--f-b)}
+.conclusion{font-family:var(--f-d);font-size:26px;font-weight:800;line-height:1.25;margin-bottom:4px;color:var(--text);letter-spacing:-0.3px}
+.conclusion .hl{color:var(--accent)}
+.conclusion-sub{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.4}
+.conclusion-divider{width:30px;height:3px;background:var(--warm);border:none;margin:0 0 18px;border-radius:2px}
+.strategy{padding:16px 18px;border-radius:var(--r-in);background:var(--card-bg);box-shadow:var(--sh-in);font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:16px}
+.strategy strong{color:var(--text)}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dual-box{padding:18px;border-radius:var(--r-cd);background:var(--card-bg)!important;border:none!important}
+.dual-box.left{box-shadow:var(--sh-in)}
+.dual-box.right{box-shadow:var(--sh-card);background:linear-gradient(135deg,var(--card-bg)0%,rgba(212,144,91,0.04)100%)!important}
+.dual-box h4{font-family:var(--f-d);font-size:11px;letter-spacing:3px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(163,177,198,0.2)!important;color:var(--text3)}
+.dual-box.right h4{color:var(--warm)}
+.dual-box ul{list-style:none}
+.dual-box li{font-size:14px;color:var(--text2);line-height:1.9;padding-left:18px;position:relative}
+.dual-box.left li::before{content:'✕';position:absolute;left:0;color:var(--text3);font-size:11px}
+.dual-box.right li::before{content:'✓';position:absolute;left:0;color:var(--warm);font-size:12px;font-weight:700}
+.tl{padding-left:28px;position:relative}
+.tl::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--accent-l),rgba(163,177,198,0.2));border-radius:1px}
+.tl-item{position:relative;padding:0 0 16px 18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-22px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--card-bg),0 0 0 5px rgba(26,90,156,0.12)}
+.tl-item h4{font-family:var(--f-d);font-size:14px;font-weight:600}
+.tl-item p{font-size:13px;color:var(--text2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gi{padding:14px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-card);border:none!important}
+.gi h4{font-family:var(--f-d);font-size:13px;font-weight:600;margin-bottom:3px}.gi p{font-size:12px;color:var(--text2);line-height:1.4}
+.dc{text-align:center;padding:22px 12px 18px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-float);position:relative;overflow:hidden;border:none!important}
+.dc::after{content:'';position:absolute;top:0;left:12px;right:12px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-l))}
+.dc .n{font-family:var(--f-d);font-size:38px;font-weight:800;color:var(--accent);line-height:1}
+.dc .n .s{font-size:15px;color:var(--text3);font-weight:400}
+.dc .l{font-size:12px;color:var(--text2);margin-top:5px}
+.dc .note{font-size:10px;color:var(--text3);margin-top:3px;letter-spacing:0.3px}
+.ch-card{padding:14px;border-radius:var(--r-in);background:var(--card-bg)!important;box-shadow:var(--sh-card);text-align:center;position:relative;border:none!important}
+.ch-card::before{content:'';position:absolute;top:0;left:12px;right:12px;height:3px;border-radius:2px;background:var(--bar,linear-gradient(90deg,var(--accent),var(--accent-l)))}
+.ch-card h4{font-family:var(--f-d);font-size:12px;font-weight:700;margin-bottom:2px;letter-spacing:1px}
+.ch-card .ctr{font-size:11px;color:var(--text2);margin-bottom:6px}
+.ch-card .num{font-family:var(--f-d);font-size:24px;font-weight:800;line-height:1;color:var(--bar,var(--accent))}
+.ch-card .num-label{font-size:10px;color:var(--text3);margin-top:2px}
+.ps-item{font-size:12px;color:var(--text2);line-height:1.5;padding:4px 0;display:flex;gap:6px}
+.ps-item .q{color:var(--text);font-weight:500;flex-shrink:0;word-break:break-word}
+.section-label{font-family:var(--f-d);font-size:11px;font-weight:700;letter-spacing:3px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid rgba(163,177,198,0.15)!important;color:var(--text)}
+[style*="f4f6fa"]{background:var(--card-bg)!important;box-shadow:var(--sh-card)!important}
+[style*="accent-subtle"]{background:var(--card-bg)!important;box-shadow:var(--sh-in)!important}
+[style*="warm-subtle"]{background:var(--card-bg)!important;box-shadow:var(--sh-in)!important}
+@media(max-width:700px){.page{padding:28px 20px}.dual,.g2{grid-template-columns:1fr}.g4{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body><div class="w">
+
+<div class="page" style="display:flex;flex-direction:column;justify-content:center;">
+  <div style="font-size:12px;color:var(--text3);letter-spacing:4px;margin-bottom:14px;font-family:var(--f-d);font-weight:600;">PROJECT REVIEW · AUG 2024 – MAY 2026</div>
+  <div style="font-size:clamp(34px,4.5vw,52px);font-weight:800;line-height:1.1;margin-bottom:10px;font-family:var(--f-d);letter-spacing:-0.03em;">From Zero to One
+    <span style="display:block;font-size:clamp(18px,2.2vw,28px);font-weight:400;color:var(--text2);margin-top:14px;text-align:left;">Strategy &amp; Execution · Building a Brand's Digital Ecosystem</span>
+    <span style="display:block;font-size:clamp(18px,2.2vw,28px);font-weight:400;color:var(--text2);margin-top:8px;text-align:left;">in 10 Months</span>
+  </div>
+  <hr style="border:none;border-top:3px solid var(--warm);width:50px;margin:20px 0;border-radius:2px;">
+  <div style="display:flex;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--text3);margin-bottom:20px;">
+    <span><strong style="color:var(--text);font-weight:600;">Brand</strong> CAME · Italian Gate Automation</span>
+    <span><strong style="color:var(--text);font-weight:600;">Role</strong> Project Lead</span>
+    <span><strong style="color:var(--text);font-weight:600;">Scope</strong> Website · Search · SEM · Social · Content</span>
+  </div>
+  <div style="font-size:14px;color:var(--text2);max-width:560px;line-height:1.6;">1 person, 1 AI tool, 2 vendors, 4 reporting lines.</div>
+  <div class="pn">01/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">10 months — from <span class="hl">near zero</span> to a <span class="hl">full-stack digital presence</span></div>
+  <div class="conclusion-sub">A B2B traditional manufacturing brand, 2 years in China with 80% resources allocated offline.</div><hr class="conclusion-divider">
+  <div class="strategy"><strong>Strategic rationale:</strong> The brand was in late cold-start phase with minimal digital foundation. The approach was not to scale everything at once, but to follow a phased sequence — build the website first as the central hub, then activate search channels, then expand social media. Each phase only began after the prerequisites of the previous phase were met.</div>
+  <div class="dual">
+    <div class="dual-box left"><h4 style="color:var(--text3);">BEFORE · AUG 2024</h4><ul><li>Single-page website with form collection only</li><li>No SEO deployment, zero search indexing</li><li>No SEM campaigns launched</li><li>Monthly WeChat posts, scattered video content</li><li>No content system, no data-driven approach</li></ul></div>
+    <div class="dual-box right"><h4 style="color:var(--warm);">AFTER · MAY 2026</h4><ul><li>Functional Chinese site + showcase English site</li><li>SEO indexing + content matrix, 20,000+ brand impressions</li><li>Multi-channel SEM (Baidu/Bing/Google), 100+ qualified leads</li><li>Content ecosystem: WeChat + Video + Bilibili + TikTok</li><li>4-pillar content marketing framework live</li></ul></div>
+  </div>
+  <div style="display:flex;gap:20px;margin-top:18px;padding:14px;background:#f4f6fa;border-radius:12px;justify-content:space-around;">
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">3</span><br><span style="font-size:10px;color:var(--text3);">Product Lines</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">1</span><br><span style="font-size:10px;color:var(--text3);">Person Team</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">10</span><br><span style="font-size:10px;color:var(--text3);">Months</span></div>
+    <div style="text-align:center;"><span style="font-size:20px;font-weight:800;color:var(--accent);font-family:var(--f-d);">20K+</span><br><span style="font-size:10px;color:var(--text3);">Brand Impressions</span></div>
+  </div>
+  <div class="pn">02/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">10 months · a complete <span class="hl">zero-to-one</span> delivery</div>
+  <div class="conclusion-sub">One person + one brand + 10 months = from a single landing page to a fully integrated digital marketing system.</div><hr class="conclusion-divider">
+  <div class="g4">
+    <div class="dc"><div class="n">6,000<span class="s">+</span></div><div class="l">Monthly Website Visits</div><div class="note">Site rebuilt from scratch</div></div>
+    <div class="dc"><div class="n">20,000<span class="s">+</span></div><div class="l">Brand Impressions</div><div class="note">SEO + Content Matrix</div></div>
+    <div class="dc"><div class="n">100<span class="s">+</span></div><div class="l">SEM Qualified Leads</div><div class="note">Multi-channel Campaigns</div></div>
+    <div class="dc"><div class="n">20<span class="s">+</span></div><div class="l">Direct Brand Inquiries</div><div class="note">Search-driven</div></div>
+  </div>
+  <div style="margin-top:24px;padding:20px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <div style="display:flex;gap:16px;"><span style="font-size:12px;font-weight:600;color:var(--accent);font-family:var(--f-d);">● Website</span><span style="font-size:12px;color:var(--text2);">● SEO</span><span style="font-size:12px;color:var(--text2);">● SEM</span><span style="font-size:12px;color:var(--text2);">● Social</span><span style="font-size:12px;color:var(--text2);">● Content</span></div>
+      <span style="font-size:11px;color:var(--text3);letter-spacing:2px;">AUG 2024 ———————————— MAY 2026</span>
+    </div>
+    <div style="margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6;text-align:center;">Website as the hub → SEO for organic reach → SEM for precision acquisition → Social for amplification → Content for trust and retention</div>
+  </div>
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <div style="padding:16px;border-radius:12px;background:var(--accent-subtle);border:1px solid var(--accent-bd);"><div style="font-size:12px;font-weight:700;color:var(--accent);font-family:var(--f-d);">Key Competencies</div><div style="font-size:12px;color:var(--text2);margin-top:6px;line-height:1.6;">Strategic Planning · Project Management · Cross-functional Alignment · Stakeholder Management · Data-driven Decision Making</div></div>
+    <div style="padding:16px;border-radius:12px;background:#f4f6fa;border:1px solid var(--line);"><div style="font-size:12px;font-weight:700;font-family:var(--f-d);">Project Resources</div><div style="font-size:12px;color:var(--text2);margin-top:6px;">1 person · 1 AI tool · 2 vendors · 4 reporting lines</div></div>
+  </div>
+  <div class="pn">03/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">Website rebuilt · <span class="hl">6,000+</span> monthly visits</div>
+  <div class="conclusion-sub">Replaced the original single-page placeholder with a functional Chinese site and a showcase English site for the Asia-Pacific market.</div><hr class="conclusion-divider">
+  <div class="strategy"><strong>Strategic rationale:</strong> The website is the "land" of digital marketing — without it, nothing can grow. The first step was not advertising, but upgrading the site from a placeholder page to a fully functional platform integrating product selection, distributor lookup, training materials, and search traffic landing.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+    <div><div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--accent);font-family:var(--f-d);">Build Process</div><div class="tl">
+      <div class="tl-item"><h4>Information Architecture</h4><p>Product selection flow + IA planning</p></div>
+      <div class="tl-item"><h4>UX &amp; Functional Specs</h4><p>Wireframes + requirement documentation</p></div>
+      <div class="tl-item"><h4>Stakeholder &amp; Vendor Management</h4><p>3-Dimension evaluation: delivery capability &gt; responsiveness &gt; cost</p></div>
+      <div class="tl-item"><h4>Analytics &amp; Search Integration</h4><p>Tracking setup + SEM/SEO landing funnel</p></div>
+    </div></div>
+    <div><div style="font-size:13px;font-weight:700;margin-bottom:10px;color:var(--accent);font-family:var(--f-d);">Feature Matrix</div><div class="g2" style="gap:8px;">
+      <div class="gi"><h4>Product Configurator</h4><p>Parameter filtering + model matching</p></div>
+      <div class="gi"><h4>Distributor Locator</h4><p>Regional dealer search</p></div>
+      <div class="gi"><h4>Technical Training Hub</h4><p>Video tutorials + document downloads</p></div>
+      <div class="gi"><h4>Search Traffic Landing</h4><p>SEM/SEO optimized landing pages</p></div>
+    </div>
+    <div style="margin-top:14px;padding:18px;background:var(--accent-subtle);border-radius:var(--r-in);text-align:center;border:1px solid var(--accent-bd);"><span style="font-family:var(--f-d);font-size:40px;font-weight:800;color:var(--accent);">6,000+</span><span style="font-size:13px;color:var(--text2);margin-left:6px;">Monthly Visits</span><div style="font-size:11px;color:var(--text3);margin-top:2px;">Chinese Site · Functional ｜ English Site · Showcase</div></div></div>
+  </div>
+  <div class="pn">04/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">Full-channel search coverage · <span class="hl">20,000+</span> impressions · <span class="hl">100+</span> leads</div>
+  <div class="conclusion-sub">On-site technical SEO + off-site content matrix + multi-channel SEM campaigns. Website first, search second — closing the traffic loop.</div><hr class="conclusion-divider">
+<div class="section-label">SEO · Long-tail coverage &amp; brand asset accumulation</div>
+  <div class="g2" style="margin-bottom:16px;">
+    <div class="gi"><h4>On-site Deployment</h4><p>Technical SEO · Site architecture · Sitemap · Keyword strategy · Content planning</p></div>
+    <div class="gi"><h4>Off-site Matrix</h4><p>Third-party publishing (Zhihu/Sohu/Baijiahao) + Baidu ecosystem + Social media syndication</p></div>
+  </div>
+  <div class="g3" style="margin-bottom:20px;">
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">1,000+</span><br><span style="font-size:11px;color:var(--text2);">Monthly Organic Visits</span><br><span style="font-size:9px;color:var(--text3);">Baidu + Bing primary sources</span></div>
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">20,000+</span><br><span style="font-size:11px;color:var(--text2);">Brand Impressions</span><br><span style="font-size:9px;color:var(--text3);">SEO + Content Matrix</span></div>
+    <div style="text-align:center;padding:12px;border-radius:12px;background:var(--accent-subtle);"><span style="font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent);">20+</span><br><span style="font-size:11px;color:var(--text2);">Brand-led Inquiries</span><br><span style="font-size:9px;color:var(--text3);">Search-driven</span></div>
+  </div>
+  <div class="section-label" style="margin-top:4px;">SEM · Multi-channel precision acquisition &amp; short-term conversion</div>
+  <div class="g4">
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>Baidu</h4><div class="ctr">CTR 2.97%</div><div class="num">210,000+</div><div class="num-label">Impressions</div></div>
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>Bing</h4><div class="ctr">CTR 3.47%</div><div class="num">43,000+</div><div class="num-label">Impressions</div></div>
+    <div class="ch-card" style="--bar:#1a5a9c;"><h4>Google</h4><div class="ctr">CTR 4.81%</div><div class="num">28,000+</div><div class="num-label">Impressions</div></div>
+    <div class="ch-card" style="--bar:#D4905B;"><h4>1688</h4><div class="ctr">CTR 1.87%</div><div class="num" style="color:var(--warm);">112,000+</div><div class="num-label">Impressions</div></div>
+  </div>
+  <div style="display:flex;gap:14px;justify-content:center;margin-top:12px;font-size:13px;"><span style="font-weight:700;color:var(--warm);">100+ Qualified Leads</span></div>
+  <div class="pn">05/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">Content marketing matrix live · <span class="hl">4-pillar content</span> covering the full user journey</div>
+  <div class="conclusion-sub">WeChat Official Account as the core hub, surrounded by Video Channels, Bilibili, and TikTok. Content built around four pillars: brand, product, service, and dealer ecosystem.</div><hr class="conclusion-divider">
+  <div class="strategy"><strong>Strategic rationale:</strong> B2B industrial content marketing involves long decision cycles and multiple stakeholders. The content strategy was designed around the user journey: Awareness → Consideration → Decision → Post-sale. Brand content builds awareness, product content supports consideration, service content drives decisions, and dealer content expands channel coverage.</div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:var(--accent-subtle);border:1px solid var(--accent-bd);"><div style="font-size:15px;font-weight:700;color:var(--accent);font-family:var(--f-d);">◆ WeChat Official Account · Core Hub</div><div style="font-size:13px;color:var(--text2);margin-top:4px;">Monthly → Systematic operation</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-size:14px;font-weight:600;font-family:var(--f-d);">WeChat Video</div><div style="font-size:12px;color:var(--text2);margin-top:2px;">Event highlights · Dealer interviews</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-size:14px;font-weight:600;font-family:var(--f-d);">Bilibili · TikTok</div><div style="font-size:12px;color:var(--text2);margin-top:2px;">Technical content syndication</div></div>
+  </div>
+  <div class="section-label">4-Pillar Content Matrix</div>
+  <div class="g4">
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">Brand</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">Brand story · Italian heritage</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">Awareness</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">Product</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">Selection guides · Technical specs</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">Consideration</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">Service</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">Installation · After-sales · Training</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">Trust</div></div>
+    <div style="padding:22px 18px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);text-align:center;"><div style="font-family:var(--f-d);font-size:28px;font-weight:800;color:var(--accent);">Dealers</div><div style="font-size:13px;color:var(--text2);margin-top:6px;">Case studies · Interviews · Support</div><div style="font-size:11px;color:var(--text3);margin-top:6px;">Channel Enablement</div></div>
+  </div>
+  <div class="pn">06/07</div>
+</div>
+
+<div class="page">
+  <div class="conclusion">Key Challenges <span class="hl">&amp;</span> Solutions</div>
+  <hr class="conclusion-divider" style="margin-top:12px;margin-bottom:18px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--accent);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--accent);margin-bottom:8px;font-family:var(--f-d);">Strategic Framework</div>
+      <div class="ps-item"><span class="q">① What if competitors haven't done it well — or at all?</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ Deconstruct cross-industry best practices + reverse-engineer user needs</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">② How to prioritize vendor selection?</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ 3-dimension evaluation: delivery capability &gt; responsiveness &gt; cost; require case-based validation first</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--warm);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--warm);margin-bottom:8px;font-family:var(--f-d);">Stakeholder Alignment</div>
+      <div class="ps-item"><span class="q">③ Unclear or conflicting internal requirements?</span></div><div class="ps-item" style="padding-left:0;">→ Stakeholder group meetings + requirement priority voting</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">④ How to communicate requirements/UX/design clearly?</span></div><div class="ps-item" style="padding-left:0;">→ Wireframes + written specs + recorded walkthrough — a 3-in-1 delivery to minimize cross-role friction</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--accent-l);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--accent-l);margin-bottom:8px;font-family:var(--f-d);">Project Control</div>
+      <div class="ps-item"><span class="q">⑤ Vendor project manager unresponsive, delayed deliverables?</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ Define key milestones with acceptance criteria + project timeline with weekly syncs + set internal deadlines 3-5 days ahead as buffer</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">⑥ Multiple projects running in parallel, long time spans?</span></div><div class="ps-item" style="padding-left:0;color:var(--accent-l);">→ Modular breakdown + priority ranking + TODO tracking + weekly reviews with dynamic reprioritization</div>
+    </div>
+    <div style="padding:16px;border-radius:var(--r-in);background:#f4f6fa;border:1px solid var(--line);border-left:3px solid var(--text3);">
+      <div style="font-size:11px;letter-spacing:2px;font-weight:700;color:var(--text3);margin-bottom:8px;font-family:var(--f-d);">AI-Enabled Efficiency</div>
+      <div class="ps-item"><span class="q">⑦ How to evaluate, negotiate and sign off technical requirements?</span></div><div class="ps-item" style="padding-left:0;color:var(--text3);">→ AI-assisted technical document interpretation + standardized requirement templates + peer cross-validation</div>
+      <div class="ps-item" style="border-top:1px solid rgba(163,177,198,0.15);padding-top:5px;margin-top:3px;"><span class="q">⑧ How to manage data iteration and information assets?</span></div><div class="ps-item" style="padding-left:0;color:var(--text3);">→ Dashboard setup + AI-automated reporting + regular retrospective and iteration cycles</div>
+    </div>
+  </div>
+  <div class="pn">07/07</div>
+</div>
+
+</div></body>
+</html>

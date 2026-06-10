@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Chi · Full CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#E4E9F2;--card:#ffffff;--t:#2C3E50;--t2:#5A6B7C;--t3:#8899aa;
+  --accent:#004a94;--accent-m:#43c3dd;--accent-l:#a4f4f7;
+  --sh-l:rgba(255,255,255,0.55);--sh-d:rgb(163,177,198,0.6);
+  --sh-page:9px 9px 16px var(--sh-d),-9px -9px 16px var(--sh-l);
+  --sh-in:inset 3px 3px 6px var(--sh-d),inset -3px -3px 6px var(--sh-l);
+  --sh-tag:2px 2px 4px var(--sh-d),-2px -2px 4px var(--sh-l);
+  --r-pg:16px;--r-sm:10px;--r-xs:6px;
+  --f-d:'Plus Jakarta Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --f-b:'DM Sans','PingFang SC','Microsoft YaHei',sans-serif;
+}
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-b);font-size:11pt;line-height:1.5;color:var(--t);background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:20px 0;-webkit-font-smoothing:antialiased}
+.page{width:210mm;min-height:297mm;background:var(--card);padding:9mm 13mm 8mm 13mm;box-shadow:var(--sh-page);border-radius:var(--r-pg);position:relative;overflow:hidden;display:flex;flex-direction:column;margin:0 auto 24px}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5mm;background:linear-gradient(90deg,var(--accent)0%,var(--accent-m)50%,var(--accent-l)100%)}
+
+/* ===== COVER ===== */
+.cover-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.cover-tag{font-family:var(--f-d);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--accent-m);margin-bottom:8px}
+.cover-title{font-family:var(--f-d);font-size:48pt;font-weight:800;color:var(--accent);letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.cover-title .a2{color:var(--accent-m)}
+.cover-sub{font-size:15pt;color:var(--t2);font-weight:400;margin-bottom:12px}
+.cover-line{width:36px;height:2.5px;background:var(--accent-m);margin-bottom:24px;border-radius:2px}
+.cover-pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:400px;text-align:left}
+.cover-pillar .p-num{font-family:var(--f-d);font-size:20px;font-weight:800;color:var(--accent-l);line-height:1;margin-bottom:1px}
+.cover-pillar .p-label{font-family:var(--f-d);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:var(--accent);margin-bottom:2px}
+.cover-pillar .p-desc{font-size:9.5pt;color:var(--t2);line-height:1.35}
+.cover-contact{font-size:10pt;color:var(--t3);margin-top:16px}
+.cover-contact span{color:var(--t2);margin:0 4px}
+.cover-contact svg{vertical-align:-2px;margin-right:2px;stroke:var(--accent-m)}
+
+/* ===== JOB HEADER (merged pages) ===== */
+.page-body{flex:1;display:flex;flex-direction:column}
+.job-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.job-hdr .name{font-family:var(--f-d);font-size:13pt;font-weight:700;color:var(--accent)}
+.job-hdr .role{font-size:10pt;font-weight:500;color:var(--accent-m)}
+.job-hdr .date{font-size:9pt;color:var(--t2);white-space:nowrap}
+.job-meta{font-size:8.5pt;color:var(--t2);margin-bottom:4px}
+
+/* Company divider within merged page */
+.company-block{flex:1;display:flex;flex-direction:column}
+.company-block:last-child{margin-bottom:0}
+.comp-sep{height:1px;background:linear-gradient(90deg,var(--accent-l),transparent);margin:4px 0}
+
+/* ===== RESP ===== */
+.resp-grid{display:flex;gap:10px;flex:1}
+.resp-col{flex:1}
+.resp-cat-title{font-family:var(--f-d);font-size:10pt;font-weight:600;color:var(--accent);padding-bottom:1px;border-bottom:1px solid rgba(0,74,148,0.10);margin-bottom:2px}
+.resp-list{list-style:none;padding:0}
+.resp-list li{font-size:9pt;line-height:1.45;color:var(--t);padding-left:10px;position:relative;margin-bottom:1.5px}
+.resp-list li::before{content:'\25B8 ';position:absolute;left:0;color:var(--accent-m)}
+.resp-list li strong{color:var(--accent);font-weight:600}
+
+/* ===== BOTTOM STRIP ===== */
+.bottom-strip{display:flex;gap:10px;padding-top:4px;border-top:1px solid rgba(0,74,148,0.10);margin-top:4px}
+.bl{flex:1.1}.br{flex:1}
+.bot-title{font-family:var(--f-d);font-size:9pt;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--accent-m);margin-bottom:2px}
+.kw{display:flex;flex-wrap:wrap;gap:2px 4px}
+.kw span{background:var(--card);color:var(--t);padding:1px 6px;border-radius:var(--r-xs);font-size:8pt;white-space:nowrap;box-shadow:var(--sh-tag)}
+.kw .hl{background:var(--accent);color:#fff}
+.kw .ai{background:var(--accent-m);color:#fff}
+.ch{font-size:8.5pt;line-height:1.4;color:var(--t2);padding-left:11px;position:relative;margin-bottom:1.5px}
+.ch::before{content:'?';position:absolute;left:0;top:0;color:var(--accent-m);font-weight:700;font-size:9px}
+
+/* ===== HOBBIES PAGE ===== */
+.hobbies-page .cover-wrap{padding:0}
+.hobbies-title{font-family:var(--f-d);font-size:16pt;font-weight:700;color:var(--accent);text-align:center;margin-bottom:12px}
+.hobbies-title .a2{color:var(--accent-m)}
+.word-cloud{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 10px;max-width:420px;margin:0 auto 20px;padding:14px;background:var(--card);border-radius:var(--r-sm);box-shadow:var(--sh-in)}
+.word-cloud .wc{display:inline-block;font-family:var(--f-d);font-weight:500;color:var(--t);padding:2px 0}
+.wc-1{font-size:18px;font-weight:700;color:var(--accent)}
+.wc-2{font-size:15px;font-weight:600;color:var(--accent-m)}
+.wc-3{font-size:13px;color:var(--t2)}
+.wc-4{font-size:11px;color:var(--t3)}
+.wc-5{font-size:9px;color:var(--t3)}
+.tail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:auto}
+.tail-card{background:var(--card);padding:12px 14px;border-radius:var(--r-sm);box-shadow:var(--sh-card)}
+.tail-card .tl{font-family:var(--f-d);font-size:9pt;font-weight:600;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:4px;border-bottom:1px solid rgba(0,74,148,0.10);padding-bottom:2px}
+.tail-card .info{font-size:9.5pt;color:var(--t2);line-height:1.5}
+.tail-card .info strong{color:var(--accent);font-weight:600}
+.tail-contact{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;font-size:9.5pt;color:var(--t2)}
+.tail-contact a{color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.tail-contact svg{width:12px;height:12px;stroke:var(--accent-m);fill:none;stroke-width:1.8}
+
+/* ===== FOOTER ===== */
+.page-footer{text-align:center;font-size:7pt;color:var(--t3);padding:3px 0 0;border-top:1px solid rgba(0,74,148,0.08)}
+
+@media print{body{padding:0;background:#fff}.page{box-shadow:none;border-radius:0;margin:0;page-break-after:always}}
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="page">
+  <div class="cover-wrap">
+    <div class="cover-tag">The Knowledge of</div>
+    <div class="cover-title">CHARLOTTE <span class="a2">CHI</span></div>
+    <div class="cover-sub">AI-Enabled Marketer · B2B &amp; International Marketing</div>
+    <div class="cover-line"></div>
+    <div class="cover-pillars">
+      <div class="cover-pillar">
+        <div class="p-num">01</div>
+        <div class="p-label">Content Architect</div>
+        <div class="p-desc">Multi-format storytelling — whitepapers, video, social — across industries and languages</div>
+      </div>
+      <div class="cover-pillar">
+        <div class="p-num">02</div>
+        <div class="p-label">Digital Builder</div>
+        <div class="p-desc">Websites, SEM, SEO, analytics — from zero to measurable growth</div>
+      </div>
+      <div class="cover-pillar">
+        <div class="p-num">03</div>
+        <div class="p-label">AI Pioneer</div>
+        <div class="p-desc">First to adopt, fastest to scale — AI tools embedded in daily workflow since 2024</div>
+      </div>
+    </div>
+    <div class="cover-contact">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span>cong.chi@foxmail.com</span>
+      <span style="color:var(--t3)">·</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>(+86) 13501756697</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: CAME + TEKNOS ==================== -->
+<div class="page">
+  <div class="page-body">
+  <!-- CAME -->
+  <div class="company-block">
+    <div class="job-hdr">
+      <span><span class="name">CAME Automation Systems</span> <span class="role">Digital &amp; Content Project Owner</span></span>
+      <span class="date">2025.07 – 2026.05</span>
+    </div>
+    <div class="job-meta">Industrial Automation (Italy) · Built company's digital marketing from scratch</div>
+    <div class="resp-grid">
+      <div class="resp-col">
+        <div class="resp-cat-title">Website &amp; SEM</div>
+        <ul class="resp-list">
+          <li>Delivered <strong>2 websites</strong> (CN+EN) in <strong>4 months</strong> — full-cycle ownership from requirements to launch</li>
+          <li>Multi-channel SEM on <strong>Baidu, Bing, Google</strong> — budget, keywords, MQL tracking, monthly iteration</li>
+        </ul>
+      </div>
+      <div class="resp-col">
+        <div class="resp-cat-title">SEO · Content · Events</div>
+        <ul class="resp-list">
+          <li><strong>SEO+GEO</strong> on-page technicals + off-page ecosystem; deployed <strong>GA4, Baidu Analytics</strong></li>
+          <li>Content across <strong>WeChat, Douyin, Bilibili</strong> + end-to-end <strong>offline event support</strong> (10–100+ pax)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-strip" style="margin-top:2px;">
+      <div class="bl">
+        <div class="bot-title">✦ Highlights</div>
+        <div class="kw"><span class="hl">Digital Marketing 0→1</span><span>Website PM</span><span>Baidu/Bing/Google SEM</span><span>SEO+GEO</span><span class="ai">AI-Enabled</span><span>Offline Events</span></div>
+      </div>
+      <div class="br">
+        <div class="bot-title">⚡ Challenge</div>
+        <div class="ch">How to build a complete digital ecosystem from zero, with no prior infrastructure, in 9 months?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-sep"></div>
+
+  <!-- TEKNOS -->
+  <div class="company-block">
+    <div class="job-hdr">
+      <span><span class="name">TEKNOS Group</span> <span class="role">Group Marketing Executive</span></span>
+      <span class="date">2024.03 – 2024.08</span>
+    </div>
+    <div class="job-meta">Industrial Coatings MNC (Finland) · 100% English environment</div>
+    <div class="resp-grid">
+      <div class="resp-col">
+        <div class="resp-cat-title">Content &amp; AI Localization</div>
+        <ul class="resp-list">
+          <li>Full-cycle asset production for global campaigns — concepts, filming, video, social copy, brochure design</li>
+          <li>AI video localization across <strong>5 EU markets</strong> — <strong>35%</strong> faster turnaround vs. manual</li>
+        </ul>
+      </div>
+      <div class="resp-col">
+        <div class="resp-cat-title">Campaigns &amp; Alignment</div>
+        <ul class="resp-list">
+          <li><strong>8+ campaigns</strong> on LinkedIn/YouTube/IG/FB (EN→CN/FR/DE) — <strong>90% brand compliance</strong></li>
+          <li><strong>TikTok 0→1</strong> strategy + bilingual EU×China bridge across 3 time zones</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-strip" style="margin-top:2px;">
+      <div class="bl">
+        <div class="bot-title">✦ Highlights</div>
+        <div class="kw"><span class="hl">Multicultural Collaboration</span><span>English-only</span><span class="ai">AI Video Localization</span><span>TikTok Strategy</span><span>Campaign Execution</span></div>
+      </div>
+      <div class="br">
+        <div class="bot-title">⚡ Challenge</div>
+        <div class="ch">How to deliver cross-country success as a sole IC in a fully remote, multi-timezone setting?</div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div class="page-footer">Charlotte Chi · AI-Enabled Marketer · cong.chi@foxmail.com</div>
+</div>
+
+<!-- ==================== PAGE 3: ALTEN + YIZHONG+SHENGSHI ==================== -->
+<div class="page">
+  <div class="page-body">
+  <!-- ALTEN -->
+  <div class="company-block">
+    <div class="job-hdr">
+      <span><span class="name">ALTEN China</span> <span class="role">Sr. Content Marketing Specialist</span></span>
+      <span class="date">2021.08 – 2024.02</span>
+    </div>
+    <div class="job-meta">Engineering &amp; IT Consulting (French MNC) · Managed 2–3 Interns</div>
+    <div class="resp-grid">
+      <div class="resp-col">
+        <div class="resp-cat-title">Content Strategy</div>
+        <ul class="resp-list">
+          <li>Built annual content matrices, full lifecycle ownership — produced <strong>20+ formats</strong>, <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong></li>
+          <li>Led <strong>10+ cross-departmental campaigns</strong> with Sales, Engineering, HR</li>
+        </ul>
+      </div>
+      <div class="resp-col">
+        <div class="resp-cat-title">Digital Growth &amp; Brand</div>
+        <ul class="resp-list">
+          <li><strong>186% YoY engagement</strong> / <strong>74% follower growth</strong> — WeChat, RED, Zhihu, Bilibili, LinkedIn</li>
+          <li>Website 2.0 relaunch: <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% savings</strong>; led brand workshop for <strong>30+ stakeholders</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-strip" style="margin-top:2px;">
+      <div class="bl">
+        <div class="bot-title">✦ Highlights</div>
+        <div class="kw"><span class="hl">Content Marketing</span><span class="hl">B2B Marketing</span><span>Website 2.0</span><span>SEO Strategy</span><span>Social Media Growth</span><span>Mentorship</span></div>
+      </div>
+      <div class="br">
+        <div class="bot-title">⚡ Challenge</div>
+        <div class="ch">How to steer a bilingual website relaunch while resolving unexpected issues with 18 stakeholders?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-sep"></div>
+
+  <!-- YIZHONG + SHENGSHI -->
+  <div class="company-block">
+    <div class="job-hdr">
+      <span><span class="name">Yizhong Technology / Gentlemen Marketing Agency (GMA)</span></span>
+      <span class="date">2019 – 2021.07</span>
+    </div>
+    <div class="job-meta" style="margin-bottom:4px;"><span class="role" style="color:var(--accent-m);font-weight:500;">Copywriter → Brand &amp; Content Operations</span> · SaaS / Digital Agency</div>
+    <div class="resp-grid">
+      <div class="resp-col">
+        <div class="resp-cat-title">Brand &amp; Content (Yizhong)</div>
+        <ul class="resp-list">
+          <li>Built B2C freelancer platform brand <strong>0→1</strong>: positioning, visual guidelines, content matrix across 6 platforms</li>
+          <li>Directed <strong>1–2 interns</strong> → <strong>50+ monthly assets</strong>, <strong>10+ KOL partnerships</strong>, <strong>33% engagement lift</strong></li>
+        </ul>
+      </div>
+      <div class="resp-col">
+        <div class="resp-cat-title">Creative Lead (GMA Agency)</div>
+        <ul class="resp-list">
+          <li>Clients: <strong>Lesieur</strong> (FMCG), <strong>Volley</strong>, <strong>Italdesign</strong>, <strong>Jean Rousseau</strong> (Luxury)</li>
+          <li><strong>100+ assets/month</strong> — articles, PR, infographics; localization + design saving <strong>40%</strong> costs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom-strip" style="margin-top:2px;">
+      <div class="bl">
+        <div class="bot-title">✦ Highlights</div>
+        <div class="kw"><span class="hl">Brand 0→1</span><span class="hl">B2B SaaS</span><span>KOL Partnerships</span><span>Agency</span><span>WordPress</span><span>Copywriting</span></div>
+      </div>
+      <div class="br">
+        <div class="bot-title">⚡ Challenge</div>
+        <div class="ch">How to launch a brand that didn't exist yet while managing a separate B2B SaaS portfolio?</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="page-footer">Charlotte Chi · AI-Enabled Marketer · cong.chi@foxmail.com</div>
+</div>
+
+<!-- ==================== PAGE 4: HOBBIES + EDUCATION + CONTACT ==================== -->
+<div class="page">
+  <div class="cover-wrap" style="padding:6mm 0 0;">
+    <div class="hobbies-title">When I'm Not <span class="a2">Marketing</span></div>
+
+    <div class="word-cloud">
+      <span class="wc wc-1">Photography</span>
+      <span class="wc wc-3">Creative Writing</span>
+      <span class="wc wc-2">Sci-Fi</span>
+      <span class="wc wc-4">UI Design</span>
+      <span class="wc wc-1">Video Editing</span>
+      <span class="wc wc-3">Travel</span>
+      <span class="wc wc-5">Coffee</span>
+      <span class="wc wc-2">Storytelling</span>
+      <span class="wc wc-4">Fiction</span>
+      <span class="wc wc-1">AI Art</span>
+      <span class="wc wc-3">Thriller</span>
+      <span class="wc wc-2">DaVinci Resolve</span>
+      <span class="wc wc-5">Design Thinking</span>
+      <span class="wc wc-4">Podcast</span>
+      <span class="wc wc-1">Reading</span>
+      <span class="wc wc-3">Language Learning</span>
+      <span class="wc wc-2">Architecture</span>
+      <span class="wc wc-4">Minimalism</span>
+      <span class="wc wc-5">Pomodoro</span>
+    </div>
+
+    <div class="tail-grid">
+      <div class="tail-card">
+        <div class="tl">🎓 Education</div>
+        <div class="info">
+          <strong>Bachelor of Arts</strong><br>
+          Journalism &amp; Communication<br>
+          <span style="color:var(--t3);font-size:8.5pt;">Shanghai University · 2015 – 2019</span>
+        </div>
+      </div>
+      <div class="tail-card">
+        <div class="tl">🌍 Languages</div>
+        <div class="info">
+          <strong>Chinese</strong> — Native<br>
+          <strong>English</strong> — Fluent (work fluency, simultaneous interpretation)
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="font-family:var(--f-d);font-size:9pt;font-weight:600;color:var(--accent);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px;text-align:center;">📬 Contact</div>
+      <div class="tail-contact">
+        <a href="mailto:cong.chi@foxmail.com">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          cong.chi@foxmail.com
+        </a>
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (+86) 13501756697
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
