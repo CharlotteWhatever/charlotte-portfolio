@@ -912,7 +912,7 @@
   </div>
 
   <div class="hero-actions">
-    <a class="btn-primary" href="docs/resume-en.pdf" id="btnResume" download>
+    <a class="btn-primary" href="docs/resume-en-v2.pdf" id="btnResume" download>
       <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M16 8l-4 4-4-4"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg>
       <span data-i18n="btn-resume">Resume</span>
     </a>
@@ -1334,7 +1334,7 @@
       <h2 class="section-title" data-i18n="section-dl-title">Documents &amp; Resources</h2>
 
       <div class="dl-grid">
-        <a class="dl-item" href="docs/resume-en.pdf">
+        <a class="dl-item" href="docs/resume-en-v2.pdf">
           <div class="dl-left">
             <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             <div><div class="dl-name" data-i18n="dl-1">Resume EN (One-Page)</div><div class="dl-desc">PDF</div></div>
@@ -1345,13 +1345,6 @@
           <div class="dl-left">
             <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             <div><div class="dl-name" data-i18n="dl-2">简历中文 (一页精简版)</div><div class="dl-desc">PDF</div></div>
-          </div>
-          <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-        </a>
-        <a class="dl-item" href="docs/resume-en-v2.pdf">
-          <div class="dl-left">
-            <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <div><div class="dl-name" data-i18n="dl-10">Resume EN v2</div><div class="dl-desc">PDF</div></div>
           </div>
           <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
@@ -1546,8 +1539,6 @@ const i18n = {
   'dl-8-desc':         { en: 'Head of Marketing', zh: '市场总监推荐' },
   'dl-9':              { en: 'CAME Project Review EN', zh: 'CAME项目复盘（英）' },
   'dl-9-desc':         { en: 'Project Review', zh: '项目复盘' },
-  'dl-10':             { en: 'Resume EN v2', zh: '英文简历v2' },
-  'dl-10-desc':        { en: 'HTML', zh: 'HTML' },
   'footer-name':       { en: 'Charlotte Chi · B2B Content &amp; Digital Marketing · AI-Enabled', zh: 'Charlotte Chi · AI赋能 · 全栈数字营销人' },
 };
 
@@ -1571,7 +1562,7 @@ function switchLang(lang) {
   });
   // Update resume download link
   const resumeBtn = document.getElementById('btnResume');
-  if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/resume-cn.pdf' : 'docs/resume-en.pdf';
+  if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/resume-cn.pdf' : 'docs/resume-en-v2.pdf';
   // Update email based on language
   const emailEn = 'chicharlotte76@gmail.com';
   const emailZh = 'cong.chi@foxmail.com';
