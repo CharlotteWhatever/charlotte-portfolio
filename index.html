@@ -927,9 +927,9 @@
   </div>
 
   <div class="hero-contact">
-    <a href="mailto:cong.chi@foxmail.com">
+    <a href="mailto:cong.chi@foxmail.com" class="email-link">
       <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      cong.chi@foxmail.com
+      <span class="email-text">cong.chi@foxmail.com</span>
     </a>
     <span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
@@ -1408,9 +1408,9 @@
   <div class="left">
     <span data-i18n="footer-name">Charlotte Chi · B2B Content &amp; Digital Marketing · AI-Enabled</span>
     <div class="footer-contact">
-      <a href="mailto:cong.chi@foxmail.com">
+      <a href="mailto:cong.chi@foxmail.com" class="email-link">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        cong.chi@foxmail.com
+        <span class="email-text">cong.chi@foxmail.com</span>
       </a>
       <span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/></svg>
@@ -1563,6 +1563,15 @@ function switchLang(lang) {
   // Update resume download link
   const resumeBtn = document.getElementById('btnResume');
   if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/resume-cn.pdf' : 'docs/resume-en.pdf';
+  // Update email based on language
+  const emailEn = 'chicharlotte76@gmail.com';
+  const emailZh = 'cong.chi@foxmail.com';
+  document.querySelectorAll('.email-link').forEach(el => {
+    el.href = 'mailto:' + (lang === 'zh' ? emailZh : emailEn);
+  });
+  document.querySelectorAll('.email-text').forEach(el => {
+    el.textContent = lang === 'zh' ? emailZh : emailEn;
+  });
 }
 
 // ===== Initialize English =====

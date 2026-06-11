@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Chi — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#E4E9F2;--card:#ffffff;--t:#2C3E50;--t2:#5A6B7C;--t3:#8899aa;
+  --accent:#004a94;--accent-m:#43c3dd;--accent-l:#a4f4f7;
+  --sh-l:rgba(255,255,255,0.55);--sh-d:rgb(163,177,198,0.6);
+  --sh-page:9px 9px 16px var(--sh-d),-9px -9px 16px var(--sh-l);
+  --sh-card:4px 4px 8px var(--sh-d),-4px -4px 8px var(--sh-l);
+  --sh-in:inset 3px 3px 6px var(--sh-d),inset -3px -3px 6px var(--sh-l);
+  --r-pg:16px;--r-sm:10px;--r-xs:6px;
+  --f-d:'Plus Jakarta Sans','PingFang SC','Microsoft YaHei',sans-serif;
+  --f-b:'DM Sans','PingFang SC','Microsoft YaHei',sans-serif;
+}
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--f-b);font-size:9.5pt;line-height:1.5;color:var(--t);background:var(--bg);display:flex;justify-content:center;padding:20px 0;-webkit-font-smoothing:antialiased}
+.page{width:210mm;min-height:297mm;background:var(--card);padding:12mm 16mm 14mm 16mm;box-shadow:var(--sh-page);border-radius:var(--r-pg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;height:4mm;background:linear-gradient(90deg,var(--accent)0%,var(--accent-m)50%,var(--accent-l)100%)}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;padding-top:2px}
+.header-left h1{font-family:var(--f-d);font-size:22pt;font-weight:700;letter-spacing:1px;color:var(--accent);line-height:1.1}
+.header-left .title{font-size:10.5pt;font-weight:500;color:var(--accent-m);letter-spacing:0.3px;margin-top:2px}
+.header-right{text-align:right;font-size:8pt;color:var(--t2);line-height:1.5}
+.header-right div{margin-bottom:2px}
+.divider{height:1.5px;background:linear-gradient(90deg,var(--accent)0%,rgba(0,74,148,0.06)100%);margin:8px 0 10px 0;border-radius:1px}
+.summary{display:flex;gap:14px;margin-bottom:10px;background:var(--card);padding:8px 12px;border-radius:var(--r-sm);border-left:3px solid var(--accent);box-shadow:var(--sh-in)}
+.summary p{font-size:8.5pt;line-height:1.5;color:var(--t)}
+.main-grid{display:flex;gap:28px;flex:1}
+.col-left{flex:7}
+.col-right{flex:3}
+.section-title{font-family:var(--f-d);font-size:9.5pt;font-weight:700;color:var(--accent);border-bottom:1.5px solid rgba(0,74,148,0.12);padding-bottom:2px;margin-bottom:6px;margin-top:12px;letter-spacing:0.5px}
+.section-title:first-child{margin-top:0}
+.section-title .gold{color:var(--accent-m);margin-right:3px}
+.job{margin-bottom:12px}
+.job-header{display:flex;justify-content:space-between;align-items:baseline}
+.job-company{font-family:var(--f-d);font-weight:700;font-size:9.5pt;color:var(--accent)}
+.job-title{color:var(--accent-m);font-weight:600;font-size:8.5pt}
+.job-date{font-size:7.5pt;color:var(--t2);white-space:nowrap}
+.job-meta{font-size:7.5pt;color:var(--t2);margin-bottom:2px}
+.job ul{list-style:none;padding-left:0}
+.job li{font-size:8pt;line-height:1.5;color:var(--t);padding-left:10px;position:relative;margin-bottom:2px}
+.job li::before{content:'\25B8 ';position:absolute;left:0;color:var(--accent-m)}
+.skill-group{margin-bottom:8px}
+.skill-group-title{font-family:var(--f-d);font-weight:600;font-size:8pt;color:var(--accent);margin-bottom:2px;border-bottom:1px dotted rgba(0,74,148,0.15);padding-bottom:1.5px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:3px 5px;margin-top:2px}
+.skill-tag{background:var(--card);color:var(--t);padding:1.5px 7px;border-radius:var(--r-xs);font-size:7.5pt;white-space:nowrap;box-shadow:2px 2px 4px var(--sh-d),-2px -2px 4px var(--sh-l)}
+.skill-tag.highlight{background:var(--accent);color:#fff;box-shadow:2px 2px 4px var(--sh-d),-2px -2px 4px var(--sh-l)}
+.skill-tag.ai{background:var(--accent-m);color:#fff;box-shadow:2px 2px 4px var(--sh-d),-2px -2px 4px var(--sh-l)}
+.info-item{display:flex;justify-content:space-between;font-size:8pt;padding:2px 0;border-bottom:1px dotted rgba(0,74,148,0.12)}
+.info-label{color:var(--t2)}.info-value{font-weight:500;color:var(--t)}
+.hl-row{display:flex;gap:5px;margin-bottom:4px;align-items:flex-start}
+.hl-row svg{flex-shrink:0;margin-top:2px;color:var(--accent-m)}
+.hl-item{font-size:7.5pt;line-height:1.4;color:var(--t)}
+@media print{body{padding:0;background:#fff}.page{box-shadow:none;border-radius:0;padding:12mm 14mm 14mm 14mm}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>CHARLOTTE CHI</h1>
+      <div class="title">AI-Enabled Marketer · B2B &amp; International Marketing</div>
+    </div>
+    <div class="header-right">
+      <div><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <a href="https://charlottewhatever.github.io/charlotte-portfolio" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600;">Personal Site</a></div>
+      <div><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (+86) 13501756697</div>
+      <div><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:2px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> chicharlotte76@gmail.com</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="summary">
+    <p><strong>6+ years</strong> marketing professional bridging <strong>Content × Digital × AI</strong>. Proven in building marketing systems from zero — launching bilingual websites, driving SEM/SEO growth, scaling content ecosystems, and executing global campaigns. Bilingual (EN/CN) with cross-cultural leadership in MNC environments. Passionate about <strong>AI-enabled marketing</strong> innovation.</p>
+  </div>
+
+  <div class="main-grid">
+    <div class="col-left">
+
+      <div class="section-title"><span class="gold"><svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 22,12 12,22 2,12"/></svg></span> EXPERIENCE</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span><span class="job-company">CAME Automation Systems</span> <span class="job-title">Digital &amp; Content Project Owner</span></span>
+          <span class="job-date">2025.07 – 2026.05</span>
+        </div>
+        <div class="job-meta">Industrial Automation (Italy) | Built company's digital marketing from scratch</div>
+        <ul>
+          <li>Spearheaded the company's digital marketing function from zero — planned, built, and launched <strong>2 bilingual websites</strong> (CN+EN) within <strong>4 months</strong>, establishing the brand's first digital presence in China</li>
+          <li>Architected and managed <strong>SEM</strong> across <strong>Baidu, Bing, and Google</strong> — from budget planning and keyword expansion to MQL tracking and performance optimization</li>
+          <li>Implemented <strong>SEO + GEO</strong> dual-engine strategy combining on-page technical optimization with an off-page content ecosystem for sustained organic visibility</li>
+          <li>Defined and executed <strong>content strategy</strong> across WeChat, Douyin, and Bilibili — producing articles, graphic design, and video aligned with brand identity and the buyer journey</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span><span class="job-company">TEKNOS Group</span> <span class="job-title">Global Marketing Executive</span></span>
+          <span class="job-date">2024.03 – 2025.06</span>
+        </div>
+        <div class="job-meta">Industrial Coatings MNC (Finland) | 100% English environment</div>
+        <ul>
+          <li>Led AI-driven video localization covering <strong>5 EU markets</strong> (Italy, Spain, Germany, France, Poland), reducing turnaround by <strong>35%</strong> while maintaining brand consistency across languages</li>
+          <li>Produced and executed global campaigns across LinkedIn, YouTube, IG, and FB, achieving <strong>90% brand compliance</strong> with regionally adapted creative assets</li>
+          <li>Built the <strong>TikTok channel from 0→1</strong> — audience analysis, content direction, and workflow setup from scratch</li>
+          <li>Served as the <strong>bilingual bridge</strong> between EU Marcom and China stakeholders, facilitating cross-cultural alignment on messaging and campaign localization</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span><span class="job-company">ALTEN China</span> <span class="job-title">Sr. Content Marketing Specialist</span></span>
+          <span class="job-date">2021.08 – 2024.02</span>
+        </div>
+        <div class="job-meta">Engineering &amp; IT Consulting (French MNC) | B2B 75% + B2C 25% | Managed 2–3 interns</div>
+        <ul>
+          <li>Orchestrated a full-funnel <strong>content strategy</strong> producing <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>, and 20+ content formats from infographics to video case studies</li>
+          <li>Drove omnichannel distribution across WeChat, Xiaohongshu (Red), LinkedIn, Bilibili, email, and the website, delivering <strong>~3X cross-platform exposure</strong> and <strong>58% YoY follower growth</strong></li>
+          <li>Led the bilingual website 2.0 relaunch — IA restructure, SEO overhaul, UX redesign — achieving <strong>+65% organic traffic</strong>, <strong>2.1X dwell time</strong>, and <strong>32% cost savings</strong></li>
+          <li>Generated <strong>100+ qualified sales leads</strong> through gated content and nurture campaigns, plus <strong>500+ recruitment leads</strong> through employer branding content</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span><span class="job-company">Yizhong Technology / Gentlemen Digital Marketing (GMA)</span></span>
+          <span class="job-date">2019 – 2021.07</span>
+        </div>
+        <div class="job-meta">SaaS / Ad Agency | Copywriter → Brand &amp; Content Operations</div>
+        <ul>
+          <li>At <strong>Yizhong Technology</strong>, built B2B SaaS content operations from scratch while launching a B2C freelancer platform brand <strong>0→1</strong> — defining tone of voice, content framework, and audience segmentation</li>
+          <li>At <strong>Shengshi Marketing (GMA)</strong>, delivered integrated campaigns for FMCG, automotive, and luxury clients, managing <strong>100+ creative assets monthly</strong> with <strong>40% cost reduction</strong> through workflow optimization</li>
+          <li>Managed <strong>KOL partnerships</strong> and cross-platform content strategy, ensuring consistent brand messaging across all digital touchpoints</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-right">
+
+      <div class="section-title"><span class="gold"><svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 22,12 12,22 2,12"/></svg></span> SKILLS</div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> Core Domains</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Digital Marketing</span>
+          <span class="skill-tag highlight">Content Marketing</span>
+          <span class="skill-tag highlight">B2B Marketing</span>
+          <span class="skill-tag">Brand Management</span>
+          <span class="skill-tag">Growth Marketing</span>
+          <span class="skill-tag">Integrated Marketing</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> AI &amp; Digital</div>
+        <div class="skill-tags">
+          <span class="skill-tag ai">DeepSeek</span>
+          <span class="skill-tag ai">Claude Code</span>
+          <span class="skill-tag ai">ChatGPT</span>
+          <span class="skill-tag ai">AI Video Localization</span>
+          <span class="skill-tag ai">AIGC</span>
+          <span class="skill-tag">SEO</span>
+          <span class="skill-tag">SEM</span>
+          <span class="skill-tag">GA4</span>
+          <span class="skill-tag">CMS</span>
+          <span class="skill-tag">CRM</span>
+          <span class="skill-tag">EDM</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Content &amp; Creative</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Copywriting</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">InDesign</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">Video Production</span>
+          <span class="skill-tag">Social Media</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Languages</div>
+        <div class="info-item"><span class="info-label">Chinese</span><span class="info-value">Native</span></div>
+        <div class="info-item"><span class="info-label">English</span><span class="info-value">Fluent</span></div>
+      </div>
+
+      <div class="section-title" style="margin-top:12px;"><span class="gold"><svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 22,12 12,22 2,12"/></svg></span> HIGHLIGHTS</div>
+
+      <div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>B2B specialist</strong> across 4+ industries (Industrial, ICT, SaaS, Consulting)</div></div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>Full-funnel marketing</strong> from awareness to MQL generation</div></div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>Cross-functional project &amp; stakeholder management</strong> — bridging EU × China teams, agency coordination, intern mentorship</div></div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>English working environment</strong> (TEKNOS, ALTEN global collaboration)</div></div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>AI early adopter</strong> — live tool integration since 2024</div></div>
+        <div class="hl-row"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="hl-item"><strong>Multilingual content ecosystem</strong> across WeChat, Xiaohongshu (Red), LinkedIn, YouTube, TikTok, Douyin, Bilibili</div></div>
+      </div>
+
+      <div class="section-title" style="margin-top:12px;"><span class="gold"><svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 22,12 12,22 2,12"/></svg></span> EDUCATION</div>
+      <div style="font-size:8pt; color:var(--t);">
+        <div><strong>Bachelor of Economics</strong></div>
+        <div>Ningbo University of Finance &amp; Economics</div>
+        <div style="color:var(--t2); font-size:7.5pt;">2014 – 2018</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
