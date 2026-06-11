@@ -6,6 +6,7 @@ BASE = r"C:\Users\64107\Desktop\charlotte-portfolio\docs"
 FILES = [
     ("resume-en.html", "resume-en.pdf"),
     ("resume-cn.html", "resume-cn.pdf"),
+    ("resume-en-v2.html", "resume-en-v2.pdf"),
 ]
 
 async def main():
