@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "plex": {
+      "command": "plex-mcp",
+      "args": []
+    },
+    "looplens": {
+      "command": "py",
+      "args": ["-3.14", "-m", "looplens.server.__main__"]
+    }
+  }
+}
