@@ -63,3 +63,23 @@ Nav → Hero → Experience（4公司时间线）→ Case Study（CAME）→ Por
 - 中文简历 → Foxmail（国内直达）
 - JS 语言切换时动态改 `mailto:` 和显示文本
 - 邮箱替换前确认：中文版和英文版可能有不同邮箱策略
+
+## 完成定义 (Definition of Done)
+
+✅ 已完成：
+- [x] 9 模块单页面（Nav→Hero→Experience→Case Study→Portfolio→AI Playground→Recommendations→Downloads→Footer）
+- [x] Dark Explorer 配色方案（待用户确认）
+- [x] 4 级响应式断点
+- [x] GitHub Pages + Cloudflare Pages 双部署
+- [x] v1-desktop / v2-mobile-responsive Git tags
+- [x] .gitignore 已添加 + CLAUDE.md 已提交
+
+🔲 待完成（按优先级）：
+- [ ] P0：用户确认 Dark Explorer 配色
+- [ ] P1：中英文切换功能实现
+- [ ] P1：emoji → Phosphor Icons 替换
+- [ ] P2：照片上传 hero 区域
+- [ ] P2：导出中英文简历 PDF
+- [ ] P3：自定义域名绑定（可选）
+
+📋 最近更新：2026-07-14
