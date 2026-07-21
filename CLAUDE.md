@@ -27,8 +27,19 @@ Nav → Hero → Experience（4公司时间线）→ Case Study（CAME）→ Por
 
 - `v1-desktop` (tag `4ad9455`, 2026-06-10)：Neumorphism 蓝，仅桌面端
 - `v2-mobile-responsive` (tag `3ff4d90`, 2026-06-11)：4级断点 + AI板块重写
+- `v2-infographic` (branch, 2026-07-21)：Professional Journey 信息图表化 + Obsidian 项目管理
 
 回滚：`git checkout v1-desktop -- index.html`
+
+## 2.0 信息图表板块（v2-infographic 分支）
+
+- **分支**：`v2-infographic`（基于 main）
+- **变更范围**：仅替换 `#experience` 区域，其余 8 模块不变
+- **三条主线**：职业跃迁流 → 能力域扩展 → 思维跃迁标注
+- **技术**：纯 CSS Flexbox + 内联 SVG 箭头，零依赖
+- **移动策略**：>=1024px 水平流程 / 768-1023px 两行 / <768px 纵向叙事
+- **项目管理**：`.obsidian-vault/`（PRD + User Stories + ADR + Sprint + Bug Tracker）
+- **中英文**：新增 `infographic-*` i18n 键
 
 ## 用户偏好（强制规则）
 

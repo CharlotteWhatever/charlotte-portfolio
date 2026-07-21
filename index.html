@@ -301,108 +301,334 @@
   .hero-contact a:hover { color: var(--accent); }
   .hero-contact svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
 
-  /* ===== Experience — Single-sided Bold Timeline ===== */
-  .exp-section-title { margin-bottom: 60px; }
+  /* ===== Experience — Infographic Flowchart (2.0) ===== */
+  .exp-section-title { margin-bottom: 48px; }
 
-  .timeline {
-    position: relative; padding: 0 0 0 60px;
-  }
-  /* Thick vertical line — left side */
-  .timeline::before {
-    content: ''; position: absolute; left: 28px; top: 12px; bottom: 12px;
-    width: 4px;
-    background: linear-gradient(to bottom,
-      var(--accent-light) 0%,
-      var(--accent) 30%,
-      var(--accent) 70%,
-      var(--accent-light) 100%);
-    border-radius: 2px;
-    opacity: 0.3;
+  /* ——— Desktop: Horizontal Flow ——— */
+  .ig-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
   }
 
-  .tl-item {
-    position: relative; margin-bottom: 48px;
-    padding-left: 40px;
-  }
-  .tl-item:last-child { margin-bottom: 0; }
-
-  /* Node on the line */
-  .tl-item::before {
-    content: ''; position: absolute; left: -32px; top: 32px;
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 4px solid var(--accent);
-    z-index: 3;
-    box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-  }
-
-  .tl-node {
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 16px;
-  }
-  .tl-node .date-badge {
-    display: inline-flex; flex-direction: column; align-items: center;
-    justify-content: center;
-    width: 80px; height: 80px; border-radius: 50%;
-    background: var(--bg);
-    box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
-    flex-shrink: 0;
-  }
-  .tl-node .date-badge .month {
-    font-family: var(--font-display); font-size: 9px; font-weight: 600;
-    color: var(--text-muted); letter-spacing: 0.5px; line-height: 1;
-  }
-  .tl-node .date-badge .year {
-    font-family: var(--font-display); font-size: 18px; font-weight: 800;
-    color: var(--accent); line-height: 1.1; margin-top: 1px;
-  }
-  .tl-node .date-badge .range {
-    font-family: var(--font-display); font-size: 7px;
-    color: var(--text-muted); margin-top: 1px;
-  }
-  .tl-node .company-short {
-    font-family: var(--font-display); font-size: 14px; font-weight: 600;
-    color: var(--text-primary); letter-spacing: 0.3px;
-  }
-  .tl-node .company-industry {
-    font-family: var(--font-body); font-size: 11px;
-    color: var(--text-muted); font-weight: 400;
-  }
-
-  .tl-content {
+  .ig-node {
+    flex: 1;
+    min-width: 0;
     background: var(--bg);
     border-radius: var(--radius-container);
-    padding: 28px 32px;
+    padding: 24px 20px 20px;
     box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
     transition: 0.3s ease-out;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
   }
-  .tl-content:hover {
+  .ig-node:hover {
     box-shadow: 12px 12px 20px var(--shadow-dark-heavy), -12px -12px 20px rgba(255,255,255,0.6);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    z-index: 10;
   }
-  .tl-content .exp-company {
-    font-family: var(--font-display); font-size: 14px; font-weight: 600;
-    color: var(--text-primary); margin-bottom: 2px;
+
+  /* Future node — dashed style */
+  .ig-node.ig-future {
+    border: 2px dashed var(--accent-light);
+    box-shadow: inset 0 0 0 2px var(--bg), 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+    opacity: 0.85;
+    background: var(--bg-alt);
   }
-  .tl-content .exp-role {
-    font-size: 12px; color: var(--text-muted); margin-bottom: 10px; font-weight: 500;
+  .ig-node.ig-future:hover {
+    border-color: var(--accent);
+    opacity: 1;
   }
-  .tl-content .exp-desc {
-    font-size: 13px; line-height: 1.7; color: var(--text-primary);
+
+  .ig-node-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
   }
-  .tl-content .exp-desc strong { color: var(--accent); font-weight: 600; }
-  .tl-content .exp-desc ul {
-    list-style: none; padding: 0;
+  .ig-company {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
-  .tl-content .exp-desc ul li {
-    font-size: 12.5px; line-height: 1.6; color: var(--text-primary);
-    padding-left: 16px; position: relative; margin-bottom: 4px;
+  .ig-date {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: var(--bg-alt);
+    padding: 3px 8px;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
   }
-  .tl-content .exp-desc ul li::before {
-    content: ''; position: absolute; left: 0; top: 9px;
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--accent); opacity: 0.35;
+  .ig-industry {
+    font-family: var(--font-body);
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .ig-role {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .ig-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: auto;
+  }
+  .ig-skills span {
+    font-family: var(--font-display);
+    font-size: 8.5px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text-muted);
+    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+    white-space: nowrap;
+    transition: 0.2s ease-out;
+  }
+  .ig-node:hover .ig-skills span {
+    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+  }
+
+  .ig-skills span.skill-content  { color: var(--accent); }
+  .ig-skills span.skill-digital { color: var(--accent-teal); }
+  .ig-skills span.skill-strategy { color: #D4905B; }
+  .ig-skills span.skill-global  { color: #7B6F9C; }
+  .ig-skills span.skill-growth  { color: #5B9A7A; }
+
+  /* ——— Connector (arrow + motivation) ——— */
+  .ig-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 64px;
+    position: relative;
+    z-index: 1;
+  }
+  .ig-connector svg {
+    width: 48px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .ig-connector .ig-arrow-line {
+    stroke: var(--accent-light);
+    stroke-width: 2;
+    stroke-dasharray: 6 3;
+  }
+  .ig-connector .ig-arrow-head {
+    fill: var(--accent);
+  }
+
+  .ig-motivation {
+    font-family: var(--font-serif);
+    font-size: 10px;
+    font-style: italic;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+    max-width: 60px;
+    margin-top: 4px;
+    opacity: 0.75;
+  }
+
+  /* ——— Hover Detail Panel ——— */
+  .ig-detail {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background: var(--bg);
+    border-radius: var(--radius-base);
+    padding: 16px 18px;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+    z-index: 20;
+    pointer-events: none;
+  }
+  .ig-node:hover .ig-detail {
+    display: block;
+  }
+  .ig-detail .ig-detail-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .ig-detail .ig-detail-text {
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+  .ig-detail .ig-detail-text strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ——— Mobile: Vertical Narrative ——— */
+  .ig-flow-mobile {
+    display: none;
+  }
+
+  /* ===== Infographic Responsive ===== */
+  @media (max-width: 1023px) {
+    .ig-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .ig-connector {
+      display: none;
+    }
+    .ig-node.ig-future {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .ig-flow {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .ig-node { padding: 18px 14px 16px; }
+    .ig-company { font-size: 11px; }
+    .ig-role { font-size: 10px; }
+    .ig-skills span { font-size: 7.5px; padding: 2px 8px; }
+    .ig-industry { font-size: 9px; }
+  }
+
+  @media (max-width: 767px) {
+    /* Switch to vertical narrative */
+    .ig-flow { display: none; }
+
+    .ig-flow-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Mini overview strip */
+    .ig-mobile-strip {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 4px 0;
+    }
+    .ig-mobile-strip::-webkit-scrollbar { display: none; }
+    .ig-mobile-strip .ig-strip-dot {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 9px; font-weight: 700;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      transition: 0.3s ease-out;
+    }
+    .ig-mobile-strip .ig-strip-dot.active {
+      color: var(--accent);
+      box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+    }
+    .ig-mobile-strip .ig-strip-line {
+      flex: 1;
+      min-width: 16px;
+      height: 2px;
+      background: var(--accent-light);
+      opacity: 0.2;
+      align-self: center;
+      border-radius: 1px;
+    }
+
+    /* Vertical scroll-snap nodes */
+    .ig-mobile-nodes {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .ig-node-mobile {
+      background: var(--bg);
+      border-radius: var(--radius-container);
+      padding: 24px 20px;
+      box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+      position: relative;
+    }
+    .ig-node-mobile.ig-future {
+      border: 2px dashed var(--accent-light);
+      box-shadow: inset 0 0 0 2px var(--bg), 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+      background: var(--bg-alt);
+    }
+    .ig-mobile-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+      margin: -12px 0;
+    }
+    .ig-mobile-connector svg {
+      width: 24px;
+      height: 24px;
+    }
+    .ig-mobile-connector .ig-motivation {
+      max-width: 100%;
+      font-size: 11px;
+    }
+
+    .ig-node-mobile .ig-node-header {
+      margin-bottom: 4px;
+    }
+    .ig-node-mobile .ig-role {
+      margin-bottom: 8px;
+    }
+    .ig-node-mobile .ig-skills {
+      gap: 6px;
+    }
+    .ig-node-mobile .ig-skills span {
+      font-size: 10px;
+      padding: 4px 12px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ig-flow {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .ig-node.ig-future {
+      grid-column: 1 / -1;
+    }
+    .ig-node-mobile { padding: 20px 16px; }
+    .ig-node-mobile .ig-company { font-size: 13px; }
   }
 
   /* ===== Case Study ===== */
@@ -765,7 +991,7 @@
   footer .right a { color: var(--text-muted); text-decoration: none; font-size: 11px; transition: 0.3s ease-out; }
   footer .right a:hover { color: var(--accent); }
 
-  button, a, .dl-item, .case-card, .port-hero-card, .port-sm-card, .ai-card, .rec-card, .tl-content {
+  button, a, .dl-item, .case-card, .port-hero-card, .port-sm-card, .ai-card, .rec-card, .ig-node {
     cursor: pointer;
   }
   button { min-height: 44px; }
@@ -779,12 +1005,6 @@
     .hero h1 { font-size: 56px; }
     .hero-intro { font-size: 16px; }
     .hero-sub { font-size: 17px; }
-
-    .timeline { padding: 0 0 0 32px; }
-    .timeline::before { left: 16px; }
-    .tl-item::before { left: -20px; }
-    .tl-node .date-badge { width: 60px; height: 60px; }
-    .tl-node .date-badge .year { font-size: 15px; }
 
     .case-showcase { grid-template-columns: 1fr; }
     .case-grid { grid-template-columns: 1fr; }
@@ -838,19 +1058,6 @@
     .hero-contact { gap: 14px; }
     .hero-contact a, .hero-contact span { font-size: 12px; }
     .section-title { font-size: 28px; margin-bottom: 32px; }
-    .timeline { padding-left: 24px; }
-    .timeline::before { left: 12px; }
-    .tl-item { padding-left: 20px; margin-bottom: 32px; }
-    .tl-item::before { left: -12px; width: 12px; height: 12px; top: 24px; }
-    .tl-content { padding: 20px 16px; }
-    .tl-node { gap: 10px; }
-    .tl-node .date-badge { width: 52px; height: 52px; }
-    .tl-node .date-badge .year { font-size: 14px; }
-    .tl-node .date-badge .month, .tl-node .date-badge .range { display: none; }
-    .tl-node .company-short { font-size: 12px; }
-    .tl-content .exp-company { font-size: 12px; }
-    .tl-content .exp-role { font-size: 11px; }
-    .tl-content .exp-desc ul li { font-size: 11.5px; }
     .case-wrap { padding: 28px 18px; }
     .case-kpi { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .case-kpi > div { text-align: center; }
@@ -886,8 +1093,6 @@
     .rec-quote-open { font-size: 56px; top: -16px; left: 4px; }
     .rec-quote-close { font-size: 44px; bottom: -18px; right: 8px; }
     .port-hero-visual { height: 120px; }
-    .tl-node .company-short { font-size: 11px; }
-    .tl-node .company-industry { font-size: 10px; }
     .case-card h3 { font-size: 13px; }
     .case-kpi .num { font-size: 22px; }
     footer .footer-contact a, footer .footer-contact span { font-size: 11px; }
@@ -948,7 +1153,7 @@
   <a href="#downloads" data-i18n="nav-downloads">Downloads</a>
 </nav>
 
-<!-- ===== Experience — Single-sided Timeline ===== -->
+<!-- ===== Experience — Infographic Flowchart (2.0) ===== -->
 <section id="experience">
   <div class="container">
     <div class="exp-section-title">
@@ -956,110 +1161,323 @@
       <h2 class="section-title" data-i18n="section-exp-title">Professional <em>Journey</em></h2>
     </div>
 
-    <div class="timeline">
-      <!-- CAME -->
-      <div class="tl-item">
-        <div class="tl-node">
-          <div class="date-badge">
-            <span class="month">Jul</span>
-            <span class="year">2025</span>
-            <span class="range">→ May 26</span>
-          </div>
-          <div>
-            <div class="company-short" data-i18n="exp-came-company">CAME Automation Systems</div>
-            <div class="company-industry" data-i18n="exp-came-industry">· Industrial Automation (Italy)</div>
-          </div>
+    <!-- ===== Desktop: Horizontal Flow ===== -->
+    <div class="ig-flow">
+
+      <!-- Node 1: GMA -->
+      <div class="ig-node">
+        <div class="ig-node-header">
+          <span class="ig-company">GMA</span>
+          <span class="ig-date">2018–2019</span>
         </div>
-        <div class="tl-content">
-          <div class="exp-role" data-i18n="exp-came-role">Digital &amp; Content Project Owner</div>
-          <div class="exp-desc">
-            <ul>
-              <li data-i18n="exp-came-l1">Delivered <strong>2 websites</strong> (CN+EN) from zero in <strong>4 months</strong></li>
-              <li data-i18n="exp-came-l2">Built SEM across <strong>Baidu, Bing, Google</strong> — budget planning, keyword expansion, MQL tracking</li>
-              <li data-i18n="exp-came-l3">Implemented <strong>SEO + GEO</strong> dual-engine: on-page technicals + off-page ecosystem</li>
-              <li data-i18n="exp-came-l4">Owned brand content across WeChat, Douyin, Bilibili</li>
-            </ul>
-          </div>
+        <div class="ig-industry" data-i18n="ig-ind-1">Digital Marketing Agency</div>
+        <div class="ig-role" data-i18n="ig-role-1">Copywriter</div>
+        <div class="ig-skills">
+          <span class="skill-content" data-i18n="ig-s-1a">Copywriting</span>
+          <span class="skill-content" data-i18n="ig-s-1b">Client Understanding</span>
+          <span class="skill-strategy" data-i18n="ig-s-1c">Multi-project Mgmt</span>
+          <span class="skill-content" data-i18n="ig-s-1d">Designer Collaboration</span>
+        </div>
+        <div class="ig-detail">
+          <div class="ig-detail-title" data-i18n="ig-dt-1">Agency Foundation</div>
+          <div class="ig-detail-text" data-i18n="ig-dd-1">Worked for <strong>clients' brands</strong>, not own brand — required deep understanding of client business goals. Managed multiple projects simultaneously, collaborated with designers. But couldn't see the <strong>full marketing strategy</strong> or ultimate campaign data.</div>
         </div>
       </div>
 
-      <!-- TEKNOS -->
-      <div class="tl-item">
-        <div class="tl-node">
-          <div class="date-badge">
-            <span class="month">Mar</span>
-            <span class="year">2024</span>
-            <span class="range">→ Aug 24</span>
-          </div>
-          <div>
-            <div class="company-short" data-i18n="exp-teknos-company">TEKNOS Group</div>
-            <div class="company-industry" data-i18n="exp-teknos-industry">· Industrial Coatings MNC (Finland)</div>
-          </div>
+      <!-- Connector 1→2 -->
+      <div class="ig-connector">
+        <svg viewBox="0 0 48 28">
+          <line x1="4" y1="14" x2="36" y2="14" class="ig-arrow-line"/>
+          <polygon points="36,8 46,14 36,20" class="ig-arrow-head"/>
+        </svg>
+        <span class="ig-motivation" data-i18n="ig-m-1">"Wanted to see the full marketing picture &amp; data loop"</span>
+      </div>
+
+      <!-- Node 2: Yizhong -->
+      <div class="ig-node">
+        <div class="ig-node-header">
+          <span class="ig-company">Yizhong Tech</span>
+          <span class="ig-date">2018–2021</span>
         </div>
-        <div class="tl-content">
-          <div class="exp-role" data-i18n="exp-teknos-role">Global Marketing Executive</div>
-          <div class="exp-desc">
-            <ul>
-              <li data-i18n="exp-teknos-l1">AI-driven video localization across <strong>5 EU markets</strong> — <strong>35%</strong> faster turnaround</li>
-              <li data-i18n="exp-teknos-l2">Produced global campaigns across LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong></li>
-              <li data-i18n="exp-teknos-l3">Built <strong>TikTok channel 0→1</strong>: strategy, audience analysis, content direction</li>
-              <li data-i18n="exp-teknos-l4">Bridged EU Marcom × China market bilingually</li>
-            </ul>
-          </div>
+        <div class="ig-industry" data-i18n="ig-ind-2">SaaS + B2B2C Platform</div>
+        <div class="ig-role" data-i18n="ig-role-2">Brand &amp; Content Operations</div>
+        <div class="ig-skills">
+          <span class="skill-digital" data-i18n="ig-s-2a">SEO</span>
+          <span class="skill-digital" data-i18n="ig-s-2b">Marketing Automation</span>
+          <span class="skill-strategy" data-i18n="ig-s-2c">Brand 0→1</span>
+          <span class="skill-content" data-i18n="ig-s-2d">Content Matrix</span>
+          <span class="skill-strategy" data-i18n="ig-s-2e">Agile / MVP</span>
+          <span class="skill-growth" data-i18n="ig-s-2f">B2B2C Platform</span>
+        </div>
+        <div class="ig-detail">
+          <div class="ig-detail-title" data-i18n="ig-dt-2">The SaaS Awakening</div>
+          <div class="ig-detail-text" data-i18n="ig-dd-2">Built <strong>甜薪工场</strong> freelancer platform from 0→1 — brand, content matrix, website. Learned MVP, Agile, SEO, marketing automation. <strong>Realized the relationship</strong> among branding, content, and channels — the beginning of understanding integrated marketing.</div>
         </div>
       </div>
 
-      <!-- ALTEN -->
-      <div class="tl-item">
-        <div class="tl-node">
-          <div class="date-badge">
-            <span class="month">Aug</span>
-            <span class="year">2021</span>
-            <span class="range">→ Feb 24</span>
-          </div>
-          <div>
-            <div class="company-short" data-i18n="exp-alten-company">ALTEN China</div>
-            <div class="company-industry" data-i18n="exp-alten-industry">· Engineering &amp; IT Consulting (French MNC)</div>
-          </div>
+      <!-- Connector 2→3 -->
+      <div class="ig-connector">
+        <svg viewBox="0 0 48 28">
+          <line x1="4" y1="14" x2="36" y2="14" class="ig-arrow-line"/>
+          <polygon points="36,8 46,14 36,20" class="ig-arrow-head"/>
+        </svg>
+        <span class="ig-motivation" data-i18n="ig-m-2">"Sought structured platform to apply my methods"</span>
+      </div>
+
+      <!-- Node 3: ALTEN -->
+      <div class="ig-node">
+        <div class="ig-node-header">
+          <span class="ig-company">ALTEN China</span>
+          <span class="ig-date">2021–2024</span>
         </div>
-        <div class="tl-content">
-          <div class="exp-role" data-i18n="exp-alten-role">Sr. Content Marketing Specialist</div>
-          <div class="exp-desc">
-            <ul>
-              <li data-i18n="exp-alten-l1">Produced <strong>30+ white papers</strong>, <strong>50+ engineering stories</strong>, 20+ content formats</li>
-              <li data-i18n="exp-alten-l2">Delivered <strong>~3X omnichannel exposure</strong> &amp; <strong>58% follower growth</strong> (YoY)</li>
-              <li data-i18n="exp-alten-l3">Led bilingual website 2.0 relaunch: <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% cost savings</strong></li>
-              <li data-i18n="exp-alten-l4">Generated <strong>100+ sales leads</strong> &amp; <strong>500+ recruitment leads</strong></li>
-            </ul>
-          </div>
+        <div class="ig-industry" data-i18n="ig-ind-3">Engineering &amp; IT Consulting (FR)</div>
+        <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing</div>
+        <div class="ig-skills">
+          <span class="skill-content" data-i18n="ig-s-3a">White Papers</span>
+          <span class="skill-content" data-i18n="ig-s-3b">Engineer Interviews</span>
+          <span class="skill-strategy" data-i18n="ig-s-3c">B2B+B2C Dual Audience</span>
+          <span class="skill-strategy" data-i18n="ig-s-3d">Website PM</span>
+          <span class="skill-strategy" data-i18n="ig-s-3e">SOP Building</span>
+        </div>
+        <div class="ig-detail">
+          <div class="ig-detail-title" data-i18n="ig-dt-3">Depth &amp; Structure</div>
+          <div class="ig-detail-text" data-i18n="ig-dd-3">Produced <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>. Managed <strong>B2B+B2C dual-audience</strong> content strategy. Led website 2.0 relaunch: <strong>+65% SEO traffic</strong>, 2.1× dwell time. Developed SOPs for content and website operations.</div>
         </div>
       </div>
 
-      <!-- Yizhong -->
-      <div class="tl-item">
-        <div class="tl-node">
-          <div class="date-badge">
-            <span class="month">Jun</span>
-            <span class="year">2018</span>
-            <span class="range">→ Jul 21</span>
-          </div>
-          <div>
-            <div class="company-short" data-i18n="exp-yizhong-company">Yizhong Technology / Gentlemen Digital Marketing (GMA)</div>
-            <div class="company-industry" data-i18n="exp-yizhong-industry">· SaaS / Digital Agency</div>
-          </div>
+      <!-- Connector 3→4 -->
+      <div class="ig-connector">
+        <svg viewBox="0 0 48 28">
+          <line x1="4" y1="14" x2="36" y2="14" class="ig-arrow-line"/>
+          <polygon points="36,8 46,14 36,20" class="ig-arrow-head"/>
+        </svg>
+        <span class="ig-motivation" data-i18n="ig-m-3">"Wanted to go closer to product &amp; R&amp;D"</span>
+      </div>
+
+      <!-- Node 4: TEKNOS -->
+      <div class="ig-node">
+        <div class="ig-node-header">
+          <span class="ig-company">TEKNOS</span>
+          <span class="ig-date">2024</span>
         </div>
-        <div class="tl-content">
-          <div class="exp-role" data-i18n="exp-yizhong-role">Brand &amp; Content Operations → Copywriter</div>
-          <div class="exp-desc">
-            <ul>
-              <li data-i18n="exp-yizhong-l1">Yizhong Technology — B2B SaaS content ops + B2C freelancer platform brand <strong>0→1</strong></li>
-              <li data-i18n="exp-yizhong-l2">Shengshi Marketing — Served FMCG/Auto/Luxury clients, <strong>100+ monthly assets</strong>, <strong>40% cost reduction</strong></li>
-              <li data-i18n="exp-yizhong-l3">Managed KOL partnerships, cross-platform content strategy, and brand positioning</li>
-            </ul>
-          </div>
+        <div class="ig-industry" data-i18n="ig-ind-4">Industrial Coatings MNC (FI)</div>
+        <div class="ig-role" data-i18n="ig-role-4">Global Marketing Executive</div>
+        <div class="ig-skills">
+          <span class="skill-global" data-i18n="ig-s-4a">Global Marcom</span>
+          <span class="skill-global" data-i18n="ig-s-4b">Video Localization</span>
+          <span class="skill-global" data-i18n="ig-s-4c">TikTok 0→1</span>
+          <span class="skill-global" data-i18n="ig-s-4d">Cross-cultural Comms</span>
+        </div>
+        <div class="ig-detail">
+          <div class="ig-detail-title" data-i18n="ig-dt-4">Global Perspective</div>
+          <div class="ig-detail-text" data-i18n="ig-dd-4">AI-driven video localization for <strong>5 EU markets</strong> — 35% faster turnaround. Global campaigns on LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong>. Bridged EU Marcom and China market bilingually.</div>
         </div>
       </div>
-    </div>
+
+      <!-- Connector 4→5 -->
+      <div class="ig-connector">
+        <svg viewBox="0 0 48 28">
+          <line x1="4" y1="14" x2="36" y2="14" class="ig-arrow-line"/>
+          <polygon points="36,8 46,14 36,20" class="ig-arrow-head"/>
+        </svg>
+        <span class="ig-motivation" data-i18n="ig-m-4">"Wanted more 0→1 ownership &amp; builder scope"</span>
+      </div>
+
+      <!-- Node 5: CAME -->
+      <div class="ig-node">
+        <div class="ig-node-header">
+          <span class="ig-company">CAME</span>
+          <span class="ig-date">2025–2026</span>
+        </div>
+        <div class="ig-industry" data-i18n="ig-ind-5">Industrial Automation (IT)</div>
+        <div class="ig-role" data-i18n="ig-role-5">Digital &amp; Content Project Owner</div>
+        <div class="ig-skills">
+          <span class="skill-digital" data-i18n="ig-s-5a">SEM (Baidu/Bing/Google)</span>
+          <span class="skill-growth" data-i18n="ig-s-5b">Leads Gen / Growth</span>
+          <span class="skill-digital" data-i18n="ig-s-5c">SEO + GEO</span>
+          <span class="skill-content" data-i18n="ig-s-5d">Offline Events</span>
+        </div>
+        <div class="ig-detail">
+          <div class="ig-detail-title" data-i18n="ig-dt-5">Full-Stack Builder</div>
+          <div class="ig-detail-text" data-i18n="ig-dd-5">Built <strong>2 websites (CN+EN) in 4 months</strong> from scratch. Launched SEM on Baidu, Bing, Google with MQL tracking. Implemented SEO+GEO dual-engine. Owned full brand content matrix across WeChat, Douyin, Bilibili.</div>
+        </div>
+      </div>
+
+      <!-- Connector 5→Next -->
+      <div class="ig-connector">
+        <svg viewBox="0 0 48 28">
+          <line x1="4" y1="14" x2="36" y2="14" class="ig-arrow-line"/>
+          <polygon points="36,8 46,14 36,20" class="ig-arrow-head"/>
+        </svg>
+        <span class="ig-motivation" data-i18n="ig-m-5">"Ready for integrated marketing ownership"</span>
+      </div>
+
+      <!-- Node 6: Future -->
+      <div class="ig-node ig-future">
+        <div class="ig-node-header">
+          <span class="ig-company" data-i18n="ig-future-label">What's Next</span>
+          <span class="ig-date">→</span>
+        </div>
+        <div class="ig-industry" data-i18n="ig-future-ind">Promising Industry · 0→1 Projects</div>
+        <div class="ig-role" data-i18n="ig-future-role">Integrated Marketing Lead</div>
+        <div class="ig-skills">
+          <span class="skill-strategy" data-i18n="ig-s-fa">Brand Voice</span>
+          <span class="skill-content" data-i18n="ig-s-fb">Content Strategy</span>
+          <span class="skill-digital" data-i18n="ig-s-fc">Channel Strategy</span>
+          <span class="skill-growth" data-i18n="ig-s-fd">Leads Gen / Growth</span>
+          <span class="skill-strategy" data-i18n="ig-s-fe">Sales Funnel Nutrition</span>
+        </div>
+      </div>
+    </div><!-- /ig-flow -->
+
+    <!-- ===== Mobile: Vertical Narrative ===== -->
+    <div class="ig-flow-mobile">
+      <!-- Mini overview strip -->
+      <div class="ig-mobile-strip">
+        <span class="ig-strip-dot active">G</span>
+        <span class="ig-strip-line"></span>
+        <span class="ig-strip-dot">Y</span>
+        <span class="ig-strip-line"></span>
+        <span class="ig-strip-dot">A</span>
+        <span class="ig-strip-line"></span>
+        <span class="ig-strip-dot">T</span>
+        <span class="ig-strip-line"></span>
+        <span class="ig-strip-dot">C</span>
+        <span class="ig-strip-line"></span>
+        <span class="ig-strip-dot">?</span>
+      </div>
+
+      <!-- Vertical node cards -->
+      <div class="ig-mobile-nodes">
+
+        <!-- Mobile: GMA -->
+        <div class="ig-node-mobile">
+          <div class="ig-node-header">
+            <span class="ig-company">GMA</span>
+            <span class="ig-date">2018–2019</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-ind-1">Digital Marketing Agency</div>
+          <div class="ig-role" data-i18n="ig-role-1">Copywriter</div>
+          <div class="ig-skills">
+            <span class="skill-content" data-i18n="ig-s-1a">Copywriting</span>
+            <span class="skill-content" data-i18n="ig-s-1b">Client Understanding</span>
+            <span class="skill-strategy" data-i18n="ig-s-1c">Multi-project Mgmt</span>
+            <span class="skill-content" data-i18n="ig-s-1d">Designer Collaboration</span>
+          </div>
+        </div>
+
+        <div class="ig-mobile-connector">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="16" stroke="var(--accent-light)" stroke-width="2" stroke-dasharray="4 3"/><polygon points="6,14 12,22 18,14" fill="var(--accent)"/></svg>
+          <span class="ig-motivation" data-i18n="ig-m-1">"Wanted to see the full marketing picture &amp; data loop"</span>
+        </div>
+
+        <!-- Mobile: Yizhong -->
+        <div class="ig-node-mobile">
+          <div class="ig-node-header">
+            <span class="ig-company">Yizhong Technology</span>
+            <span class="ig-date">2018–2021</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-ind-2">SaaS + B2B2C Platform</div>
+          <div class="ig-role" data-i18n="ig-role-2">Brand &amp; Content Operations</div>
+          <div class="ig-skills">
+            <span class="skill-digital" data-i18n="ig-s-2a">SEO</span>
+            <span class="skill-digital" data-i18n="ig-s-2b">Marketing Automation</span>
+            <span class="skill-strategy" data-i18n="ig-s-2c">Brand 0→1</span>
+            <span class="skill-content" data-i18n="ig-s-2d">Content Matrix</span>
+            <span class="skill-strategy" data-i18n="ig-s-2e">Agile / MVP</span>
+            <span class="skill-growth" data-i18n="ig-s-2f">B2B2C Platform</span>
+          </div>
+        </div>
+
+        <div class="ig-mobile-connector">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="16" stroke="var(--accent-light)" stroke-width="2" stroke-dasharray="4 3"/><polygon points="6,14 12,22 18,14" fill="var(--accent)"/></svg>
+          <span class="ig-motivation" data-i18n="ig-m-2">"Sought structured platform to apply my methods"</span>
+        </div>
+
+        <!-- Mobile: ALTEN -->
+        <div class="ig-node-mobile">
+          <div class="ig-node-header">
+            <span class="ig-company">ALTEN China</span>
+            <span class="ig-date">2021–2024</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-ind-3">Engineering &amp; IT Consulting (FR)</div>
+          <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing Specialist</div>
+          <div class="ig-skills">
+            <span class="skill-content" data-i18n="ig-s-3a">White Papers</span>
+            <span class="skill-content" data-i18n="ig-s-3b">Engineer Interviews</span>
+            <span class="skill-strategy" data-i18n="ig-s-3c">B2B+B2C Dual Audience</span>
+            <span class="skill-strategy" data-i18n="ig-s-3d">Website PM</span>
+            <span class="skill-strategy" data-i18n="ig-s-3e">SOP Building</span>
+          </div>
+        </div>
+
+        <div class="ig-mobile-connector">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="16" stroke="var(--accent-light)" stroke-width="2" stroke-dasharray="4 3"/><polygon points="6,14 12,22 18,14" fill="var(--accent)"/></svg>
+          <span class="ig-motivation" data-i18n="ig-m-3">"Wanted to go closer to product &amp; R&amp;D"</span>
+        </div>
+
+        <!-- Mobile: TEKNOS -->
+        <div class="ig-node-mobile">
+          <div class="ig-node-header">
+            <span class="ig-company">TEKNOS Group</span>
+            <span class="ig-date">2024</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-ind-4">Industrial Coatings MNC (Finland)</div>
+          <div class="ig-role" data-i18n="ig-role-4">Global Marketing Executive</div>
+          <div class="ig-skills">
+            <span class="skill-global" data-i18n="ig-s-4a">Global Marcom</span>
+            <span class="skill-global" data-i18n="ig-s-4b">Video Localization</span>
+            <span class="skill-global" data-i18n="ig-s-4c">TikTok 0→1</span>
+            <span class="skill-global" data-i18n="ig-s-4d">Cross-cultural Comms</span>
+          </div>
+        </div>
+
+        <div class="ig-mobile-connector">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="16" stroke="var(--accent-light)" stroke-width="2" stroke-dasharray="4 3"/><polygon points="6,14 12,22 18,14" fill="var(--accent)"/></svg>
+          <span class="ig-motivation" data-i18n="ig-m-4">"Wanted more 0→1 ownership &amp; builder scope"</span>
+        </div>
+
+        <!-- Mobile: CAME -->
+        <div class="ig-node-mobile">
+          <div class="ig-node-header">
+            <span class="ig-company">CAME Automation</span>
+            <span class="ig-date">2025–2026</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-ind-5">Industrial Automation (Italy)</div>
+          <div class="ig-role" data-i18n="ig-role-5">Digital &amp; Content Project Owner</div>
+          <div class="ig-skills">
+            <span class="skill-digital" data-i18n="ig-s-5a">SEM (Baidu/Bing/Google)</span>
+            <span class="skill-growth" data-i18n="ig-s-5b">Leads Gen / Growth</span>
+            <span class="skill-digital" data-i18n="ig-s-5c">SEO + GEO</span>
+            <span class="skill-content" data-i18n="ig-s-5d">Offline Events</span>
+          </div>
+        </div>
+
+        <div class="ig-mobile-connector">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="4" x2="12" y2="16" stroke="var(--accent-light)" stroke-width="2" stroke-dasharray="4 3"/><polygon points="6,14 12,22 18,14" fill="var(--accent)"/></svg>
+          <span class="ig-motivation" data-i18n="ig-m-5">"Ready for integrated marketing ownership"</span>
+        </div>
+
+        <!-- Mobile: Future -->
+        <div class="ig-node-mobile ig-future">
+          <div class="ig-node-header">
+            <span class="ig-company" data-i18n="ig-future-label">What's Next</span>
+            <span class="ig-date">→</span>
+          </div>
+          <div class="ig-industry" data-i18n="ig-future-ind">Promising Industry · 0→1 Projects</div>
+          <div class="ig-role" data-i18n="ig-future-role">Integrated Marketing Lead</div>
+          <div class="ig-skills">
+            <span class="skill-strategy" data-i18n="ig-s-fa">Brand Voice</span>
+            <span class="skill-content" data-i18n="ig-s-fb">Content Strategy</span>
+            <span class="skill-digital" data-i18n="ig-s-fc">Channel Strategy</span>
+            <span class="skill-growth" data-i18n="ig-s-fd">Leads Gen / Growth</span>
+            <span class="skill-strategy" data-i18n="ig-s-fe">Sales Funnel Nutrition</span>
+          </div>
+        </div>
+
+      </div><!-- /ig-mobile-nodes -->
+    </div><!-- /ig-flow-mobile -->
+
   </div>
 </section>
 
@@ -1438,34 +1856,73 @@ const i18n = {
   'nav-recommend':     { en: 'Recommendations', zh: '推荐评价' },
   'nav-downloads':     { en: 'Downloads', zh: '资料下载' },
   'section-exp-label': { en: 'Experience', zh: '工作经历' },
-  'section-exp-title': { en: 'Professional <em>Journey</em>', zh: '职业 <em>旅程</em>' },
-  'exp-came-company':  { en: 'CAME Automation Systems', zh: '喀美自动化系统（上海）有限公司' },
-  'exp-came-industry': { en: '· Industrial Automation (Italy)', zh: '· 工业自动化（意大利）' },
-  'exp-came-role':     { en: 'Digital &amp; Content Project Owner', zh: '数字与内容项目负责人' },
-  'exp-came-l1':       { en: 'Delivered <strong>2 websites</strong> (CN+EN) from zero in <strong>4 months</strong>', zh: '<strong>4个月</strong>内从零交付<strong>2个官网</strong>（中英文）' },
-  'exp-came-l2':       { en: 'Built SEM across <strong>Baidu, Bing, Google</strong> — budget planning, keyword expansion, MQL tracking', zh: '搭建<strong>百度、必应、谷歌</strong>三引擎SEM体系' },
-  'exp-came-l3':       { en: 'Implemented <strong>SEO + GEO</strong> dual-engine: on-page technicals + off-page ecosystem', zh: '实施<strong>SEO + GEO</strong>双引擎策略：站内技术+站外内容生态' },
-  'exp-came-l4':       { en: 'Drove <strong>content strategy</strong> across WeChat, Douyin, Bilibili — articles, graphic design, video', zh: '制定<strong>内容策略</strong>并统筹微信、抖音、B站品牌内容矩阵——文章、设计、视频全品类' },
-  'exp-teknos-company':{ en: 'TEKNOS Group', zh: '泰克诺斯坚弗（上海）涂料有限公司' },
-  'exp-teknos-industry':{ en: '· Industrial Coatings MNC (Finland)', zh: '· 工业涂料（芬兰，总部HC）' },
-  'exp-teknos-role':   { en: 'Global Marketing Executive', zh: '全球营销专员' },
-  'exp-teknos-l1':     { en: 'AI-driven video localization across <strong>5 EU markets</strong> — <strong>35%</strong> faster turnaround', zh: 'AI驱动视频本地化覆盖<strong>5个欧盟市场</strong> — 周期缩短<strong>35%</strong>' },
-  'exp-teknos-l2':     { en: 'Produced global campaigns across LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong>', zh: '产出LinkedIn/YouTube/IG/FB全球活动，品牌合规率<strong>90%</strong>' },
-  'exp-teknos-l3':     { en: 'Built <strong>TikTok channel 0→1</strong>: strategy, audience analysis, content direction', zh: '从零搭建<strong>TikTok频道0→1</strong>' },
-  'exp-teknos-l4':     { en: 'Bridged EU Marcom × China market bilingually', zh: '跨国双向沟通：欧盟团队 × 中国市场' },
-  'exp-alten-company': { en: 'ALTEN China', zh: '欧立腾中国' },
-  'exp-alten-industry':{ en: '· Engineering &amp; IT Consulting (French MNC)', zh: '· 工程技术咨询（法资）' },
-  'exp-alten-role':    { en: 'Sr. Content Marketing Specialist', zh: '高级内容营销专员' },
-  'exp-alten-l1':      { en: 'Led <strong>content strategy</strong> — produced <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>, 20+ content formats', zh: '主导<strong>内容策略</strong>——产出<strong>30+白皮书</strong>、<strong>50+工程师故事</strong>、20+内容形式' },
-  'exp-alten-l2':      { en: 'Delivered <strong>~3X omnichannel exposure</strong> &amp; <strong>58% follower growth</strong> (YoY)', zh: '全渠道曝光增长<strong>近3倍</strong>，粉丝增长<strong>58%</strong>（同比）' },
-  'exp-alten-l3':      { en: 'Led bilingual website 2.0 relaunch: <strong>+65% SEO traffic</strong>, <strong>2.1X dwell time</strong>, <strong>32% cost savings</strong>', zh: '主导官网2.0改版：<strong>SEO流量+65%</strong>、停留时间<strong>2.1倍</strong>' },
-  'exp-alten-l4':      { en: 'Generated <strong>100+ sales leads</strong> &amp; <strong>500+ recruitment leads</strong>', zh: '获得<strong>100+销售线索</strong>与<strong>500+招聘线索</strong>' },
-  'exp-yizhong-company':{ en: 'Yizhong Technology / Gentlemen Digital Marketing (GMA)', zh: '蚁众科技 / 胜仕营销（GMA）' },
-  'exp-yizhong-industry':{ en: '· SaaS / Digital Agency', zh: '· SaaS / 数字广告' },
-  'exp-yizhong-role':  { en: 'Brand &amp; Content Operations → Copywriter', zh: '品牌运营 → 文案策划' },
-  'exp-yizhong-l1':    { en: 'Yizhong Technology — B2B SaaS content ops + B2C freelancer platform brand <strong>0→1</strong>', zh: '蚁众科技 — B2B SaaS内容运营 + B2C自由职业者平台品牌<strong>从0到1</strong>' },
-  'exp-yizhong-l2':    { en: 'Shengshi Marketing — Served FMCG/Auto/Luxury clients, <strong>100+ monthly assets</strong>, <strong>40% cost reduction</strong>', zh: '胜仕营销 — 服务快消/汽车/奢侈品客户，<strong>月产100+物料</strong>，设计成本降低<strong>40%</strong>' },
-  'exp-yizhong-l3':    { en: 'Managed KOL partnerships, cross-platform content strategy, and brand positioning', zh: '负责KOL合作、跨平台内容策略与品牌定位' },
+  'section-exp-title': { en: 'Professional <em>Journey</em>', zh: '职业<em>旅程</em>' },
+
+  /* —— Infographic Nodes —— */
+  'ig-ind-1': { en: 'Digital Marketing Agency', zh: '数字营销 agency' },
+  'ig-role-1':{ en: 'Copywriter', zh: '文案策划' },
+  'ig-s-1a': { en: 'Copywriting', zh: '文案撰写' },
+  'ig-s-1b': { en: 'Client Understanding', zh: '客户理解' },
+  'ig-s-1c': { en: 'Multi-project Mgmt', zh: '多项目管理' },
+  'ig-s-1d': { en: 'Designer Collaboration', zh: '设计师协作' },
+  'ig-dt-1': { en: 'Agency Foundation', zh: 'Agency 基本功' },
+  'ig-dd-1': { en: 'Worked for <strong>clients\' brands</strong>, not own brand — required deep understanding of client business goals. Managed multiple projects simultaneously, collaborated with designers. But couldn\'t see the <strong>full marketing strategy</strong> or ultimate campaign data.', zh: '为客户品牌工作，而非自有品牌——需要深入理解客户业务目标。同时管理多个项目，与设计师协作。但无法接触到<strong>完整营销策略</strong>和最终数据闭环。' },
+
+  'ig-ind-2': { en: 'SaaS + B2B2C Platform', zh: 'SaaS + B2B2C 平台' },
+  'ig-role-2':{ en: 'Brand &amp; Content Operations', zh: '品牌与内容运营' },
+  'ig-s-2a': { en: 'SEO', zh: 'SEO' },
+  'ig-s-2b': { en: 'Marketing Automation', zh: '营销自动化' },
+  'ig-s-2c': { en: 'Brand 0→1', zh: '品牌从0到1' },
+  'ig-s-2d': { en: 'Content Matrix', zh: '内容矩阵' },
+  'ig-s-2e': { en: 'Agile / MVP', zh: '敏捷开发 / MVP' },
+  'ig-s-2f': { en: 'B2B2C Platform', zh: 'B2B2C 平台' },
+  'ig-dt-2': { en: 'The SaaS Awakening', zh: 'SaaS 觉醒' },
+  'ig-dd-2': { en: 'Built <strong>甜薪工场</strong> freelancer platform from 0→1 — brand, content matrix, website. Learned MVP, Agile, SEO, marketing automation. <strong>Realized the relationship</strong> among branding, content, and channels — the beginning of understanding integrated marketing.', zh: '从0到1搭建<strong>甜薪工场</strong>自由职业者平台——品牌、内容矩阵、官网。学习了MVP、敏捷、SEO、营销自动化。<strong>理解了品牌、内容与渠道的关系</strong>——这是整合营销认知的起点。' },
+
+  'ig-ind-3': { en: 'Engineering &amp; IT Consulting (FR)', zh: '工程技术咨询（法资）' },
+  'ig-role-3':{ en: 'Sr. Content Marketing', zh: '高级内容营销' },
+  'ig-s-3a': { en: 'White Papers', zh: '白皮书' },
+  'ig-s-3b': { en: 'Engineer Interviews', zh: '工程师访谈' },
+  'ig-s-3c': { en: 'B2B+B2C Dual Audience', zh: 'B2B+B2C双受众' },
+  'ig-s-3d': { en: 'Website PM', zh: '网站项目管理' },
+  'ig-s-3e': { en: 'SOP Building', zh: 'SOP 建设' },
+  'ig-dt-3': { en: 'Depth &amp; Structure', zh: '深度与结构化' },
+  'ig-dd-3': { en: 'Produced <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>. Managed <strong>B2B+B2C dual-audience</strong> content strategy. Led website 2.0 relaunch: <strong>+65% SEO traffic</strong>, 2.1× dwell time. Developed SOPs for content and website operations.', zh: '产出<strong>30+白皮书</strong>、<strong>50+工程师故事</strong>。管理<strong>B2B+B2C双受众</strong>内容策略。主导官网2.0改版：<strong>SEO流量+65%</strong>，停留时间2.1倍。建立了内容与官网运营SOP。' },
+
+  'ig-ind-4': { en: 'Industrial Coatings MNC (FI)', zh: '工业涂料跨国企业（芬兰）' },
+  'ig-role-4':{ en: 'Global Marketing Executive', zh: '全球营销专员' },
+  'ig-s-4a': { en: 'Global Marcom', zh: '全球营销传播' },
+  'ig-s-4b': { en: 'Video Localization', zh: '视频本地化' },
+  'ig-s-4c': { en: 'TikTok 0→1', zh: 'TikTok 从0到1' },
+  'ig-s-4d': { en: 'Cross-cultural Comms', zh: '跨文化沟通' },
+  'ig-dt-4': { en: 'Global Perspective', zh: '全球视野' },
+  'ig-dd-4': { en: 'AI-driven video localization for <strong>5 EU markets</strong> — 35% faster turnaround. Global campaigns on LinkedIn/YouTube/IG/FB with <strong>90% brand compliance</strong>. Bridged EU Marcom and China market bilingually.', zh: 'AI驱动视频本地化覆盖<strong>5个欧盟市场</strong>——周期缩短35%。LinkedIn/YouTube/IG/FB全球活动，<strong>品牌合规率90%</strong>。双语桥接欧盟营销传播与中国市场。' },
+
+  'ig-ind-5': { en: 'Industrial Automation (IT)', zh: '工业自动化（意大利）' },
+  'ig-role-5':{ en: 'Digital &amp; Content Project Owner', zh: '数字与内容项目负责人' },
+  'ig-s-5a': { en: 'SEM (Baidu/Bing/Google)', zh: 'SEM（百度/必应/谷歌）' },
+  'ig-s-5b': { en: 'Leads Gen / Growth', zh: '线索获取/增长' },
+  'ig-s-5c': { en: 'SEO + GEO', zh: 'SEO + GEO' },
+  'ig-s-5d': { en: 'Offline Events', zh: '线下活动' },
+  'ig-dt-5': { en: 'Full-Stack Builder', zh: '全栈操盘' },
+  'ig-dd-5': { en: 'Built <strong>2 websites (CN+EN) in 4 months</strong> from scratch. Launched SEM on Baidu, Bing, Google with MQL tracking. Implemented SEO+GEO dual-engine. Owned full brand content matrix across WeChat, Douyin, Bilibili.', zh: '<strong>4个月</strong>从零交付<strong>2个官网（中英文）</strong>。搭建百度/必应/谷歌SEM体系+MQL追踪。实施SEO+GEO双引擎。统筹微信、抖音、B站品牌内容矩阵。' },
+
+  /* —— Infographic Motivations —— */
+  'ig-m-1':  { en: '"Wanted to see the full marketing picture &amp; data loop"', zh: '「想看到营销全貌与数据闭环」' },
+  'ig-m-2':  { en: '"Sought structured platform to apply my methods"', zh: '「寻求结构化平台，施展方法论」' },
+  'ig-m-3':  { en: '"Wanted to go closer to product &amp; R&amp;D"', zh: '「想离产品和研发更近」' },
+  'ig-m-4':  { en: '"Wanted more 0→1 ownership &amp; builder scope"', zh: '「需要更多从0到1的操盘空间」' },
+  'ig-m-5':  { en: '"Ready for integrated marketing ownership"', zh: '「寻求整合营销全链路操盘」' },
+
+  /* —— Infographic Future Node —— */
+  'ig-future-label': { en: 'What\'s Next', zh: '下一站' },
+  'ig-future-ind':   { en: 'Promising Industry · 0→1 Projects', zh: '前景行业 · 从0到1项目' },
+  'ig-future-role':  { en: 'Integrated Marketing Lead', zh: '整合营销负责人' },
+  'ig-s-fa': { en: 'Brand Voice', zh: '品牌声音' },
+  'ig-s-fb': { en: 'Content Strategy', zh: '内容策略' },
+  'ig-s-fc': { en: 'Channel Strategy', zh: '渠道策略' },
+  'ig-s-fd': { en: 'Leads Gen / Growth', zh: '线索获取/增长' },
+  'ig-s-fe': { en: 'Sales Funnel Nutrition', zh: '销售漏斗培育' },
   'section-cs-label':  { en: 'Case Study', zh: '项目案例' },
   'section-cs-title':  { en: 'CAME · Digital Marketing <em>from 0 to 1</em>', zh: 'CAME · 数字营销<em>从0到1</em>' },
   'cs-sub-label':      { en: 'Project Revel', zh: 'Project Revel' },
