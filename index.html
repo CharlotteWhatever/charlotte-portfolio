@@ -302,291 +302,294 @@
   .hero-contact svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.5; flex-shrink: 0; }
 
   /* ===== Experience — Infographic (2.0) ===== */
-  .exp-section-title { margin-bottom: 48px; }
+  .exp-section-title { margin-bottom: 40px; }
 
-  /* ——— Shared Node Card Styles ——— */
-  .ig-card {
-    background: var(--bg);
-    border-radius: var(--radius-container);
-    padding: 24px 24px 20px;
-    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
-    transition: 0.3s ease-out;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
+  /* ——— Shared Styles ——— */
+  .ig-chip, .ig-station {
+    transition: 0.3s ease-out; cursor: pointer;
   }
-  .ig-card:hover {
-    box-shadow: 12px 12px 20px var(--shadow-dark-heavy), -12px -12px 20px rgba(255,255,255,0.6);
-    transform: translateY(-3px);
-    z-index: 10;
+  .ig-chip:hover, .ig-station:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
   }
-  .ig-card.ig-future {
-    border: 2px dashed var(--accent-light);
-    box-shadow: inset 0 0 0 2px var(--bg), 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
-    opacity: 0.85;
-    background: var(--bg-alt);
-  }
-  .ig-card.ig-future:hover { border-color: var(--accent); opacity: 1; }
-
-  .ig-card-header {
-    display: flex; align-items: baseline; justify-content: space-between;
-    gap: 8px; margin-bottom: 6px;
-  }
-  .ig-company {
-    font-family: var(--font-display); font-size: 14px; font-weight: 700;
-    color: var(--text-primary); letter-spacing: -0.02em; line-height: 1.2;
-  }
-  .ig-date {
-    font-family: var(--font-display); font-size: 10px; font-weight: 600;
-    color: var(--accent); white-space: nowrap; flex-shrink: 0;
-    background: var(--bg-alt); padding: 4px 10px; border-radius: 10px;
-    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
-  }
-  .ig-industry {
-    font-family: var(--font-body); font-size: 10px; color: var(--text-muted);
-    font-weight: 400; margin-bottom: 6px; line-height: 1.3;
-  }
-  .ig-role {
-    font-family: var(--font-display); font-size: 12px; font-weight: 600;
-    color: var(--accent); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.3;
-  }
-  .ig-skills {
-    display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto;
-  }
-  .ig-skills span {
-    font-family: var(--font-display); font-size: 9.5px; font-weight: 500;
-    padding: 4px 12px; border-radius: 20px; background: var(--bg);
-    color: var(--text-muted); white-space: nowrap; transition: 0.2s ease-out;
-    box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
-  }
-  .ig-card:hover .ig-skills span {
-    box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
-  }
-  .ig-skills span.skill-content  { color: var(--accent); }
-  .ig-skills span.skill-digital { color: var(--accent-teal); }
-  .ig-skills span.skill-strategy { color: #D4905B; }
-  .ig-skills span.skill-global  { color: #7B6F9C; }
-  .ig-skills span.skill-growth  { color: #5B9A7A; }
-
-  /* ——— Hover Detail Popup ——— */
-  .ig-detail {
-    display: none; position: absolute;
-    bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
-    width: 280px; background: var(--bg); border-radius: var(--radius-base);
-    padding: 16px 18px; z-index: 20; pointer-events: none;
-    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
-  }
-  .ig-card:hover .ig-detail { display: block; }
-  .ig-detail .ig-detail-title {
-    font-family: var(--font-display); font-size: 12px; font-weight: 700;
-    color: var(--accent); margin-bottom: 4px;
-  }
-  .ig-detail .ig-detail-text {
-    font-size: 12px; line-height: 1.6; color: var(--text-primary);
-  }
-  .ig-detail .ig-detail-text strong { color: var(--accent); font-weight: 600; }
-
-  .ig-motivation {
-    font-family: var(--font-serif); font-size: 11px; font-style: italic;
-    color: var(--text-muted); text-align: center; line-height: 1.4;
-    opacity: 0.8;
-  }
-
-  /* ============================================================
-   *  OPTION A: Cascade Waterfall（阶梯瀑布流）
-   *  Each row = 1 node + diagonal connector
-   *  Successive rows shift right → visual "climbing" effect
-   * ============================================================ */
   .variant-label {
-    font-family: var(--font-display); font-size: 11px; font-weight: 600;
+    font-family: var(--font-display); font-size: 10px; font-weight: 600;
     letter-spacing: 3px; text-transform: uppercase; color: var(--accent);
-    margin-bottom: 28px; padding-bottom: 12px; position: relative;
+    margin-bottom: 20px; opacity: 0.7;
   }
-  .variant-label::after {
-    content: ''; position: absolute; bottom: 0; left: 0;
-    width: 40px; height: 3px; border-radius: 2px; background: var(--accent); opacity: 0.35;
-  }
-
-  .cascade-flow {
-    display: flex; flex-direction: column;
-    gap: 0; /* rows touch — connector bridges the gap */
-  }
-  .cascade-row {
-    display: flex; align-items: flex-start;
-    position: relative;
-  }
-  /* Step offsets — each row indented further right */
-  .cascade-row:nth-child(1) { margin-left: 0; }
-  .cascade-row:nth-child(2) { margin-left: 80px; }
-  .cascade-row:nth-child(3) { margin-left: 160px; }
-  .cascade-row:nth-child(4) { margin-left: 240px; }
-  .cascade-row:nth-child(5) { margin-left: 320px; }
-  .cascade-row:nth-child(6) { margin-left: 400px; }
-
-  .cascade-row .ig-card {
-    width: 310px;     /* ← 节点卡片固定宽度 */
-    flex-shrink: 0;
-  }
-
-  /* Diagonal connector: SVG arrow from this card's bottom-right to next card */
-  .cascade-connector {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .cascade-connector svg {
-    overflow: visible;
-  }
-  .cascade-connector .ca-line {
-    stroke: var(--accent-light);
-    stroke-width: 2;
-    stroke-dasharray: 6 4;
-    fill: none;
-  }
-  .cascade-connector .ca-head {
-    fill: var(--accent);
-  }
-  .cascade-motivation {
-    position: absolute;
-    font-family: var(--font-serif);
-    font-size: 11px;
-    font-style: italic;
-    color: var(--text-muted);
-    opacity: 0.8;
-    white-space: nowrap;
+  .ig-motivation {
+    font-family: var(--font-serif); font-size: 10px; font-style: italic;
+    color: var(--text-muted); opacity: 0.75; line-height: 1.4;
   }
 
   /* ============================================================
-   *  OPTION B: Central Spine（中央脊柱分支图）
-   *  Vertical spine center, nodes alternate left/right
+   *  OPTION C: Circuit Board（芯片电路板）
+   *  Tight stacked bars, each wider = more skill coverage
+   *  PCB traces connect the chips vertically
    * ============================================================ */
-  .spine-flow {
+  .circuit-board {
+    background: var(--bg-alt);
+    border-radius: var(--radius-container);
+    padding: 32px 28px 24px;
+    box-shadow: inset 8px 8px 20px rgba(163,177,198,0.35), inset -8px -8px 20px rgba(255,255,255,0.45);
     position: relative;
-    padding: 0;
+    overflow: hidden;
   }
-  /* Central vertical spine */
-  .spine-line {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0; bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom,
-      var(--accent-light) 0%, var(--accent) 40%, var(--accent) 60%, var(--accent-light) 100%);
-    border-radius: 2px;
-    opacity: 0.25;
+  /* Subtle grid pattern like PCB */
+  .circuit-board::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(26,90,156,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,90,156,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none; z-index: 0;
   }
-  .spine-row {
+
+  .cb-track-labels {
+    display: flex; gap: 0; margin-bottom: 12px;
+    padding-left: 100px; /* leave room for company names */
+    position: relative; z-index: 1;
+  }
+  .cb-track-labels span {
+    flex: 1; text-align: center;
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 0;
+  }
+  .cb-track-labels .tr-content  { color: var(--accent); }
+  .cb-track-labels .tr-digital { color: var(--accent-teal); }
+  .cb-track-labels .tr-strategy { color: #D4905B; }
+  .cb-track-labels .tr-global  { color: #7B6F9C; }
+
+  .cb-rows {
+    display: flex; flex-direction: column-reverse; /* bottom = earliest */
+    gap: 0; position: relative; z-index: 1;
+  }
+
+  .cb-row {
+    display: flex; align-items: center;
+    height: 52px; /* tight row height */
+    margin-bottom: 1px;
+    position: relative;
+  }
+  /* Trace line connecting rows — vertical line from chip edge downward */
+  .cb-trace {
+    position: absolute; z-index: 0;
+    border-left: 2px solid var(--accent-light);
+    opacity: 0.3;
+  }
+
+  .cb-company {
+    width: 100px; flex-shrink: 0;
+    text-align: right; padding-right: 16px;
+    font-family: var(--font-display); font-size: 12px; font-weight: 700;
+    color: var(--text-primary); letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .cb-company small {
+    display: block; font-family: var(--font-body); font-size: 9px;
+    color: var(--text-muted); font-weight: 400;
+  }
+
+  .cb-chip-wrap {
+    flex: 1; height: 100%;
     display: flex; align-items: center;
     position: relative; z-index: 2;
-    margin-bottom: 32px;
-    min-height: 140px;
   }
-  .spine-row:last-child { margin-bottom: 0; }
-
-  /* Left-side node */
-  .spine-row.spine-left { justify-content: flex-start; padding-right: 52%; }
-  .spine-row.spine-left .ig-card { margin-right: auto; }
-
-  /* Right-side node */
-  .spine-row.spine-right { justify-content: flex-end; padding-left: 52%; }
-  .spine-row.spine-right .ig-card { margin-left: auto; }
-
-  .spine-row .ig-card {
-    width: 340px;     /* ← 节点卡片固定宽度 */
-    flex-shrink: 0;
-  }
-
-  /* Spine node dot */
-  .spine-dot {
-    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 16px; height: 16px; border-radius: 50%; z-index: 5;
+  /* The chip bar itself */
+  .ig-chip {
+    height: 38px;
     background: var(--bg);
-    border: 4px solid var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; gap: 8px;
+    padding: 0 14px;
+    box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    position: relative;
+    white-space: nowrap;
+  }
+  /* Chip "pins" — small dots on left/right edges */
+  .ig-chip::before, .ig-chip::after {
+    content: ''; position: absolute;
+    width: 6px; height: 6px; border-radius: 1px;
+    background: var(--accent); opacity: 0.5;
+  }
+  .ig-chip::before { left: -3px; top: 8px; }
+  .ig-chip::after  { right: -3px; top: 8px; }
+  .ig-chip .chip-role {
+    font-family: var(--font-display); font-size: 10.5px; font-weight: 600;
+    color: var(--accent); flex-shrink: 0;
+  }
+  .ig-chip .chip-skills {
+    font-size: 9.5px; color: var(--text-muted);
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .ig-chip .chip-date {
+    margin-left: auto; flex-shrink: 0;
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-alt); padding: 2px 8px; border-radius: 8px;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+  }
+  /* Wider chip = more skills */
+  .ig-chip.w-60 { width: 60%; }  .ig-chip.w-75 { width: 75%; }
+  .ig-chip.w-85 { width: 85%; }  .ig-chip.w-95 { width: 95%; }
+
+  .ig-chip.ig-future-chip {
+    border: 2px dashed var(--accent-light); opacity: 0.85;
+    background: var(--bg-alt); box-shadow: none;
+  }
+  .ig-chip.ig-future-chip::before, .ig-chip.ig-future-chip::after { display: none; }
+
+  /* ——— Hover detail popup (circuit board) ——— */
+  .cb-detail {
+    display: none; position: absolute;
+    bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    width: 280px; background: var(--bg); border-radius: var(--radius-base);
+    padding: 14px 16px; z-index: 20; pointer-events: none;
+    box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
+  }
+  .cb-row:hover .cb-detail { display: block; }
+  .cb-detail .cb-dt {
+    font-family: var(--font-display); font-size: 11px; font-weight: 700;
+    color: var(--accent); margin-bottom: 3px;
+  }
+  .cb-detail .cb-dd { font-size: 11px; line-height: 1.5; color: var(--text-primary); }
+  .cb-detail .cb-dd strong { color: var(--accent); font-weight: 600; }
+
+  /* ——— PCB via dots (connection points between rows) ——— */
+  .cb-via {
+    position: absolute; left: 108px; z-index: 3;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent-light);
+  }
+
+  /* ============================================================
+   *  OPTION D: Subway Map（地铁线路图）
+   *  4 horizontal colored lines, station dots, angled transfers
+   * ============================================================ */
+  .subway-map {
+    position: relative;
+    background: var(--bg-alt);
+    border-radius: var(--radius-container);
+    padding: 28px 20px 16px;
+    box-shadow: inset 8px 8px 20px rgba(163,177,198,0.35), inset -8px -8px 20px rgba(255,255,255,0.45);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .subway-inner {
+    position: relative;
+    min-width: 700px;
+    height: 300px; /* 4 lines × ~60px spacing + padding */
+  }
+
+  /* ——— Subway lines ——— */
+  .sw-line {
+    position: absolute; left: 0; right: 0;
+    height: 5px; border-radius: 3px; opacity: 0.7;
+    z-index: 1;
+  }
+  .sw-line.line-content  { top: 44px;  background: var(--accent); }
+  .sw-line.line-digital  { top: 116px; background: var(--accent-teal); }
+  .sw-line.line-strategy { top: 188px; background: #D4905B; }
+  .sw-line.line-global   { top: 260px; background: #7B6F9C; }
+
+  /* Line labels */
+  .sw-line-label {
+    position: absolute; left: 0; z-index: 2;
+    font-family: var(--font-display); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .sw-line-label.l-content  { top: 34px; color: var(--accent); }
+  .sw-line-label.l-digital  { top: 106px; color: var(--accent-teal); }
+  .sw-line-label.l-strategy { top: 178px; color: #D4905B; }
+  .sw-line-label.l-global   { top: 250px; color: #7B6F9C; }
+
+  /* ——— Stations ——— */
+  .ig-station {
+    position: absolute; z-index: 5;
+    display: flex; flex-direction: column; align-items: center;
+    transform: translateX(-50%);
+    cursor: pointer; transition: 0.3s ease-out;
+  }
+  .ig-station .st-dot {
+    width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+    background: var(--bg);
+    border: 4px solid;
     box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
   }
-
-  /* Horizontal connector: from node to spine */
-  .spine-hconnector {
-    position: absolute; top: 50%; z-index: 1;
-    height: 2px;
-    background: var(--accent-light);
-    opacity: 0.35;
+  .ig-station .st-label {
+    margin-top: 6px;
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    color: var(--text-primary); text-align: center; line-height: 1.2;
+    white-space: nowrap;
   }
-  .spine-row.spine-left .spine-hconnector {
-    right: calc(50% - 8px);
-    left: auto;
-    /* width set via style attr per node */
+  .ig-station .st-label small {
+    display: block; font-family: var(--font-body); font-size: 8px;
+    color: var(--text-muted); font-weight: 400;
   }
-  .spine-row.spine-right .spine-hconnector {
-    left: calc(50% + 8px);
-    right: auto;
+  .ig-station:hover { transform: translateX(-50%) translateY(-2px); }
+  .ig-station:hover .st-dot { transform: scale(1.3); }
+  .ig-station.ig-future-station .st-dot {
+    border-style: dashed; opacity: 0.7;
   }
 
-  /* Spine motivation — placed between node and spine */
-  .spine-motivation {
-    position: absolute; top: calc(50% - 28px);
-    font-family: var(--font-serif); font-size: 11px; font-style: italic;
-    color: var(--text-muted); opacity: 0.8; white-space: nowrap;
-    z-index: 2;
-  }
-  .spine-row.spine-left .spine-motivation  { right: calc(50% + 20px); text-align: right; }
-  .spine-row.spine-right .spine-motivation { left: calc(50% + 20px); text-align: left; }
+  /* Station dot colors match the line */
+  .st-content  .st-dot { border-color: var(--accent); }
+  .st-digital  .st-dot { border-color: var(--accent-teal); }
+  .st-strategy .st-dot { border-color: #D4905B; }
+  .st-global   .st-dot { border-color: #7B6F9C; }
 
-  /* Future node spans full width at bottom */
-  .spine-row.spine-future {
-    justify-content: center; padding: 0; margin-top: 8px;
+  /* ——— Transfer connectors (diagonal SVG between lines) ——— */
+  .sw-transfer {
+    position: absolute; z-index: 0; pointer-events: none;
   }
-  .spine-row.spine-future .ig-card {
-    width: 360px;
+  .sw-transfer line, .sw-transfer path {
+    stroke: var(--text-muted); stroke-width: 2;
+    stroke-dasharray: 5 4; opacity: 0.4;
+  }
+
+  /* ——— Subway motivation (curved text area near transfer) ——— */
+  .sw-motivation {
+    position: absolute; z-index: 3; pointer-events: none;
+    font-family: var(--font-serif); font-size: 9px; font-style: italic;
+    color: var(--text-muted); opacity: 0.7; white-space: nowrap;
+  }
+
+  /* ——— Subway Future arrow ——— */
+  .sw-future-arrow {
+    position: absolute; right: 8px; z-index: 6;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .sw-future-arrow .sw-fa-line {
+    width: 24px; height: 2px;
+    background: var(--accent); opacity: 0.5;
+  }
+  .sw-future-arrow .sw-fa-label {
+    font-family: var(--font-display); font-size: 9px; font-weight: 700;
+    color: var(--accent);
   }
 
   /* ——— Mobile: Vertical Narrative ——— */
-  .variant-label-mobile { display: none; }
   .ig-flow-mobile { display: none; }
 
   /* ===== Infographic Responsive ===== */
-  @media (max-width: 1100px) {
-    /* Cascade: reduce step offsets */
-    .cascade-row:nth-child(1) { margin-left: 0; }
-    .cascade-row:nth-child(2) { margin-left: 40px; }
-    .cascade-row:nth-child(3) { margin-left: 80px; }
-    .cascade-row:nth-child(4) { margin-left: 120px; }
-    .cascade-row:nth-child(5) { margin-left: 160px; }
-    .cascade-row:nth-child(6) { margin-left: 200px; }
-    .cascade-row .ig-card { width: 260px; }
-
-    /* Spine: reduce node width */
-    .spine-row .ig-card { width: 280px; }
-    .spine-row.spine-future .ig-card { width: 300px; }
-  }
-
-  @media (max-width: 900px) {
-    .cascade-row .ig-card { width: 220px; }
-    .cascade-row:nth-child(2) { margin-left: 30px; }
-    .cascade-row:nth-child(3) { margin-left: 60px; }
-    .cascade-row:nth-child(4) { margin-left: 90px; }
-    .cascade-row:nth-child(5) { margin-left: 120px; }
-    .cascade-row:nth-child(6) { margin-left: 150px; }
-    .ig-company { font-size: 12px; }
-    .ig-role { font-size: 10px; }
-    .ig-skills span { font-size: 8px; padding: 3px 8px; }
-    .ig-industry { font-size: 9px; }
-
-    .spine-row .ig-card { width: 230px; }
-    .spine-row.spine-future .ig-card { width: 260px; }
+  @media (max-width: 1023px) {
+    .cb-company { width: 80px; font-size: 10px; }
+    .cb-company small { font-size: 8px; }
+    .ig-chip .chip-role { font-size: 9px; }
+    .ig-chip .chip-skills { font-size: 8px; }
+    .ig-chip .chip-date { font-size: 8px; }
+    .subway-inner { min-width: 600px; }
   }
 
   @media (max-width: 767px) {
-    .cascade-flow, .spine-flow, .variant-label { display: none; }
+    .circuit-board, .subway-map, .variant-label { display: none; }
 
     .ig-flow-mobile {
       display: flex; flex-direction: column; gap: 0;
     }
-
     .ig-mobile-strip {
-      display: flex; gap: 0; margin-bottom: 24px; overflow-x: auto;
+      display: flex; gap: 0; margin-bottom: 20px; overflow-x: auto;
       -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px 0;
     }
     .ig-mobile-strip::-webkit-scrollbar { display: none; }
@@ -594,7 +597,7 @@
       flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
       background: var(--bg); display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display); font-size: 9px; font-weight: 700;
-      color: var(--text-muted); position: relative; z-index: 1; cursor: pointer; transition: 0.3s;
+      color: var(--text-muted); cursor: pointer; transition: 0.3s;
       box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
     }
     .ig-mobile-strip .ig-strip-dot.active {
@@ -605,36 +608,59 @@
       flex: 1; min-width: 16px; height: 2px; background: var(--accent-light);
       opacity: 0.2; align-self: center; border-radius: 1px;
     }
-
-    .ig-mobile-nodes {
-      display: flex; flex-direction: column; gap: 24px;
-    }
+    .ig-mobile-nodes { display: flex; flex-direction: column; gap: 20px; }
     .ig-node-mobile {
       background: var(--bg); border-radius: var(--radius-container);
-      padding: 24px 20px;
+      padding: 20px 18px;
       box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
-      position: relative;
     }
     .ig-node-mobile.ig-future {
       border: 2px dashed var(--accent-light);
-      box-shadow: inset 0 0 0 2px var(--bg), 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
       background: var(--bg-alt);
     }
     .ig-mobile-connector {
       display: flex; flex-direction: column; align-items: center; gap: 4px;
-      padding: 0; margin: -12px 0;
+      padding: 0; margin: -10px 0;
     }
     .ig-mobile-connector svg { width: 24px; height: 24px; }
     .ig-mobile-connector .ig-motivation { max-width: 100%; font-size: 11px; }
 
-    .ig-node-mobile .ig-card-header { margin-bottom: 4px; }
-    .ig-node-mobile .ig-role { margin-bottom: 8px; }
-    .ig-node-mobile .ig-skills { gap: 6px; }
-    .ig-node-mobile .ig-skills span { font-size: 10px; padding: 4px 12px; }
+    .ig-node-mobile .ig-card-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 8px; margin-bottom: 4px;
+    }
+    .ig-node-mobile .ig-company {
+      font-family: var(--font-display); font-size: 14px; font-weight: 700;
+    }
+    .ig-node-mobile .ig-date {
+      font-family: var(--font-display); font-size: 10px; font-weight: 600;
+      color: var(--accent);
+    }
+    .ig-node-mobile .ig-industry {
+      font-size: 10px; color: var(--text-muted); margin-bottom: 4px;
+    }
+    .ig-node-mobile .ig-role {
+      font-family: var(--font-display); font-size: 12px; font-weight: 600;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .ig-node-mobile .ig-skills {
+      display: flex; flex-wrap: wrap; gap: 5px;
+    }
+    .ig-node-mobile .ig-skills span {
+      font-family: var(--font-display); font-size: 10px; font-weight: 500;
+      padding: 4px 12px; border-radius: 20px;
+      color: var(--text-muted); white-space: nowrap;
+      box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+    }
+    .ig-skills span.skill-content  { color: var(--accent); }
+    .ig-skills span.skill-digital { color: var(--accent-teal); }
+    .ig-skills span.skill-strategy { color: #D4905B; }
+    .ig-skills span.skill-global  { color: #7B6F9C; }
+    .ig-skills span.skill-growth  { color: #5B9A7A; }
   }
 
   @media (max-width: 600px) {
-    .ig-node-mobile { padding: 20px 16px; }
+    .ig-node-mobile { padding: 16px 14px; }
     .ig-node-mobile .ig-company { font-size: 13px; }
   }
 
@@ -1169,345 +1195,244 @@
     </div>
 
     <!-- ============================================================
-     OPTION A: Cascade Waterfall（阶梯瀑布流）
-     每个节点渐次右移，形成"拾级而上"的视觉效果
-     节点宽度：310px（桌面）/ 260px（1100px断点）/ 220px（900px断点）
-     步进偏移：0→80→160→240→320→400px（桌面）
+     OPTION C: Circuit Board（芯片电路板）
+     Tight stacked bars, bottom=earliest, top=latest.
+     Chip width = skill coverage. PCB grid + trace lines + vias.
+     Row height: 52px. Company column: 100px. 4 skill tracks.
     ============================================================ -->
-    <div class="variant-label">▸ Option A — Cascade Waterfall</div>
+    <div class="variant-label">▸ Option C — Circuit Board</div>
 
-    <div class="cascade-flow">
-
-      <!-- Row 1: GMA -->
-      <div class="cascade-row">
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">GMA</span>
-            <span class="ig-date">2018–2019</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-1">Digital Marketing Agency</div>
-          <div class="ig-role" data-i18n="ig-role-1">Copywriter</div>
-          <div class="ig-skills">
-            <span class="skill-content" data-i18n="ig-s-1a">Copywriting</span>
-            <span class="skill-content" data-i18n="ig-s-1b">Client Understanding</span>
-            <span class="skill-strategy" data-i18n="ig-s-1c">Multi-project Mgmt</span>
-            <span class="skill-content" data-i18n="ig-s-1d">Designer Collab</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-1">Agency Foundation</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-1">Worked for <strong>clients' brands</strong>, not own brand. Multi-project management, designer collaboration. But couldn't see the <strong>full marketing strategy</strong> or campaign data loop.</div>
-          </div>
-        </div>
-        <!-- Diagonal connector to next row -->
-        <div class="cascade-connector" style="top:100%; left:280px; width:120px; height:60px;">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <path d="M 5,10 Q 60,10 100,45" class="ca-line"/>
-            <polygon points="95,39 108,48 97,52" class="ca-head"/>
-          </svg>
-          <span class="cascade-motivation" style="top:2px; left:30px;" data-i18n="ig-m-1">"Wanted to see the full picture"</span>
-        </div>
+    <div class="circuit-board">
+      <!-- Track labels -->
+      <div class="cb-track-labels">
+        <span class="tr-content">Content</span>
+        <span class="tr-digital">Digital</span>
+        <span class="tr-strategy">Strategy</span>
+        <span class="tr-global">Global</span>
       </div>
 
-      <!-- Row 2: Yizhong -->
-      <div class="cascade-row">
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">Yizhong Technology</span>
-            <span class="ig-date">2018–2021</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-2">SaaS + B2B2C Platform</div>
-          <div class="ig-role" data-i18n="ig-role-2">Brand &amp; Content Operations</div>
-          <div class="ig-skills">
-            <span class="skill-digital" data-i18n="ig-s-2a">SEO</span>
-            <span class="skill-digital" data-i18n="ig-s-2b">Marketing Automation</span>
-            <span class="skill-strategy" data-i18n="ig-s-2c">Brand 0→1</span>
-            <span class="skill-content" data-i18n="ig-s-2d">Content Matrix</span>
-            <span class="skill-strategy" data-i18n="ig-s-2e">Agile / MVP</span>
-            <span class="skill-growth" data-i18n="ig-s-2f">B2B2C Platform</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-2">The SaaS Awakening</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-2">Built <strong>甜薪工场</strong> from 0→1. Learned MVP, Agile, SEO, marketing automation. <strong>Realized the relationship</strong> among branding, content, channels — the beginning of integrated marketing.</div>
-          </div>
-        </div>
-        <div class="cascade-connector" style="top:100%; left:280px; width:120px; height:60px;">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <path d="M 5,10 Q 60,10 100,45" class="ca-line"/>
-            <polygon points="95,39 108,48 97,52" class="ca-head"/>
-          </svg>
-          <span class="cascade-motivation" style="top:2px; left:30px;" data-i18n="ig-m-2">"Sought structured platform"</span>
-        </div>
-      </div>
+      <div class="cb-rows">
 
-      <!-- Row 3: ALTEN -->
-      <div class="cascade-row">
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">ALTEN China</span>
-            <span class="ig-date">2021–2024</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-3">Engineering &amp; IT Consulting (FR)</div>
-          <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing</div>
-          <div class="ig-skills">
-            <span class="skill-content" data-i18n="ig-s-3a">White Papers</span>
-            <span class="skill-content" data-i18n="ig-s-3b">Engineer Interviews</span>
-            <span class="skill-strategy" data-i18n="ig-s-3c">B2B+B2C Dual Audience</span>
-            <span class="skill-strategy" data-i18n="ig-s-3d">Website PM</span>
-            <span class="skill-strategy" data-i18n="ig-s-3e">SOP Building</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-3">Depth &amp; Structure</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-3"><strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>. B2B+B2C dual-audience content. Website 2.0 relaunch: <strong>+65% SEO traffic</strong>, 2.1× dwell time. Developed content SOPs.</div>
+        <!-- GMA — 2 tracks (Content + basic Strategy) → 60% width -->
+        <div class="cb-row">
+          <span class="cb-company">GMA<small>2018–2019</small></span>
+          <div class="cb-via" style="top:50%;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip w-60">
+              <span class="chip-role" data-i18n="ig-role-1">Copywriter</span>
+              <span class="chip-skills">Copywriting · Client Understanding · Multi-project Mgmt · Designer Collab</span>
+              <span class="chip-date">2018–19</span>
+            </div>
+            <div class="cb-detail">
+              <div class="cb-dt" data-i18n="ig-dt-1">Agency Foundation</div>
+              <div class="cb-dd" data-i18n="ig-dd-1">Worked for <strong>clients' brands</strong>. Multi-project management. But couldn't see the <strong>full marketing strategy</strong>.</div>
+            </div>
           </div>
         </div>
-        <div class="cascade-connector" style="top:100%; left:280px; width:120px; height:60px;">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <path d="M 5,10 Q 60,10 100,45" class="ca-line"/>
-            <polygon points="95,39 108,48 97,52" class="ca-head"/>
-          </svg>
-          <span class="cascade-motivation" style="top:2px; left:30px;" data-i18n="ig-m-3">"Wanted closer to product &amp; R&amp;D"</span>
-        </div>
-      </div>
 
-      <!-- Row 4: TEKNOS -->
-      <div class="cascade-row">
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">TEKNOS Group</span>
-            <span class="ig-date">2024</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-4">Industrial Coatings MNC (FI)</div>
-          <div class="ig-role" data-i18n="ig-role-4">Global Marketing Executive</div>
-          <div class="ig-skills">
-            <span class="skill-global" data-i18n="ig-s-4a">Global Marcom</span>
-            <span class="skill-global" data-i18n="ig-s-4b">Video Localization</span>
-            <span class="skill-global" data-i18n="ig-s-4c">TikTok 0→1</span>
-            <span class="skill-global" data-i18n="ig-s-4d">Cross-cultural Comms</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-4">Global Perspective</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-4">AI-driven video localization for <strong>5 EU markets</strong>. Global campaigns with <strong>90% brand compliance</strong>. Bridged EU Marcom and China market bilingually.</div>
+        <!-- Yizhong — 3 tracks (+Digital) → 75% -->
+        <div class="cb-row">
+          <span class="cb-company">Yizhong<small>2018–2021</small></span>
+          <div class="cb-via" style="top:50%;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip w-75">
+              <span class="chip-role" data-i18n="ig-role-2">Brand &amp; Content Ops</span>
+              <span class="chip-skills">SEO · Marketing Automation · Brand 0→1 · Content Matrix · Agile/MVP · B2B2C</span>
+              <span class="chip-date">2018–21</span>
+            </div>
+            <div class="cb-detail">
+              <div class="cb-dt" data-i18n="ig-dt-2">The SaaS Awakening</div>
+              <div class="cb-dd" data-i18n="ig-dd-2">Built <strong>甜薪工场</strong> 0→1. <strong>Realized the relationship</strong> among branding, content, channels.</div>
+            </div>
           </div>
         </div>
-        <div class="cascade-connector" style="top:100%; left:280px; width:120px; height:60px;">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <path d="M 5,10 Q 60,10 100,45" class="ca-line"/>
-            <polygon points="95,39 108,48 97,52" class="ca-head"/>
-          </svg>
-          <span class="cascade-motivation" style="top:2px; left:30px;" data-i18n="ig-m-4">"Wanted 0→1 ownership"</span>
-        </div>
-      </div>
 
-      <!-- Row 5: CAME -->
-      <div class="cascade-row">
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">CAME Automation</span>
-            <span class="ig-date">2025–2026</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-5">Industrial Automation (IT)</div>
-          <div class="ig-role" data-i18n="ig-role-5">Digital &amp; Content Project Owner</div>
-          <div class="ig-skills">
-            <span class="skill-digital" data-i18n="ig-s-5a">SEM (Baidu/Bing/Google)</span>
-            <span class="skill-growth" data-i18n="ig-s-5b">Leads Gen / Growth</span>
-            <span class="skill-digital" data-i18n="ig-s-5c">SEO + GEO</span>
-            <span class="skill-content" data-i18n="ig-s-5d">Offline Events</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-5">Full-Stack Builder</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-5"><strong>2 websites in 4 months</strong> from scratch. SEM on Baidu/Bing/Google. SEO+GEO dual-engine. Full brand content matrix across WeChat, Douyin, Bilibili.</div>
+        <!-- ALTEN — 3 tracks (Content+Digital+Strategy) → 85% -->
+        <div class="cb-row">
+          <span class="cb-company">ALTEN<small>2021–2024</small></span>
+          <div class="cb-via" style="top:50%;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip w-85">
+              <span class="chip-role" data-i18n="ig-role-3">Sr. Content Mkt</span>
+              <span class="chip-skills">White Papers · Engineer Interviews · B2B+B2C Audience · Website PM · SOP Building</span>
+              <span class="chip-date">2021–24</span>
+            </div>
+            <div class="cb-detail">
+              <div class="cb-dt" data-i18n="ig-dt-3">Depth &amp; Structure</div>
+              <div class="cb-dd" data-i18n="ig-dd-3"><strong>30+ white papers</strong>. Website 2.0: <strong>+65% SEO traffic</strong>. Developed SOPs.</div>
+            </div>
           </div>
         </div>
-        <div class="cascade-connector" style="top:100%; left:280px; width:120px; height:60px;">
-          <svg width="120" height="60" viewBox="0 0 120 60">
-            <path d="M 5,10 Q 60,10 100,45" class="ca-line"/>
-            <polygon points="95,39 108,48 97,52" class="ca-head"/>
-          </svg>
-          <span class="cascade-motivation" style="top:2px; left:30px;" data-i18n="ig-m-5">"Ready for integrated ownership"</span>
-        </div>
-      </div>
 
-      <!-- Row 6: Future -->
-      <div class="cascade-row">
-        <div class="ig-card ig-future">
-          <div class="ig-card-header">
-            <span class="ig-company" data-i18n="ig-future-label">What's Next</span>
-            <span class="ig-date">→</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-future-ind">Promising Industry · 0→1 Projects</div>
-          <div class="ig-role" data-i18n="ig-future-role">Integrated Marketing Lead</div>
-          <div class="ig-skills">
-            <span class="skill-strategy" data-i18n="ig-s-fa">Brand Voice</span>
-            <span class="skill-content" data-i18n="ig-s-fb">Content Strategy</span>
-            <span class="skill-digital" data-i18n="ig-s-fc">Channel Strategy</span>
-            <span class="skill-growth" data-i18n="ig-s-fd">Leads Gen / Growth</span>
-            <span class="skill-strategy" data-i18n="ig-s-fe">Sales Funnel Nutrition</span>
+        <!-- TEKNOS — +Global track → 75% (shifted right) -->
+        <div class="cb-row">
+          <span class="cb-company">TEKNOS<small>2024</small></span>
+          <div class="cb-via" style="top:50%;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip w-75" style="margin-left:25%;">
+              <span class="chip-role" data-i18n="ig-role-4">Global Mkt Executive</span>
+              <span class="chip-skills">Global Marcom · Video Localization · TikTok 0→1 · Cross-cultural Comms</span>
+              <span class="chip-date">2024</span>
+            </div>
+            <div class="cb-detail">
+              <div class="cb-dt" data-i18n="ig-dt-4">Global Perspective</div>
+              <div class="cb-dd" data-i18n="ig-dd-4">AI video localization for <strong>5 EU markets</strong>. <strong>90% brand compliance</strong>.</div>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div><!-- /cascade-flow -->
+        <!-- CAME — all 4 tracks → 95% -->
+        <div class="cb-row">
+          <span class="cb-company">CAME<small>2025–2026</small></span>
+          <div class="cb-via" style="top:50%;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip w-95">
+              <span class="chip-role" data-i18n="ig-role-5">Digital &amp; Content Owner</span>
+              <span class="chip-skills">SEM(Baidu/Bing/Google) · Leads Gen/Growth · SEO+GEO · Offline Events</span>
+              <span class="chip-date">2025–26</span>
+            </div>
+            <div class="cb-detail">
+              <div class="cb-dt" data-i18n="ig-dt-5">Full-Stack Builder</div>
+              <div class="cb-dd" data-i18n="ig-dd-5"><strong>2 websites in 4 months</strong>. Triple SEM. SEO+GEO dual-engine.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Future — dashed, full width -->
+        <div class="cb-row">
+          <span class="cb-company" data-i18n="ig-future-label">Next<small>→</small></span>
+          <div class="cb-via" style="top:50%; border-style: dashed;"></div>
+          <div class="cb-chip-wrap">
+            <div class="ig-chip ig-future-chip w-95">
+              <span class="chip-role" data-i18n="ig-future-role">Integrated Marketing Lead</span>
+              <span class="chip-skills">Brand Voice · Content Strategy · Channel Strategy · Leads Gen/Growth · Sales Funnel</span>
+              <span class="chip-date">→</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cb-rows -->
+    </div><!-- /circuit-board -->
 
     <!-- ============================================================
-     OPTION B: Central Spine（中央脊柱分支图）
-     中央垂直脊柱，节点左右交替排列
-     节点宽度：340px（桌面）/ 280px（1100px）/ 230px（900px断点）
-     脊柱线 left:50%
+     OPTION D: Subway Map（地铁线路图）
+     4 colored lines, station dots, angled transfer connectors.
+     Height: 300px. 4 lines at y=44, 116, 188, 260px.
+     Stations at x-positions proportional to timeline.
     ============================================================ -->
-    <div class="variant-label" style="margin-top:72px;">▸ Option B — Central Spine</div>
+    <div class="variant-label" style="margin-top:56px;">▸ Option D — Subway Map</div>
 
-    <div class="spine-flow">
-      <div class="spine-line"></div>
+    <div class="subway-map">
+      <div class="subway-inner">
 
-      <!-- Row 1: GMA (right side) -->
-      <div class="spine-row spine-right">
-        <div class="spine-hconnector" style="width:60px;"></div>
-        <div class="spine-dot"></div>
-        <div class="spine-motivation" data-i18n="ig-m-1" style="left:calc(50% + 20px);">"Wanted the full picture"</div>
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">GMA</span>
-            <span class="ig-date">2018–2019</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-1">Digital Marketing Agency</div>
-          <div class="ig-role" data-i18n="ig-role-1">Copywriter</div>
-          <div class="ig-skills">
-            <span class="skill-content" data-i18n="ig-s-1a">Copywriting</span>
-            <span class="skill-content" data-i18n="ig-s-1b">Client Understanding</span>
-            <span class="skill-strategy" data-i18n="ig-s-1c">Multi-project Mgmt</span>
-            <span class="skill-content" data-i18n="ig-s-1d">Designer Collab</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-1">Agency Foundation</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-1">Worked for <strong>clients' brands</strong>, not own brand. But couldn't see the <strong>full marketing strategy</strong>.</div>
-          </div>
+        <!-- Lines -->
+        <div class="sw-line line-content"></div>
+        <div class="sw-line line-digital"></div>
+        <div class="sw-line line-strategy"></div>
+        <div class="sw-line line-global"></div>
+
+        <!-- Line labels -->
+        <span class="sw-line-label l-content">CONTENT</span>
+        <span class="sw-line-label l-digital">DIGITAL</span>
+        <span class="sw-line-label l-strategy">STRATEGY</span>
+        <span class="sw-line-label l-global">GLOBAL</span>
+
+        <!-- GMA — Content line only, x=80 -->
+        <div class="ig-station st-content" style="left:80px; top:35px;">
+          <div class="st-dot"></div>
+          <span class="st-label">GMA<small>Copywriter</small></span>
         </div>
-      </div>
 
-      <!-- Row 2: Yizhong (left side) -->
-      <div class="spine-row spine-left">
-        <div class="spine-hconnector" style="width:60px;"></div>
-        <div class="spine-dot"></div>
-        <div class="spine-motivation" data-i18n="ig-m-2" style="right:calc(50% + 20px);">"Sought structured platform"</div>
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">Yizhong Technology</span>
-            <span class="ig-date">2018–2021</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-2">SaaS + B2B2C Platform</div>
-          <div class="ig-role" data-i18n="ig-role-2">Brand &amp; Content Operations</div>
-          <div class="ig-skills">
-            <span class="skill-digital" data-i18n="ig-s-2a">SEO</span>
-            <span class="skill-digital" data-i18n="ig-s-2b">Marketing Automation</span>
-            <span class="skill-strategy" data-i18n="ig-s-2c">Brand 0→1</span>
-            <span class="skill-content" data-i18n="ig-s-2d">Content Matrix</span>
-            <span class="skill-strategy" data-i18n="ig-s-2e">Agile / MVP</span>
-            <span class="skill-growth" data-i18n="ig-s-2f">B2B2C Platform</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-2">The SaaS Awakening</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-2">Built <strong>甜薪工场</strong> from 0→1. <strong>Realized the relationship</strong> among branding, content, channels.</div>
-          </div>
+        <!-- Yizhong — Content+Digital+Strategy, x=200 -->
+        <div class="ig-station st-content" style="left:200px; top:35px;">
+          <div class="st-dot"></div>
+          <span class="st-label">Yizhong<small>Brand &amp; Content</small></span>
         </div>
-      </div>
-
-      <!-- Row 3: ALTEN (right side) -->
-      <div class="spine-row spine-right">
-        <div class="spine-hconnector" style="width:60px;"></div>
-        <div class="spine-dot"></div>
-        <div class="spine-motivation" data-i18n="ig-m-3" style="left:calc(50% + 20px);">"Closer to product &amp; R&amp;D"</div>
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">ALTEN China</span>
-            <span class="ig-date">2021–2024</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-3">Engineering &amp; IT Consulting (FR)</div>
-          <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing</div>
-          <div class="ig-skills">
-            <span class="skill-content" data-i18n="ig-s-3a">White Papers</span>
-            <span class="skill-content" data-i18n="ig-s-3b">Engineer Interviews</span>
-            <span class="skill-strategy" data-i18n="ig-s-3c">B2B+B2C Dual Audience</span>
-            <span class="skill-strategy" data-i18n="ig-s-3d">Website PM</span>
-            <span class="skill-strategy" data-i18n="ig-s-3e">SOP Building</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-3">Depth &amp; Structure</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-3"><strong>30+ white papers</strong>. Website 2.0: <strong>+65% SEO traffic</strong>. Developed SOPs.</div>
-          </div>
+        <div class="ig-station st-digital" style="left:200px; top:107px;">
+          <div class="st-dot"></div>
+          <span class="st-label">Yizhong<small>SEO·Auto</small></span>
         </div>
-      </div>
-
-      <!-- Row 4: TEKNOS (left side) -->
-      <div class="spine-row spine-left">
-        <div class="spine-hconnector" style="width:60px;"></div>
-        <div class="spine-dot"></div>
-        <div class="spine-motivation" data-i18n="ig-m-4" style="right:calc(50% + 20px);">"Wanted 0→1 ownership"</div>
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">TEKNOS Group</span>
-            <span class="ig-date">2024</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-4">Industrial Coatings MNC (FI)</div>
-          <div class="ig-role" data-i18n="ig-role-4">Global Marketing Executive</div>
-          <div class="ig-skills">
-            <span class="skill-global" data-i18n="ig-s-4a">Global Marcom</span>
-            <span class="skill-global" data-i18n="ig-s-4b">Video Localization</span>
-            <span class="skill-global" data-i18n="ig-s-4c">TikTok 0→1</span>
-            <span class="skill-global" data-i18n="ig-s-4d">Cross-cultural Comms</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-4">Global Perspective</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-4">AI video localization for <strong>5 EU markets</strong>. <strong>90% brand compliance</strong> across global campaigns.</div>
-          </div>
+        <div class="ig-station st-strategy" style="left:200px; top:179px;">
+          <div class="st-dot"></div>
+          <span class="st-label">Yizhong<small>MVP·0→1</small></span>
         </div>
-      </div>
 
-      <!-- Row 5: CAME (right side) -->
-      <div class="spine-row spine-right">
-        <div class="spine-hconnector" style="width:60px;"></div>
-        <div class="spine-dot"></div>
-        <div class="spine-motivation" data-i18n="ig-m-5" style="left:calc(50% + 20px);">"Ready for integrated ownership"</div>
-        <div class="ig-card">
-          <div class="ig-card-header">
-            <span class="ig-company">CAME Automation</span>
-            <span class="ig-date">2025–2026</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-ind-5">Industrial Automation (IT)</div>
-          <div class="ig-role" data-i18n="ig-role-5">Digital &amp; Content Project Owner</div>
-          <div class="ig-skills">
-            <span class="skill-digital" data-i18n="ig-s-5a">SEM (Baidu/Bing/Google)</span>
-            <span class="skill-growth" data-i18n="ig-s-5b">Leads Gen / Growth</span>
-            <span class="skill-digital" data-i18n="ig-s-5c">SEO + GEO</span>
-            <span class="skill-content" data-i18n="ig-s-5d">Offline Events</span>
-          </div>
-          <div class="ig-detail">
-            <div class="ig-detail-title" data-i18n="ig-dt-5">Full-Stack Builder</div>
-            <div class="ig-detail-text" data-i18n="ig-dd-5"><strong>2 websites in 4 months</strong>. Triple SEM. SEO+GEO dual-engine.</div>
-          </div>
+        <!-- Transfer 1→2 motivation -->
+        <span class="sw-motivation" style="top:66px; left:90px;" data-i18n="ig-m-1">"Wanted full picture"</span>
+
+        <!-- ALTEN — Content+Digital+Strategy, x=340 -->
+        <div class="ig-station st-content" style="left:340px; top:35px;">
+          <div class="st-dot"></div>
+          <span class="st-label">ALTEN<small>Sr. Content</small></span>
         </div>
-      </div>
-
-      <!-- Row 6: Future (center, full-width) -->
-      <div class="spine-row spine-future">
-        <div class="spine-dot" style="position:relative;left:auto;top:auto;transform:none;margin-right:16px;"></div>
-        <div class="ig-card ig-future">
-          <div class="ig-card-header">
-            <span class="ig-company" data-i18n="ig-future-label">What's Next</span>
-            <span class="ig-date">→</span>
-          </div>
-          <div class="ig-industry" data-i18n="ig-future-ind">Promising Industry · 0→1 Projects</div>
-          <div class="ig-role" data-i18n="ig-future-role">Integrated Marketing Lead</div>
-          <div class="ig-skills">
-            <span class="skill-strategy" data-i18n="ig-s-fa">Brand Voice</span>
-            <span class="skill-content" data-i18n="ig-s-fb">Content Strategy</span>
-            <span class="skill-digital" data-i18n="ig-s-fc">Channel Strategy</span>
-            <span class="skill-growth" data-i18n="ig-s-fd">Leads Gen / Growth</span>
-            <span class="skill-strategy" data-i18n="ig-s-fe">Sales Funnel Nutrition</span>
-          </div>
+        <div class="ig-station st-digital" style="left:340px; top:107px;">
+          <div class="st-dot"></div>
+          <span class="st-label">ALTEN<small>SEO·Web</small></span>
         </div>
-      </div>
+        <div class="ig-station st-strategy" style="left:340px; top:179px;">
+          <div class="st-dot"></div>
+          <span class="st-label">ALTEN<small>SOP·PM</small></span>
+        </div>
 
-    </div><!-- /spine-flow -->
+        <!-- Transfer 2→3 motivation -->
+        <span class="sw-motivation" style="top:66px; left:220px;" data-i18n="ig-m-2">"Sought structured platform"</span>
+
+        <!-- TEKNOS — Global line entry, x=420 -->
+        <div class="ig-station st-global" style="left:420px; top:251px;">
+          <div class="st-dot"></div>
+          <span class="st-label">TEKNOS<small>Global Mkt</small></span>
+        </div>
+
+        <!-- Transfer 3→4 motivation -->
+        <span class="sw-motivation" style="top:218px; left:360px;" data-i18n="ig-m-3">"Closer to product"</span>
+
+        <!-- CAME — Content+Digital+Strategy+Global, x=540 -->
+        <div class="ig-station st-content" style="left:540px; top:35px;">
+          <div class="st-dot"></div>
+          <span class="st-label">CAME<small>Content Owner</small></span>
+        </div>
+        <div class="ig-station st-digital" style="left:540px; top:107px;">
+          <div class="st-dot"></div>
+          <span class="st-label">CAME<small>SEM·SEO</small></span>
+        </div>
+        <div class="ig-station st-strategy" style="left:540px; top:179px;">
+          <div class="st-dot"></div>
+          <span class="st-label">CAME<small>Leads·Events</small></span>
+        </div>
+        <div class="ig-station st-global" style="left:540px; top:251px;">
+          <div class="st-dot"></div>
+          <span class="st-label">CAME<small>GEO</small></span>
+        </div>
+
+        <!-- Transfer 4→5 motivation -->
+        <span class="sw-motivation" style="top:210px; left:460px;" data-i18n="ig-m-4">"Wanted 0→1 scope"</span>
+
+        <!-- Future arrow + label -->
+        <div class="sw-future-arrow" style="top:38px;">
+          <span class="sw-fa-line"></span>
+          <span class="sw-fa-label" data-i18n="ig-future-label">Next: Integrated Mkt Lead</span>
+        </div>
+
+        <!-- Transfer connectors (SVG diagonals between lines at career moves) -->
+        <svg class="sw-transfer" style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 640 300">
+          <!-- GMA→Yizhong: Content line only, simple -->
+          <!-- Yizhong inter-line connections (vertical) -->
+          <line x1="200" y1="48" x2="200" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <line x1="200" y1="120" x2="200" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <!-- ALTEN inter-line -->
+          <line x1="340" y1="48" x2="340" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <line x1="340" y1="120" x2="340" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <!-- ALTEN→TEKNOS: diagonal from Strategy to Global -->
+          <path d="M 340,192 Q 380,192 420,248" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.35"/>
+          <!-- TEKNOS→CAME: diagonal from Global to all 4 lines -->
+          <path d="M 424,256 Q 480,256 540,252" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.35"/>
+          <line x1="540" y1="48" x2="540" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <line x1="540" y1="120" x2="540" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+          <line x1="540" y1="192" x2="540" y2="248" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+        </svg>
+
+      </div><!-- /subway-inner -->
+    </div><!-- /subway-map -->
 
     <!-- ===== Mobile: Vertical Narrative ===== -->
     <div class="ig-flow-mobile">
