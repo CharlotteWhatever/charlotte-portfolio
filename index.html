@@ -333,11 +333,12 @@
     padding: 32px 28px 24px;
     box-shadow: inset 8px 8px 20px rgba(163,177,198,0.35), inset -8px -8px 20px rgba(255,255,255,0.45);
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* allow popups to extend beyond board */
   }
-  /* Subtle grid pattern like PCB */
+  /* Subtle grid pattern like PCB — clipped to rounded corners via border-radius */
   .circuit-board::before {
     content: ''; position: absolute; inset: 0;
+    border-radius: var(--radius-container);
     background-image:
       linear-gradient(rgba(26,90,156,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(26,90,156,0.03) 1px, transparent 1px);
@@ -347,7 +348,7 @@
 
   .cb-track-labels {
     display: flex; gap: 0; margin-bottom: 12px;
-    padding-left: 100px; /* leave room for company names */
+    padding-left: 120px; /* leave room for company names */
     position: relative; z-index: 1;
   }
   .cb-track-labels span {
@@ -358,7 +359,7 @@
   }
   .cb-track-labels .tr-content  { color: var(--accent); }
   .cb-track-labels .tr-digital { color: var(--accent-teal); }
-  .cb-track-labels .tr-strategy { color: #D4905B; }
+  .cb-track-labels .tr-brand { color: #D4905B; }
   .cb-track-labels .tr-global  { color: #7B6F9C; }
 
   .cb-rows {
@@ -368,19 +369,40 @@
 
   .cb-row {
     display: flex; align-items: center;
-    height: 52px; /* tight row height */
-    margin-bottom: 1px;
+    height: 52px;
+    margin-bottom: 0;
     position: relative;
   }
-  /* Trace line connecting rows — vertical line from chip edge downward */
+  /* ——— PCB flow line: vertical spine connecting all via dots ——— */
+  .cb-flow-line {
+    position: absolute; z-index: 0;
+    left: 132px; /* align with via dots (120px company + 12px) */
+    top: 10px; bottom: 10px;
+    width: 2px;
+    background: var(--accent-light);
+    opacity: 0.22;
+    border-radius: 1px;
+  }
+  /* ——— PCB trace: short horizontal line from flow-line to chip edge ——— */
   .cb-trace {
     position: absolute; z-index: 0;
-    border-left: 2px solid var(--accent-light);
-    opacity: 0.3;
+    height: 2px;
+    background: var(--accent-light);
+    opacity: 0.25;
+    border-radius: 1px;
+  }
+  /* ——— Motivation callout between rows ——— */
+  .cb-motivation {
+    height: 22px;
+    display: flex; align-items: center;
+    padding-left: 148px;
+    font-family: var(--font-serif); font-size: 10px; font-style: italic;
+    color: var(--text-muted); opacity: 0.6;
+    position: relative; z-index: 1;
   }
 
   .cb-company {
-    width: 100px; flex-shrink: 0;
+    width: 120px; flex-shrink: 0;
     text-align: right; padding-right: 16px;
     font-family: var(--font-display); font-size: 12px; font-weight: 700;
     color: var(--text-primary); letter-spacing: -0.02em;
@@ -390,11 +412,25 @@
     display: block; font-family: var(--font-body); font-size: 9px;
     color: var(--text-muted); font-weight: 400;
   }
+  .cb-company .cb-industry-tag {
+    display: block; font-family: var(--font-display); font-size: 7.5px; font-weight: 600;
+    color: var(--accent-teal); letter-spacing: 0.3px; text-transform: uppercase;
+    margin-top: 1px; white-space: nowrap;
+  }
 
   .cb-chip-wrap {
     flex: 1; height: 100%;
     display: flex; align-items: center;
     position: relative; z-index: 2;
+  }
+  /* Horizontal trace stub from flow-line toward chip */
+  .cb-chip-wrap::before {
+    content: ''; position: absolute;
+    left: 12px; /* 132px (flow-line) - 120px (company col) */
+    top: 50%; transform: translateY(-50%);
+    width: 14px; height: 1.5px;
+    background: var(--accent-light); opacity: 0.22;
+    border-radius: 1px; z-index: 0;
   }
   /* The chip bar itself */
   .ig-chip {
@@ -407,14 +443,37 @@
     position: relative;
     white-space: nowrap;
   }
-  /* Chip "pins" — small dots on left/right edges */
+  /* Chip "pins" — small contact points on left/right edges, positions vary by track count */
   .ig-chip::before, .ig-chip::after {
     content: ''; position: absolute;
-    width: 6px; height: 6px; border-radius: 1px;
-    background: var(--accent); opacity: 0.5;
+    width: 5px; height: 5px; border-radius: 1px;
+    background: var(--accent); opacity: 0.45;
   }
-  .ig-chip::before { left: -3px; top: 8px; }
-  .ig-chip::after  { right: -3px; top: 8px; }
+  .ig-chip::before { left: -2px; top: 50%; transform: translateY(-50%); }
+  .ig-chip::after  { right: -2px; top: 50%; transform: translateY(-50%); }
+  /* Multi-pin: extra contact points for multi-track chips */
+  .ig-chip .chip-pins { display: contents; }
+  .ig-chip .chip-pins i {
+    position: absolute; left: -2px;
+    width: 5px; height: 5px; border-radius: 1px;
+    font-style: normal;
+  }
+  .ig-chip .chip-pins i.pin-1 { top: 6px;  }
+  .ig-chip .chip-pins i.pin-2 { top: 16px; }
+  .ig-chip .chip-pins i.pin-3 { top: 26px; }
+  .ig-chip .chip-pins i.pin-content  { background: var(--accent); opacity: 0.5; }
+  .ig-chip .chip-pins i.pin-digital { background: var(--accent-teal); opacity: 0.5; }
+  .ig-chip .chip-pins i.pin-brand { background: #D4905B; opacity: 0.5; }
+  .ig-chip .chip-pins i.pin-global  { background: #7B6F9C; opacity: 0.5; }
+  /* Track indicator dots — colored circles at chip start */
+  .ig-chip .trk-dot {
+    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.15);
+  }
+  .ig-chip .trk-dot.trk-content  { background: var(--accent); }
+  .ig-chip .trk-dot.trk-digital  { background: var(--accent-teal); }
+  .ig-chip .trk-dot.trk-brand { background: #D4905B; }
+  .ig-chip .trk-dot.trk-global   { background: #7B6F9C; }
   .ig-chip .chip-role {
     font-family: var(--font-display); font-size: 10.5px; font-weight: 600;
     color: var(--accent); flex-shrink: 0;
@@ -422,13 +481,6 @@
   .ig-chip .chip-skills {
     font-size: 9.5px; color: var(--text-muted);
     overflow: hidden; text-overflow: ellipsis;
-  }
-  .ig-chip .chip-date {
-    margin-left: auto; flex-shrink: 0;
-    font-family: var(--font-display); font-size: 9px; font-weight: 600;
-    color: var(--text-muted);
-    background: var(--bg-alt); padding: 2px 8px; border-radius: 8px;
-    box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
   }
   /* Wider chip = more skills */
   .ig-chip.w-60 { width: 60%; }  .ig-chip.w-75 { width: 75%; }
@@ -438,16 +490,19 @@
     border: 2px dashed var(--accent-light); opacity: 0.85;
     background: var(--bg-alt); box-shadow: none;
   }
-  .ig-chip.ig-future-chip::before, .ig-chip.ig-future-chip::after { display: none; }
+  .ig-chip.ig-future-chip::before, .ig-chip.ig-future-chip::after,
+  .ig-chip.ig-future-chip .chip-pins,
+  .ig-chip.ig-future-chip .trk-dot { display: none; }
 
   /* ——— Hover detail popup (circuit board) ——— */
   .cb-detail {
     display: none; position: absolute;
-    bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    top: 0; left: 50%; transform: translate(-50%, calc(-100% - 8px));
     width: 280px; background: var(--bg); border-radius: var(--radius-base);
     padding: 14px 16px; z-index: 20; pointer-events: none;
     box-shadow: 9px 9px 16px var(--shadow-dark), -9px -9px 16px var(--shadow-light);
   }
+  .cb-row:hover { z-index: 50; }
   .cb-row:hover .cb-detail { display: block; }
   .cb-detail .cb-dt {
     font-family: var(--font-display); font-size: 11px; font-weight: 700;
@@ -458,115 +513,42 @@
 
   /* ——— PCB via dots (connection points between rows) ——— */
   .cb-via {
-    position: absolute; left: 108px; z-index: 3;
+    position: absolute; left: 128px; z-index: 3;
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--bg); border: 2px solid var(--accent-light);
   }
 
-  /* ============================================================
-   *  OPTION D: Subway Map（地铁线路图）
-   *  4 horizontal colored lines, station dots, angled transfers
-   * ============================================================ */
-  .subway-map {
-    position: relative;
+  /* ——— Option C: Soft Skills Progression Bar ——— */
+  .cb-soft-bar {
+    margin-top: 8px; padding: 8px 16px 4px 148px;
+    border-top: 1px dashed var(--border);
+    position: relative; z-index: 1;
+  }
+  .soft-bar-title {
+    font-family: var(--font-display); font-size: 8px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: #94A3B8; margin-bottom: 7px;
+  }
+  .soft-bar-track {
+    display: flex; gap: 0; height: 20px;
+    border-radius: 10px; overflow: hidden;
     background: var(--bg-alt);
-    border-radius: var(--radius-container);
-    padding: 28px 20px 16px;
-    box-shadow: inset 8px 8px 20px rgba(163,177,198,0.35), inset -8px -8px 20px rgba(255,255,255,0.45);
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    box-shadow: inset 3px 3px 6px rgba(163,177,198,0.3), inset -3px -3px 6px rgba(255,255,255,0.45);
   }
-  .subway-inner {
-    position: relative;
-    min-width: 700px;
-    height: 300px; /* 4 lines × ~60px spacing + padding */
+  .soft-seg {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    font-family: var(--font-display); font-size: 7.5px; font-weight: 600;
+    color: #fff; letter-spacing: 0.02em; white-space: nowrap;
   }
-
-  /* ——— Subway lines ——— */
-  .sw-line {
-    position: absolute; left: 0; right: 0;
-    height: 5px; border-radius: 3px; opacity: 0.7;
-    z-index: 1;
-  }
-  .sw-line.line-content  { top: 44px;  background: var(--accent); }
-  .sw-line.line-digital  { top: 116px; background: var(--accent-teal); }
-  .sw-line.line-strategy { top: 188px; background: #D4905B; }
-  .sw-line.line-global   { top: 260px; background: #7B6F9C; }
-
-  /* Line labels */
-  .sw-line-label {
-    position: absolute; left: 0; z-index: 2;
-    font-family: var(--font-display); font-size: 9px; font-weight: 700;
-    letter-spacing: 0.5px; text-transform: uppercase;
-    white-space: nowrap;
-  }
-  .sw-line-label.l-content  { top: 34px; color: var(--accent); }
-  .sw-line-label.l-digital  { top: 106px; color: var(--accent-teal); }
-  .sw-line-label.l-strategy { top: 178px; color: #D4905B; }
-  .sw-line-label.l-global   { top: 250px; color: #7B6F9C; }
-
-  /* ——— Stations ——— */
-  .ig-station {
-    position: absolute; z-index: 5;
-    display: flex; flex-direction: column; align-items: center;
-    transform: translateX(-50%);
-    cursor: pointer; transition: 0.3s ease-out;
-  }
-  .ig-station .st-dot {
-    width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
-    background: var(--bg);
-    border: 4px solid;
-    box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
-  }
-  .ig-station .st-label {
-    margin-top: 6px;
-    font-family: var(--font-display); font-size: 9px; font-weight: 600;
-    color: var(--text-primary); text-align: center; line-height: 1.2;
-    white-space: nowrap;
-  }
-  .ig-station .st-label small {
-    display: block; font-family: var(--font-body); font-size: 8px;
-    color: var(--text-muted); font-weight: 400;
-  }
-  .ig-station:hover { transform: translateX(-50%) translateY(-2px); }
-  .ig-station:hover .st-dot { transform: scale(1.3); }
-  .ig-station.ig-future-station .st-dot {
-    border-style: dashed; opacity: 0.7;
-  }
-
-  /* Station dot colors match the line */
-  .st-content  .st-dot { border-color: var(--accent); }
-  .st-digital  .st-dot { border-color: var(--accent-teal); }
-  .st-strategy .st-dot { border-color: #D4905B; }
-  .st-global   .st-dot { border-color: #7B6F9C; }
-
-  /* ——— Transfer connectors (diagonal SVG between lines) ——— */
-  .sw-transfer {
-    position: absolute; z-index: 0; pointer-events: none;
-  }
-  .sw-transfer line, .sw-transfer path {
-    stroke: var(--text-muted); stroke-width: 2;
-    stroke-dasharray: 5 4; opacity: 0.4;
-  }
-
-  /* ——— Subway motivation (curved text area near transfer) ——— */
-  .sw-motivation {
-    position: absolute; z-index: 3; pointer-events: none;
-    font-family: var(--font-serif); font-size: 9px; font-style: italic;
-    color: var(--text-muted); opacity: 0.7; white-space: nowrap;
-  }
-
-  /* ——— Subway Future arrow ——— */
-  .sw-future-arrow {
-    position: absolute; right: 8px; z-index: 6;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .sw-future-arrow .sw-fa-line {
-    width: 24px; height: 2px;
-    background: var(--accent); opacity: 0.5;
-  }
-  .sw-future-arrow .sw-fa-label {
-    font-family: var(--font-display); font-size: 9px; font-weight: 700;
-    color: var(--accent);
+  .soft-seg:nth-child(1) { background: #A0AEC0; }
+  .soft-seg:nth-child(2) { background: #8899AE; }
+  .soft-seg:nth-child(3) { background: #6B7D9E; }
+  .soft-seg:nth-child(4) { background: #556A90; }
+  .soft-seg:nth-child(5) { background: #3D5280; }
+  .soft-seg-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: #fff; opacity: 0.55; flex-shrink: 0;
   }
 
   /* ——— Mobile: Vertical Narrative ——— */
@@ -574,16 +556,21 @@
 
   /* ===== Infographic Responsive ===== */
   @media (max-width: 1023px) {
-    .cb-company { width: 80px; font-size: 10px; }
+    .cb-track-labels { padding-left: 95px; }
+    .cb-track-labels span { font-size: 7px; letter-spacing: 1px; }
+    .cb-company { width: 95px; font-size: 10px; }
     .cb-company small { font-size: 8px; }
+    .cb-company .cb-industry-tag { font-size: 7px; }
+    .cb-flow-line { left: 107px; }
+    .cb-via { left: 103px; }
+    .cb-motivation { padding-left: 123px; font-size: 9px; }
     .ig-chip .chip-role { font-size: 9px; }
     .ig-chip .chip-skills { font-size: 8px; }
-    .ig-chip .chip-date { font-size: 8px; }
-    .subway-inner { min-width: 600px; }
+    .ig-chip .trk-dot { width: 5px; height: 5px; }
   }
 
   @media (max-width: 767px) {
-    .circuit-board, .subway-map, .variant-label { display: none; }
+    .circuit-board, .variant-label { display: none; }
 
     .ig-flow-mobile {
       display: flex; flex-direction: column; gap: 0;
@@ -1203,25 +1190,29 @@
     <div class="variant-label">▸ Option C — Circuit Board</div>
 
     <div class="circuit-board">
-      <!-- Track labels -->
+      <!-- Track labels: Digital → Content → Brand → Global -->
       <div class="cb-track-labels">
-        <span class="tr-content">Content</span>
-        <span class="tr-digital">Digital</span>
-        <span class="tr-strategy">Strategy</span>
-        <span class="tr-global">Global</span>
+        <span class="tr-digital" data-i18n="ig-track-digital">Digital</span>
+        <span class="tr-content" data-i18n="ig-track-content">Content</span>
+        <span class="tr-brand" data-i18n="ig-track-brand">Brand</span>
+        <span class="tr-global" data-i18n="ig-track-global">Global</span>
       </div>
 
       <div class="cb-rows">
 
-        <!-- GMA — 2 tracks (Content + basic Strategy) → 60% width -->
+        <!-- === PCB flow line: vertical spine === -->
+        <div class="cb-flow-line"></div>
+
+        <!-- GMA — Content + Brand¼, Digital=0, starts at Content column === -->
         <div class="cb-row">
-          <span class="cb-company">GMA<small>2018–2019</small></span>
+          <span class="cb-company">GMA<small>2018–2019</small><span class="cb-industry-tag">Ad Agency</span></span>
           <div class="cb-via" style="top:50%;"></div>
           <div class="cb-chip-wrap">
-            <div class="ig-chip w-60">
+            <div class="ig-chip" style="margin-left:25%; width:32%;">
+              <span class="trk-dot trk-content" title="Content"></span>
+              <span class="trk-dot trk-brand" title="Brand" style="opacity:0.3"></span>
               <span class="chip-role" data-i18n="ig-role-1">Copywriter</span>
-              <span class="chip-skills">Copywriting · Client Understanding · Multi-project Mgmt · Designer Collab</span>
-              <span class="chip-date">2018–19</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-1">Copywriting · Content Planning · Campaign Execution · Client Understanding · Multi-project Mgmt · Designer Collaboration</span>
             </div>
             <div class="cb-detail">
               <div class="cb-dt" data-i18n="ig-dt-1">Agency Foundation</div>
@@ -1230,15 +1221,20 @@
           </div>
         </div>
 
-        <!-- Yizhong — 3 tracks (+Digital) → 75% -->
+        <!-- Motivation: GMA → Yizhong -->
+        <div class="cb-motivation"><span data-i18n="ig-m-1">"Wanted to see the full marketing picture &amp; data loop"</span></div>
+
+        <!-- Yizhong — 3 tracks (Content+Digital+Brand) → 75% === -->
         <div class="cb-row">
-          <span class="cb-company">Yizhong<small>2018–2021</small></span>
+          <span class="cb-company">Yizhong<small>2019–2021</small><span class="cb-industry-tag">Tech &amp; SaaS</span></span>
           <div class="cb-via" style="top:50%;"></div>
           <div class="cb-chip-wrap">
             <div class="ig-chip w-75">
+              <span class="trk-dot trk-digital" title="Digital"></span>
+              <span class="trk-dot trk-content" title="Content"></span>
+              <span class="trk-dot trk-brand" title="Brand"></span>
               <span class="chip-role" data-i18n="ig-role-2">Brand &amp; Content Ops</span>
-              <span class="chip-skills">SEO · Marketing Automation · Brand 0→1 · Content Matrix · Agile/MVP · B2B2C</span>
-              <span class="chip-date">2018–21</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-2">SEO · Marketing Automation · Brand 0→1 · Content Matrix · Agile/MVP · B2B2C Platform · Website Building</span>
             </div>
             <div class="cb-detail">
               <div class="cb-dt" data-i18n="ig-dt-2">The SaaS Awakening</div>
@@ -1247,15 +1243,21 @@
           </div>
         </div>
 
-        <!-- ALTEN — 3 tracks (Content+Digital+Strategy) → 85% -->
+        <!-- Motivation: Yizhong → ALTEN -->
+        <div class="cb-motivation"><span data-i18n="ig-m-2">"Sought structured platform to apply my methods"</span></div>
+
+        <!-- ALTEN — 4 tracks (Digital+Content+Brand + Global½) → 85% === -->
         <div class="cb-row">
-          <span class="cb-company">ALTEN<small>2021–2024</small></span>
+          <span class="cb-company">ALTEN<small>2021–2024</small><span class="cb-industry-tag">Engineering &amp; IT Service</span></span>
           <div class="cb-via" style="top:50%;"></div>
           <div class="cb-chip-wrap">
             <div class="ig-chip w-85">
+              <span class="trk-dot trk-digital" title="Digital"></span>
+              <span class="trk-dot trk-content" title="Content"></span>
+              <span class="trk-dot trk-brand" title="Brand"></span>
+              <span class="trk-dot trk-global" title="Global" style="opacity:0.5"></span>
               <span class="chip-role" data-i18n="ig-role-3">Sr. Content Mkt</span>
-              <span class="chip-skills">White Papers · Engineer Interviews · B2B+B2C Audience · Website PM · SOP Building</span>
-              <span class="chip-date">2021–24</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-3">White Papers · Interviews &amp; Case Studies · B2B+B2C · Website PM · SOP Building · Stakeholder Mgmt · Vendor Mgmt · Content Strategy</span>
             </div>
             <div class="cb-detail">
               <div class="cb-dt" data-i18n="ig-dt-3">Depth &amp; Structure</div>
@@ -1264,15 +1266,21 @@
           </div>
         </div>
 
-        <!-- TEKNOS — +Global track → 75% (shifted right) -->
+        <!-- Motivation: ALTEN → TEKNOS -->
+        <div class="cb-motivation"><span data-i18n="ig-m-3">"Wanted to go closer to product &amp; R&amp;D"</span></div>
+
+        <!-- TEKNOS — Digital¼ + Content + Brand + Global, shifted right === -->
         <div class="cb-row">
-          <span class="cb-company">TEKNOS<small>2024</small></span>
+          <span class="cb-company">TEKNOS<small>2024</small><span class="cb-industry-tag">Manufacturing</span></span>
           <div class="cb-via" style="top:50%;"></div>
           <div class="cb-chip-wrap">
-            <div class="ig-chip w-75" style="margin-left:25%;">
+            <div class="ig-chip" style="margin-left:19%; width:81%;">
+              <span class="trk-dot trk-digital" title="Digital" style="opacity:0.25"></span>
+              <span class="trk-dot trk-content" title="Content"></span>
+              <span class="trk-dot trk-brand" title="Brand"></span>
+              <span class="trk-dot trk-global" title="Global"></span>
               <span class="chip-role" data-i18n="ig-role-4">Global Mkt Executive</span>
-              <span class="chip-skills">Global Marcom · Video Localization · TikTok 0→1 · Cross-cultural Comms</span>
-              <span class="chip-date">2024</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-4">Global Marcom · Video Localization · TikTok 0→1 · Cross-cultural Comms · LinkedIn/YT/IG/FB · Brand Compliance · Bilingual</span>
             </div>
             <div class="cb-detail">
               <div class="cb-dt" data-i18n="ig-dt-4">Global Perspective</div>
@@ -1281,15 +1289,21 @@
           </div>
         </div>
 
-        <!-- CAME — all 4 tracks → 95% -->
+        <!-- Motivation: TEKNOS → CAME -->
+        <div class="cb-motivation"><span data-i18n="ig-m-4">"Wanted more 0→1 ownership &amp; builder scope"</span></div>
+
+        <!-- CAME — all 4 tracks → 95% === -->
         <div class="cb-row">
-          <span class="cb-company">CAME<small>2025–2026</small></span>
+          <span class="cb-company">CAME<small>2025–2026</small><span class="cb-industry-tag">Manufacturing</span></span>
           <div class="cb-via" style="top:50%;"></div>
           <div class="cb-chip-wrap">
             <div class="ig-chip w-95">
+              <span class="trk-dot trk-digital" title="Digital"></span>
+              <span class="trk-dot trk-content" title="Content"></span>
+              <span class="trk-dot trk-brand" title="Brand"></span>
+              <span class="trk-dot trk-global" title="Global" style="opacity:0.35"></span>
               <span class="chip-role" data-i18n="ig-role-5">Digital &amp; Content Owner</span>
-              <span class="chip-skills">SEM(Baidu/Bing/Google) · Leads Gen/Growth · SEO+GEO · Offline Events</span>
-              <span class="chip-date">2025–26</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-5">Website 0→1(CN+EN) · SEM(Baidu/Bing/Google) · Demand Generation · MQL Tracking · SEO+GEO · WeChat/Douyin/Bilibili · Offline Events · Brand Content Matrix</span>
             </div>
             <div class="cb-detail">
               <div class="cb-dt" data-i18n="ig-dt-5">Full-Stack Builder</div>
@@ -1298,141 +1312,35 @@
           </div>
         </div>
 
-        <!-- Future — dashed, full width -->
+        <!-- Motivation: CAME → Future -->
+        <div class="cb-motivation"><span data-i18n="ig-m-5">"Ready for integrated marketing ownership"</span></div>
+
+        <!-- Future — dashed, full width === -->
         <div class="cb-row">
-          <span class="cb-company" data-i18n="ig-future-label">Next<small>→</small></span>
+          <span class="cb-company" data-i18n="ig-future-label">Next<small>→</small><span class="cb-industry-tag" data-i18n="ig-future-ind-short">TBD</span></span>
           <div class="cb-via" style="top:50%; border-style: dashed;"></div>
           <div class="cb-chip-wrap">
             <div class="ig-chip ig-future-chip w-95">
-              <span class="chip-role" data-i18n="ig-future-role">Integrated Marketing Lead</span>
-              <span class="chip-skills">Brand Voice · Content Strategy · Channel Strategy · Leads Gen/Growth · Sales Funnel</span>
-              <span class="chip-date">→</span>
+              <span class="chip-role" data-i18n="ig-future-role">Integrated Marketer: turning your ideas into action</span>
+              <span class="chip-skills" data-i18n="ig-chip-skills-future">Brand Localization · Content Strategy · Growth Marketing · Offline Support</span>
             </div>
+          </div>
+        </div>
+
+        <!-- === Option C: Soft Skills Progression Bar === -->
+        <div class="cb-soft-bar">
+          <div class="soft-bar-title" data-i18n="ig-soft-bar-title">▸ Soft Skills Evolution</div>
+          <div class="soft-bar-track">
+            <div class="soft-seg"><span class="soft-seg-dot"></span><span data-i18n="ig-soft-1">Multi-tasking</span></div>
+            <div class="soft-seg"><span class="soft-seg-dot"></span><span data-i18n="ig-soft-2">Agile</span></div>
+            <div class="soft-seg"><span class="soft-seg-dot"></span><span data-i18n="ig-soft-3">Stakeholder Mgmt</span></div>
+            <div class="soft-seg"><span class="soft-seg-dot"></span><span data-i18n="ig-soft-4">Cross-cultural</span></div>
+            <div class="soft-seg"><span class="soft-seg-dot"></span><span data-i18n="ig-soft-5">Ownership</span></div>
           </div>
         </div>
 
       </div><!-- /cb-rows -->
     </div><!-- /circuit-board -->
-
-    <!-- ============================================================
-     OPTION D: Subway Map（地铁线路图）
-     4 colored lines, station dots, angled transfer connectors.
-     Height: 300px. 4 lines at y=44, 116, 188, 260px.
-     Stations at x-positions proportional to timeline.
-    ============================================================ -->
-    <div class="variant-label" style="margin-top:56px;">▸ Option D — Subway Map</div>
-
-    <div class="subway-map">
-      <div class="subway-inner">
-
-        <!-- Lines -->
-        <div class="sw-line line-content"></div>
-        <div class="sw-line line-digital"></div>
-        <div class="sw-line line-strategy"></div>
-        <div class="sw-line line-global"></div>
-
-        <!-- Line labels -->
-        <span class="sw-line-label l-content">CONTENT</span>
-        <span class="sw-line-label l-digital">DIGITAL</span>
-        <span class="sw-line-label l-strategy">STRATEGY</span>
-        <span class="sw-line-label l-global">GLOBAL</span>
-
-        <!-- GMA — Content line only, x=80 -->
-        <div class="ig-station st-content" style="left:80px; top:35px;">
-          <div class="st-dot"></div>
-          <span class="st-label">GMA<small>Copywriter</small></span>
-        </div>
-
-        <!-- Yizhong — Content+Digital+Strategy, x=200 -->
-        <div class="ig-station st-content" style="left:200px; top:35px;">
-          <div class="st-dot"></div>
-          <span class="st-label">Yizhong<small>Brand &amp; Content</small></span>
-        </div>
-        <div class="ig-station st-digital" style="left:200px; top:107px;">
-          <div class="st-dot"></div>
-          <span class="st-label">Yizhong<small>SEO·Auto</small></span>
-        </div>
-        <div class="ig-station st-strategy" style="left:200px; top:179px;">
-          <div class="st-dot"></div>
-          <span class="st-label">Yizhong<small>MVP·0→1</small></span>
-        </div>
-
-        <!-- Transfer 1→2 motivation -->
-        <span class="sw-motivation" style="top:66px; left:90px;" data-i18n="ig-m-1">"Wanted full picture"</span>
-
-        <!-- ALTEN — Content+Digital+Strategy, x=340 -->
-        <div class="ig-station st-content" style="left:340px; top:35px;">
-          <div class="st-dot"></div>
-          <span class="st-label">ALTEN<small>Sr. Content</small></span>
-        </div>
-        <div class="ig-station st-digital" style="left:340px; top:107px;">
-          <div class="st-dot"></div>
-          <span class="st-label">ALTEN<small>SEO·Web</small></span>
-        </div>
-        <div class="ig-station st-strategy" style="left:340px; top:179px;">
-          <div class="st-dot"></div>
-          <span class="st-label">ALTEN<small>SOP·PM</small></span>
-        </div>
-
-        <!-- Transfer 2→3 motivation -->
-        <span class="sw-motivation" style="top:66px; left:220px;" data-i18n="ig-m-2">"Sought structured platform"</span>
-
-        <!-- TEKNOS — Global line entry, x=420 -->
-        <div class="ig-station st-global" style="left:420px; top:251px;">
-          <div class="st-dot"></div>
-          <span class="st-label">TEKNOS<small>Global Mkt</small></span>
-        </div>
-
-        <!-- Transfer 3→4 motivation -->
-        <span class="sw-motivation" style="top:218px; left:360px;" data-i18n="ig-m-3">"Closer to product"</span>
-
-        <!-- CAME — Content+Digital+Strategy+Global, x=540 -->
-        <div class="ig-station st-content" style="left:540px; top:35px;">
-          <div class="st-dot"></div>
-          <span class="st-label">CAME<small>Content Owner</small></span>
-        </div>
-        <div class="ig-station st-digital" style="left:540px; top:107px;">
-          <div class="st-dot"></div>
-          <span class="st-label">CAME<small>SEM·SEO</small></span>
-        </div>
-        <div class="ig-station st-strategy" style="left:540px; top:179px;">
-          <div class="st-dot"></div>
-          <span class="st-label">CAME<small>Leads·Events</small></span>
-        </div>
-        <div class="ig-station st-global" style="left:540px; top:251px;">
-          <div class="st-dot"></div>
-          <span class="st-label">CAME<small>GEO</small></span>
-        </div>
-
-        <!-- Transfer 4→5 motivation -->
-        <span class="sw-motivation" style="top:210px; left:460px;" data-i18n="ig-m-4">"Wanted 0→1 scope"</span>
-
-        <!-- Future arrow + label -->
-        <div class="sw-future-arrow" style="top:38px;">
-          <span class="sw-fa-line"></span>
-          <span class="sw-fa-label" data-i18n="ig-future-label">Next: Integrated Mkt Lead</span>
-        </div>
-
-        <!-- Transfer connectors (SVG diagonals between lines at career moves) -->
-        <svg class="sw-transfer" style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 640 300">
-          <!-- GMA→Yizhong: Content line only, simple -->
-          <!-- Yizhong inter-line connections (vertical) -->
-          <line x1="200" y1="48" x2="200" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <line x1="200" y1="120" x2="200" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <!-- ALTEN inter-line -->
-          <line x1="340" y1="48" x2="340" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <line x1="340" y1="120" x2="340" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <!-- ALTEN→TEKNOS: diagonal from Strategy to Global -->
-          <path d="M 340,192 Q 380,192 420,248" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.35"/>
-          <!-- TEKNOS→CAME: diagonal from Global to all 4 lines -->
-          <path d="M 424,256 Q 480,256 540,252" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.35"/>
-          <line x1="540" y1="48" x2="540" y2="112" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <line x1="540" y1="120" x2="540" y2="184" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-          <line x1="540" y1="192" x2="540" y2="248" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
-        </svg>
-
-      </div><!-- /subway-inner -->
-    </div><!-- /subway-map -->
 
     <!-- ===== Mobile: Vertical Narrative ===== -->
     <div class="ig-flow-mobile">
@@ -1491,10 +1399,10 @@
             <span class="ig-company">ALTEN China</span><span class="ig-date">2021–2024</span>
           </div>
           <div class="ig-industry" data-i18n="ig-ind-3">Engineering &amp; IT Consulting (FR)</div>
-          <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing Specialist</div>
+          <div class="ig-role" data-i18n="ig-role-3">Sr. Content Marketing</div>
           <div class="ig-skills">
             <span class="skill-content" data-i18n="ig-s-3a">White Papers</span>
-            <span class="skill-content" data-i18n="ig-s-3b">Engineer Interviews</span>
+            <span class="skill-content" data-i18n="ig-s-3b">Interviews &amp; Case Studies</span>
             <span class="skill-strategy" data-i18n="ig-s-3c">B2B+B2C Dual Audience</span>
             <span class="skill-strategy" data-i18n="ig-s-3d">Website PM</span>
             <span class="skill-strategy" data-i18n="ig-s-3e">SOP Building</span>
@@ -1533,7 +1441,7 @@
           <div class="ig-role" data-i18n="ig-role-5">Digital &amp; Content Project Owner</div>
           <div class="ig-skills">
             <span class="skill-digital" data-i18n="ig-s-5a">SEM (Baidu/Bing/Google)</span>
-            <span class="skill-growth" data-i18n="ig-s-5b">Leads Gen / Growth</span>
+            <span class="skill-growth" data-i18n="ig-s-5b">Demand Generation</span>
             <span class="skill-digital" data-i18n="ig-s-5c">SEO + GEO</span>
             <span class="skill-content" data-i18n="ig-s-5d">Offline Events</span>
           </div>
@@ -1549,13 +1457,12 @@
             <span class="ig-company" data-i18n="ig-future-label">What's Next</span><span class="ig-date">→</span>
           </div>
           <div class="ig-industry" data-i18n="ig-future-ind">Promising Industry · 0→1 Projects</div>
-          <div class="ig-role" data-i18n="ig-future-role">Integrated Marketing Lead</div>
+          <div class="ig-role" data-i18n="ig-future-role">Integrated Marketer: turning your ideas into action</div>
           <div class="ig-skills">
-            <span class="skill-strategy" data-i18n="ig-s-fa">Brand Voice</span>
+            <span class="skill-strategy" data-i18n="ig-s-fa">Brand Localization</span>
             <span class="skill-content" data-i18n="ig-s-fb">Content Strategy</span>
-            <span class="skill-digital" data-i18n="ig-s-fc">Channel Strategy</span>
-            <span class="skill-growth" data-i18n="ig-s-fd">Leads Gen / Growth</span>
-            <span class="skill-strategy" data-i18n="ig-s-fe">Sales Funnel Nutrition</span>
+            <span class="skill-growth" data-i18n="ig-s-fc">Growth Marketing</span>
+            <span class="skill-digital" data-i18n="ig-s-fd">Offline Support</span>
           </div>
         </div>
 
@@ -1942,9 +1849,16 @@ const i18n = {
   'section-exp-label': { en: 'Experience', zh: '工作经历' },
   'section-exp-title': { en: 'Professional <em>Journey</em>', zh: '职业<em>旅程</em>' },
 
+  /* —— Infographic Track Labels —— */
+  'ig-track-content': { en: 'Content', zh: '内容' },
+  'ig-track-digital': { en: 'Digital', zh: '数字化' },
+  'ig-track-brand':   { en: 'Brand', zh: '品牌' },
+  'ig-track-global':  { en: 'Global', zh: '跨文化' },
+
   /* —— Infographic Nodes —— */
   'ig-ind-1': { en: 'Digital Marketing Agency', zh: '数字营销 agency' },
   'ig-role-1':{ en: 'Copywriter', zh: '文案策划' },
+  'ig-chip-skills-1': { en: 'Copywriting · Content Planning · Campaign Execution · Client Understanding · Multi-project Mgmt · Designer Collaboration', zh: '文案撰写 · 内容策划 · 活动执行 · 客户理解 · 多项目管理 · 设计师协作' },
   'ig-s-1a': { en: 'Copywriting', zh: '文案撰写' },
   'ig-s-1b': { en: 'Client Understanding', zh: '客户理解' },
   'ig-s-1c': { en: 'Multi-project Mgmt', zh: '多项目管理' },
@@ -1954,6 +1868,7 @@ const i18n = {
 
   'ig-ind-2': { en: 'SaaS + B2B2C Platform', zh: 'SaaS + B2B2C 平台' },
   'ig-role-2':{ en: 'Brand &amp; Content Operations', zh: '品牌与内容运营' },
+  'ig-chip-skills-2': { en: 'SEO · Marketing Automation · Brand 0→1 · Content Matrix · Agile/MVP · B2B2C Platform · Website Building', zh: 'SEO · 营销自动化 · 品牌从0到1 · 内容矩阵 · 敏捷/MVP · B2B2C平台 · 网站搭建' },
   'ig-s-2a': { en: 'SEO', zh: 'SEO' },
   'ig-s-2b': { en: 'Marketing Automation', zh: '营销自动化' },
   'ig-s-2c': { en: 'Brand 0→1', zh: '品牌从0到1' },
@@ -1964,9 +1879,10 @@ const i18n = {
   'ig-dd-2': { en: 'Built <strong>甜薪工场</strong> freelancer platform from 0→1 — brand, content matrix, website. Learned MVP, Agile, SEO, marketing automation. <strong>Realized the relationship</strong> among branding, content, and channels — the beginning of understanding integrated marketing.', zh: '从0到1搭建<strong>甜薪工场</strong>自由职业者平台——品牌、内容矩阵、官网。学习了MVP、敏捷、SEO、营销自动化。<strong>理解了品牌、内容与渠道的关系</strong>——这是整合营销认知的起点。' },
 
   'ig-ind-3': { en: 'Engineering &amp; IT Consulting (FR)', zh: '工程技术咨询（法资）' },
-  'ig-role-3':{ en: 'Sr. Content Marketing', zh: '高级内容营销' },
+  'ig-role-3':{ en: 'Sr. Content Marketing', zh: '资深内容营销专员' },
+  'ig-chip-skills-3': { en: 'White Papers · Interviews &amp; Case Studies · B2B+B2C · Website PM · SOP Building · Stakeholder Mgmt · Vendor Mgmt · Content Strategy', zh: '白皮书 · 访谈与案例研究 · B2B+B2C双受众 · 网站项目管理 · SOP建设 · 干系人管理 · 供应商管理 · 内容策略' },
   'ig-s-3a': { en: 'White Papers', zh: '白皮书' },
-  'ig-s-3b': { en: 'Engineer Interviews', zh: '工程师访谈' },
+  'ig-s-3b': { en: 'Interviews &amp; Case Studies', zh: '访谈与案例研究' },
   'ig-s-3c': { en: 'B2B+B2C Dual Audience', zh: 'B2B+B2C双受众' },
   'ig-s-3d': { en: 'Website PM', zh: '网站项目管理' },
   'ig-s-3e': { en: 'SOP Building', zh: 'SOP 建设' },
@@ -1974,7 +1890,8 @@ const i18n = {
   'ig-dd-3': { en: 'Produced <strong>30+ white papers</strong>, <strong>50+ engineer stories</strong>. Managed <strong>B2B+B2C dual-audience</strong> content strategy. Led website 2.0 relaunch: <strong>+65% SEO traffic</strong>, 2.1× dwell time. Developed SOPs for content and website operations.', zh: '产出<strong>30+白皮书</strong>、<strong>50+工程师故事</strong>。管理<strong>B2B+B2C双受众</strong>内容策略。主导官网2.0改版：<strong>SEO流量+65%</strong>，停留时间2.1倍。建立了内容与官网运营SOP。' },
 
   'ig-ind-4': { en: 'Industrial Coatings MNC (FI)', zh: '工业涂料跨国企业（芬兰）' },
-  'ig-role-4':{ en: 'Global Marketing Executive', zh: '全球营销专员' },
+  'ig-role-4':{ en: 'Global Marketing Executive', zh: '集团市场主管' },
+  'ig-chip-skills-4': { en: 'Global Marcom · Video Localization · TikTok 0→1 · Cross-cultural Comms · LinkedIn/YT/IG/FB · Brand Compliance · Bilingual', zh: '全球营销传播 · 视频本地化 · TikTok从0到1 · 跨文化沟通 · LinkedIn/YT/IG/FB · 品牌合规 · 双语沟通' },
   'ig-s-4a': { en: 'Global Marcom', zh: '全球营销传播' },
   'ig-s-4b': { en: 'Video Localization', zh: '视频本地化' },
   'ig-s-4c': { en: 'TikTok 0→1', zh: 'TikTok 从0到1' },
@@ -1984,8 +1901,9 @@ const i18n = {
 
   'ig-ind-5': { en: 'Industrial Automation (IT)', zh: '工业自动化（意大利）' },
   'ig-role-5':{ en: 'Digital &amp; Content Project Owner', zh: '数字与内容项目负责人' },
+  'ig-chip-skills-5': { en: 'Website 0→1(CN+EN) · SEM(Baidu/Bing/Google) · Demand Generation · MQL Tracking · SEO+GEO · WeChat/Douyin/Bilibili · Offline Events · Brand Content Matrix', zh: '官网0→1(中英文) · SEM(百度/必应/谷歌) · 需求挖掘 · MQL追踪 · SEO+GEO · 微信/抖音/B站 · 线下活动 · 品牌内容矩阵' },
   'ig-s-5a': { en: 'SEM (Baidu/Bing/Google)', zh: 'SEM（百度/必应/谷歌）' },
-  'ig-s-5b': { en: 'Leads Gen / Growth', zh: '线索获取/增长' },
+  'ig-s-5b': { en: 'Demand Generation', zh: '需求挖掘' },
   'ig-s-5c': { en: 'SEO + GEO', zh: 'SEO + GEO' },
   'ig-s-5d': { en: 'Offline Events', zh: '线下活动' },
   'ig-dt-5': { en: 'Full-Stack Builder', zh: '全栈操盘' },
@@ -2001,12 +1919,23 @@ const i18n = {
   /* —— Infographic Future Node —— */
   'ig-future-label': { en: 'What\'s Next', zh: '下一站' },
   'ig-future-ind':   { en: 'Promising Industry · 0→1 Projects', zh: '前景行业 · 从0到1项目' },
-  'ig-future-role':  { en: 'Integrated Marketing Lead', zh: '整合营销负责人' },
-  'ig-s-fa': { en: 'Brand Voice', zh: '品牌声音' },
+  'ig-future-role':  { en: 'Integrated Marketer: turning your ideas into action', zh: '整合营销：将想法化成行动' },
+  'ig-future-ind-short': { en: 'TBD', zh: '待定' },
+  'ig-chip-skills-future': { en: 'Brand Localization · Content Strategy · Growth Marketing · Offline Support', zh: '品牌本土化 · 内容策略 · 增长营销 · 线下支持' },
+  'ig-s-fa': { en: 'Brand Localization', zh: '品牌本土化' },
   'ig-s-fb': { en: 'Content Strategy', zh: '内容策略' },
-  'ig-s-fc': { en: 'Channel Strategy', zh: '渠道策略' },
-  'ig-s-fd': { en: 'Leads Gen / Growth', zh: '线索获取/增长' },
-  'ig-s-fe': { en: 'Sales Funnel Nutrition', zh: '销售漏斗培育' },
+  'ig-s-fc': { en: 'Growth Marketing', zh: '增长营销' },
+  'ig-s-fd': { en: 'Offline Support', zh: '线下支持' },
+  'ig-s-fe': { en: 'Brand Voice', zh: '品牌声音' },
+
+  /* —— Soft Skills Bar (Option C) —— */
+  'ig-soft-bar-title': { en: '▸ Soft Skills Evolution', zh: '▸ 软技能演进' },
+  'ig-soft-1': { en: 'Multi-tasking', zh: '多任务管理' },
+  'ig-soft-2': { en: 'Agile', zh: '敏捷协作' },
+  'ig-soft-3': { en: 'Stakeholder Mgmt', zh: '干系人管理' },
+  'ig-soft-4': { en: 'Cross-cultural', zh: '跨文化沟通' },
+  'ig-soft-5': { en: 'Ownership', zh: '独立操盘' },
+
   'section-cs-label':  { en: 'Case Study', zh: '项目案例' },
   'section-cs-title':  { en: 'CAME · Digital Marketing <em>from 0 to 1</em>', zh: 'CAME · 数字营销<em>从0到1</em>' },
   'cs-sub-label':      { en: 'Project Revel', zh: 'Project Revel' },
