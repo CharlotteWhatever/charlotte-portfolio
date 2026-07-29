@@ -1750,10 +1750,10 @@
           </div>
           <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
-        <a class="dl-item" href="docs/resume-cn.pdf">
+        <a class="dl-item" href="docs/中文简历_CHI CONG.pdf">
           <div class="dl-left">
             <svg class="dl-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <div><div class="dl-name" data-i18n="dl-2">简历中文 (一页精简版)</div><div class="dl-desc">PDF</div></div>
+            <div><div class="dl-name" data-i18n="dl-2">中文简历</div><div class="dl-desc">PDF</div></div>
           </div>
           <svg class="dl-arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
@@ -1998,7 +1998,7 @@ const i18n = {
   'section-dl-label':  { en: 'Downloads', zh: '资料下载' },
   'section-dl-title':  { en: 'Documents &amp; Resources', zh: '文档与<em>资源</em>' },
   'dl-1':              { en: 'Resume EN', zh: '英文简历' },
-  'dl-2':              { en: '简历中文 (一页精简版)', zh: '中文简历（一页版）' },
+  'dl-2':              { en: '中文简历', zh: '中文简历' },
   'dl-3':              { en: 'Full CV EN', zh: '英文履历（完整版）' },
   'dl-4':              { en: 'Full CV CN', zh: '中文履历（完整版）' },
   'dl-5':              { en: 'Portfolio (Content-Based)', zh: '作品集' },
@@ -2032,7 +2032,7 @@ function switchLang(lang) {
   });
   // Update resume download link
   const resumeBtn = document.getElementById('btnResume');
-  if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/resume-cn.pdf' : 'docs/Resume_EN_Charlotte Chi.pdf';
+  if (resumeBtn) resumeBtn.href = lang === 'zh' ? 'docs/中文简历_CHI CONG.pdf' : 'docs/Resume_EN_Charlotte Chi.pdf';
   // Update email based on language
   const emailEn = 'chicharlotte76@gmail.com';
   const emailZh = 'cong.chi@foxmail.com';
